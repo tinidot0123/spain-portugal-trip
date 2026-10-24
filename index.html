@@ -243,6 +243,36 @@ svg *{transform-box:fill-box}
 .rmap .key i{display:inline-block;width:11px;height:11px;border-radius:50%;border:2px solid var(--ink);vertical-align:-2px;margin-right:3px}
 .rmap .hint{margin:0;padding:0 14px 12px;font-size:11.5px;color:var(--soft)}
 @media (prefers-reduced-motion:reduce){.rmap .walker{display:none}}
+/* ---- 行前花費 ---- */
+.pre{background:var(--white);border:var(--bw) solid var(--ink);border-radius:var(--r);padding:10px 14px 14px;margin-bottom:12px}
+.pre h3{font-size:16.5px;font-weight:400}
+.pre .exhint{font-size:12.5px;color:var(--soft);margin:2px 0 10px}
+.pre .psum{font-size:13.5px;margin:8px 2px 0;line-height:1.6}
+.drow.pd{cursor:default}
+.drow.pd:active{transform:none}
+/* ---- 行李清單 ---- */
+.pk-top{background:var(--white);border:var(--bw) solid var(--ink);border-radius:var(--r);padding:10px 14px;margin-bottom:12px}
+.pk-top .bar{height:16px;border:var(--bw) solid var(--ink);border-radius:999px;background:var(--paper);overflow:hidden;margin-top:6px}
+.pk-top .bar i{display:block;height:100%;width:0;background:var(--green);border-right:var(--bw) solid var(--ink);transition:width .35s cubic-bezier(.3,1.4,.5,1)}
+.pk-top .bar i.z{border-right:0}
+.pk-top b{font-weight:400}
+.pk{background:var(--white);border:var(--bw) solid var(--ink);border-radius:var(--r);margin-bottom:12px;overflow:hidden}
+.pk>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 14px;background:var(--bgc,var(--yellow));font-size:16.5px}
+.pk>summary::-webkit-details-marker{display:none}
+.pk>summary .cnt{font-size:13px;background:var(--white);border:2px solid var(--ink);border-radius:999px;padding:0 10px}
+.pk.done>summary .cnt{background:var(--green)}
+.pk>summary:focus-visible{outline:3px solid var(--ink);outline-offset:-6px}
+.pk ul{list-style:none;margin:0;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pk li label{display:flex;align-items:center;gap:8px;min-height:46px;padding:4px 10px 4px 6px;border:var(--bw) solid var(--ink);border-radius:16px;background:var(--paper);font-size:15px;line-height:1.3;cursor:pointer;transition:background .15s,transform .15s}
+.pk li label:active{transform:scale(.97)}
+.pk input{appearance:none;-webkit-appearance:none;flex:none;width:26px;height:26px;margin:0;border:var(--bw) solid var(--ink);border-radius:8px;background:var(--white);display:grid;place-items:center;cursor:pointer}
+.pk input::after{content:'';width:12px;height:7px;border-left:3.5px solid var(--ink);border-bottom:3.5px solid var(--ink);transform:rotate(-45deg) scale(0);margin-top:-3px;transition:transform .2s cubic-bezier(.3,1.8,.5,1)}
+.pk input:checked{background:var(--green)}
+.pk input:checked::after{transform:rotate(-45deg) scale(1)}
+.pk input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.pk li.ck label{background:#EEF6E8}
+.pk li.ck span{text-decoration:line-through;text-decoration-thickness:2px;color:var(--soft)}
+@media (max-width:340px){.pk ul{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -273,10 +303,11 @@ svg *{transform-box:fill-box}
 <header class="nav">
   <nav aria-label="主選單">
     <a href="#home" data-s="home"><i>🏠</i>首頁</a>
-    <a href="#flights" data-s="flights"><i>✈️</i>航班</a>
+    <a href="#flights" data-s="flights"><i>✈️</i>交通</a>
+    <a href="#stay" data-s="stay"><i>🏨</i>住宿</a>
     <a href="#days" data-s="days"><i>🗓️</i>行程</a>
     <a href="#cost" data-s="cost"><i>💰</i>花費</a>
-    <a href="#stay" data-s="stay"><i>🏨</i>住宿</a>
+    <a href="#pack" data-s="pack"><i>🧳</i>清單</a>
   </nav>
 </header>
 
@@ -387,6 +418,15 @@ svg *{transform-box:fill-box}
   </div>
 </section>
 
+<!-- ================= 住宿 ================= -->
+<section id="stay">
+  <div class="wrap">
+    <h2 class="title">🏨 四城住宿</h2>
+    <div id="stayList"></div>
+  </div>
+</section>
+</main>
+
 <!-- ================= 每日行程 ================= -->
 <section id="days" style="padding-bottom:0">
   <div class="wrap"><h2 class="title c2">🗓️ 每日行程</h2></div>
@@ -398,10 +438,11 @@ svg *{transform-box:fill-box}
 <section id="cost">
   <div class="wrap">
     <h2 class="title c3">💰 花費總覽</h2>
-    <p class="note-s">景點花費與每日「其他花費」都可選歐元或台幣。佳俞、婕瑜分別統計，並同時標示歐元與台幣。資料只存在這台裝置的瀏覽器裡。</p>
+    <p class="note-s">行前花費、景點花費與每日「其他花費」都可選歐元或台幣。佳俞、婕瑜分別統計，並同時標示歐元與台幣。資料只存在這台裝置的瀏覽器裡。</p>
     <label class="rate">匯率　1 € = NT$ <input id="rateIn" type="number" inputmode="decimal" min="0" step="0.01" aria-label="歐元兌台幣匯率">
       <small>預設 36.48（2026/10/24 的參考匯率），請依實際刷卡或換匯匯率修改。台幣金額都用這個匯率換算。</small></label>
     <div class="sumgrid" id="sumGrid"></div>
+    <div class="pre" id="preBox"></div>
     <div id="sumDays"></div>
     <div class="acts">
       <button type="button" id="copyCost">📋 複製明細</button>
@@ -411,14 +452,16 @@ svg *{transform-box:fill-box}
   </div>
 </section>
 
-<!-- ================= 住宿 ================= -->
-<section id="stay">
+<!-- ================= 行李清單 ================= -->
+<section id="pack">
   <div class="wrap">
-    <h2 class="title">🏨 四城住宿</h2>
-    <div id="stayList"></div>
+    <h2 class="title c1">🧳 行李清單</h2>
+    <p class="note-s">帶了就打勾。勾選狀態只存在這台裝置的瀏覽器裡。</p>
+    <div class="pk-top"><span id="pkAll"></span><div class="bar" aria-hidden="true"><i id="pkBar"></i></div>
+      <div class="acts" style="margin-top:8px"><button type="button" id="pkReset">全部取消勾選</button></div></div>
+    <div id="pkList"></div>
   </div>
 </section>
-</main>
 
 <footer>
   <svg viewBox="0 0 120 60" aria-hidden="true">
@@ -628,8 +671,8 @@ var DAYS = [
    ['21:45 後','Gran Vía 夜景漫步','視體力散步欣賞馬德里不夜城建築燈光或返回飯店休息。',['步行']]
   ]},
  {n:8,date:'2/10',wd:'三',city:'barcelona',
-  title:'精品咖啡・高鐵前往巴塞隆納・哥德區漫步・殿堂級 Tapas 與百大酒吧',
-  theme:'享受最後一杯馬德里精品咖啡、從容搭乘商務艙高鐵、穿梭巴塞隆納哥德區千年巷弄、品嚐 Bar Cañete 與世界第一冰箱門酒吧。',
+  title:'精品咖啡・高鐵前往巴塞隆納・哥德區漫步・殿堂級 Tapas',
+  theme:'享受最後一杯馬德里精品咖啡、從容搭乘商務艙高鐵、穿梭巴塞隆納哥德區千年巷弄、品嚐殿堂級 Tapas 名店 Bar Cañete。',
   route:'Hola Coffee ➔ Atocha ➔ Iryo 高鐵 ➔ Sants ➔ Hotel Pulitzer ➔ 四貓餐廳 ➔ 哥德區 ➔ Bar Cañete',
   items:[
    ['08:00–08:30','起床、整理行李','於馬德里飯店房內完成行李打包。',[]],
@@ -858,13 +901,15 @@ var timer=setInterval(tick,1000); tick();
 /* ============================================================
    花費記錄：景點花費（€）＋每日其他花費（€／NT$），存在瀏覽器
    ============================================================ */
-var CKEY='esp-pt-cost-v1', EKEY='esp-pt-extra-v1', RKEY='esp-pt-rate-v1', DEF_RATE=36.48;
-var costs={}, extras={}, rate=DEF_RATE, lastP='a', lastCur='EUR';
+var CKEY='esp-pt-cost-v1', EKEY='esp-pt-extra-v1', RKEY='esp-pt-rate-v1', PKEY='esp-pt-pre-v1', DEF_RATE=36.48;
+var costs={}, extras={}, pre=[], rate=DEF_RATE, lastP='a', lastCur='EUR';
+try{pre=JSON.parse(localStorage.getItem(PKEY)||'[]');if(!Array.isArray(pre))pre=[]}catch(e){pre=[]}
 try{costs=JSON.parse(localStorage.getItem(CKEY)||'{}')||{}}catch(e){costs={}}
 try{extras=JSON.parse(localStorage.getItem(EKEY)||'{}')||{}}catch(e){extras={}}
 try{var r0=parseFloat(localStorage.getItem(RKEY));if(isFinite(r0)&&r0>0)rate=r0}catch(e){}
 function saveCosts(){try{localStorage.setItem(CKEY,JSON.stringify(costs))}catch(e){}}
 function saveExtras(){try{localStorage.setItem(EKEY,JSON.stringify(extras))}catch(e){}}
+function savePre(){try{localStorage.setItem(PKEY,JSON.stringify(pre))}catch(e){}}
 function saveRate(){try{localStorage.setItem(RKEY,String(rate))}catch(e){}}
 function cKey(d,it){return 'd'+d.n+'|'+it[0]}
 function amt(v){var n=parseFloat(v);return isFinite(n)&&n>0?n:0}
@@ -878,7 +923,8 @@ function spotSum(d){var a=0,b=0;d.items.forEach(function(it){var s=itemSum(cKey(
 function extraSum(d){var a=0,b=0;(extras[d.n]||[]).forEach(function(e){var v=toEur(amt(e.amt),e.cur);if(e.p==='b')b+=v;else a+=v});return {a:a,b:b}}
 /* 每日合計（歐元等值）＝景點花費＋其他花費，台幣用匯率換算 */
 function daySum(d){var s=spotSum(d),x=extraSum(d);return {a:s.a+x.a,b:s.b+x.b}}
-function allSum(){var a=0,b=0;DAYS.forEach(function(d){var s=daySum(d);a+=s.a;b+=s.b});return {a:a,b:b}}
+function preSum(){var a=0,b=0;pre.forEach(function(e){var v=toEur(amt(e.amt),e.cur);if(e.p==='b')b+=v;else a+=v});return {a:a,b:b}}
+function allSum(){var p=preSum(),a=p.a,b=p.b;DAYS.forEach(function(d){var s=daySum(d);a+=s.a;b+=s.b});return {a:a,b:b}}
 function chipText(k){var c=costs[k]||{},p=[];if(amt(c.a)>0)p.push('佳俞 '+nat(amt(c.a),c.ca));if(amt(c.b)>0)p.push('婕瑜 '+nat(amt(c.b),c.cb));return p.join('｜')}
 function mapLink(d,it){
   var q=(MAPQ[d.n]||{})[it[0]];
@@ -919,6 +965,18 @@ function exInner(d){
   var list=extras[d.n]||[];
   return '<h3 class="exh">🧾 本日其他花費</h3><p class="exhint">景點以外的花費（餐飲、交通、購物…），每筆可選歐元或台幣。</p>'+
     list.map(exRow).join('')+'<button type="button" class="ex-add">＋ 新增一筆</button>';
+}
+
+function preRow(e){
+  return exRow(e).replace('class="exrow"','class="exrow prerow"').replace('class="ex-note"','class="ex-note" list="preSug"').replace('placeholder="項目（例如：計程車、早餐、紀念品）"','placeholder="項目（例如：機票、住宿、保險、eSIM）"').replace('class="ex-del"','class="ex-del pre-del"');
+}
+function preSumText(){
+  var s=preSum(); return (s.a+s.b)>0?'行前花費小計　佳俞 '+both(s.a)+'｜婕瑜 '+both(s.b):'';
+}
+function preInner(){
+  return '<h3>✈️ 行前花費</h3><p class="exhint">出發前已付的費用（機票、住宿、保險、簽證、eSIM、換匯…），可選歐元或台幣，每筆可指定是誰付的。</p>'+
+    '<datalist id="preSug"><option value="機票"><option value="住宿"><option value="火車／高鐵票"><option value="旅遊保險"><option value="簽證／ETIAS"><option value="eSIM"><option value="門票／預約"><option value="換匯"><option value="行李用品"></datalist>'+
+    pre.map(preRow).join('')+'<button type="button" class="ex-add pre-add">＋ 新增一筆行前花費</button><p class="psum" id="preSum">'+preSumText()+'</p>';
 }
 
 var tabsEl=$('#tabs'), panel=$('#panel'), cur=-1;
@@ -1139,12 +1197,45 @@ panel.addEventListener('click',function(e){
 });
 
 function both(v){return eur(v)+'（'+twd(v*rate)+'）'}
+function drawPre(){$('#preBox').innerHTML=preInner()}
+function findPre(row){for(var i=0;i<pre.length;i++) if(pre[i].id===row.dataset.id) return pre[i];return null}
+function onPreEdit(e){
+  var x=e.target,c=x.classList; if(!c) return;
+  if(!(c.contains('ex-note')||c.contains('ex-amt')||c.contains('ex-p')||c.contains('ex-cur'))) return;
+  var ent=findPre(x.closest('.exrow')); if(!ent) return;
+  if(c.contains('ex-note')) ent.note=x.value;
+  else if(c.contains('ex-amt')) ent.amt=x.value;
+  else if(c.contains('ex-p')){ent.p=x.value;lastP=x.value}
+  else {ent.cur=x.value;lastCur=x.value}
+  savePre();
+  $('#preSum').textContent=preSumText();
+  renderCostSummary();
+}
+$('#preBox').addEventListener('input',onPreEdit);
+$('#preBox').addEventListener('change',onPreEdit);
+$('#preBox').addEventListener('keydown',function(e){
+  if(e.key==='Enter'&&e.target.classList&&(e.target.classList.contains('ex-amt')||e.target.classList.contains('ex-note'))) e.target.blur();
+});
+$('#preBox').addEventListener('click',function(e){
+  var add=e.target.closest('.pre-add'), del=e.target.closest('.pre-del');
+  if(add){
+    pre.push({id:newId(),note:'',p:lastP,amt:'',cur:lastCur});
+    savePre();drawPre();
+    var ins=document.querySelectorAll('#preBox .ex-note'); if(ins.length) ins[ins.length-1].focus();
+  }else if(del){
+    var ent=findPre(del.closest('.exrow'));
+    if(ent) pre=pre.filter(function(z){return z!==ent});
+    savePre();drawPre();renderCostSummary();
+  }
+});
 function renderCostSummary(){
   var t=allSum();
   $('#sumGrid').innerHTML=
     '<div class="s1"><small>佳俞 總花費</small><b>'+eur(t.a)+'</b><b>'+twd(t.a*rate)+'</b></div>'+
     '<div class="s2"><small>婕瑜 總花費</small><b>'+eur(t.b)+'</b><b>'+twd(t.b*rate)+'</b></div>';
   var h='';
+  var ps=preSum();
+  if(pre.length) h+='<div class="drow pd"><span><b>行前花費</b>｜出發前</span><span>'+((ps.a+ps.b)>0?'佳俞 '+both(ps.a)+'<br>婕瑜 '+both(ps.b):'<em>尚未填金額</em>')+'</span></div>';
   DAYS.forEach(function(d,i){
     var s=daySum(d);
     h+='<button type="button" class="drow" data-i="'+i+'"><span><b>DAY '+d.n+'</b>｜'+d.date+' ('+d.wd+')</span>'+
@@ -1172,6 +1263,13 @@ $('#rateIn').addEventListener('blur',function(e){
 function who(p){return p==='b'?'婕瑜':'佳俞'}
 function costText(){
   var L=['西葡之旅花費明細','匯率 1 € = NT$ '+nf(rate,2),''];
+  var ps=preSum();
+  if(ps.a+ps.b>0){
+    L.push('行前花費');
+    L.push('  佳俞 '+both(ps.a)+'｜婕瑜 '+both(ps.b));
+    pre.forEach(function(e){var v=amt(e.amt); if(v<=0) return; L.push('  ・'+(e.note||'未命名')+'：'+who(e.p)+' '+nat(v,e.cur))});
+    L.push('');
+  }
   DAYS.forEach(function(d){
     var ds=daySum(d); if(ds.a+ds.b<=0) return;
     L.push('DAY '+d.n+'｜'+d.date+' ('+d.wd+')');
@@ -1187,7 +1285,7 @@ function costText(){
     L.push('');
   });
   var t=allSum();
-  L.push('全程總花費');
+  L.push('全程總花費（含行前）');
   L.push('佳俞：'+both(t.a));
   L.push('婕瑜：'+both(t.b));
   return L.join('\n');
@@ -1210,12 +1308,13 @@ $('#copyCost').addEventListener('click',function(){
   copyText(costText(),function(ok){$('#copyMsg').textContent=ok?'已複製，可以貼到 LINE 或備忘錄 ✓':'複製失敗，請改用手動選取。'});
 });
 $('#resetCost').addEventListener('click',function(){
-  if(!confirm('要清除全部花費紀錄（景點花費與其他花費）嗎？匯率設定會保留。這個動作無法復原。')) return;
-  costs={};extras={};saveCosts();saveExtras();
+  if(!confirm('要清除全部花費紀錄（行前花費、景點花費與其他花費）嗎？匯率設定會保留。這個動作無法復原。')) return;
+  costs={};extras={};pre=[];saveCosts();saveExtras();savePre();drawPre();
   panel.innerHTML=panelHTML(DAYS[cur]);
   renderCostSummary();
   $('#copyMsg').textContent='已清除全部花費。';
 });
+drawPre();
 renderCostSummary();
 
 /* ============================================================
@@ -1232,6 +1331,62 @@ renderCostSummary();
   });
   $('#stayList').innerHTML=h;
 })();
+
+/* ============================================================
+   行李清單（勾選狀態存在瀏覽器）
+   ============================================================ */
+var PACK=[
+ ['✈️ 出國專用','#F2A497',['外幣','eSIM','護照','簽證','預辦登機','飛機枕','AirTag','駕照']],
+ ['🪥 盥洗用品','#A8D3E6',['牙刷','牙膏','潤髮乳','洗面乳','洗髮精','牙線棒','牙間刷','眼唇卸妝品','卸妝棉','睫毛卸除液']],
+ ['🧴 保養用品','#B9DAA5',['消腫棒','晨間乳液','晚間乳液','臉部防曬','身體防曬','棉花棒','卸妝棉片','大梳子','濕髮梳','止汗劑','眼藥水','A醇化妝水']],
+ ['💄 化妝品','#F6D27A',['防曬','眉筆','眼線筆','唇膏','粉餅','睫毛底膏','睫毛膏','腮紅','打亮','睫毛夾','陰影','鼻影','化妝刷','定型噴霧']],
+ ['🔌 電子產品','#A8D3E6',['手機','電子書','耳機','手錶','Dji','充電器']],
+ ['👜 隨身用品','#F2A497',['行充','雨傘','髮圈','電子書','錢包','耳機','水壺','乾洗手','墨鏡','防陽帽','髮箍']],
+ ['🎒 其他','#B9DAA5',['香水','耳環','備用隱眼','隱眼藥水','藥品','新露露','夾腳拖','布鞋','換洗衣物','免洗內褲','垃圾袋','浴毛巾','維持器','眼鏡','吹風機','睡衣','髮膠','旅行袋','口罩','卷髮乳','枕頭套']]
+];
+var KKEY='esp-pt-pack-v1', packed={}, packOpen={};
+try{packed=JSON.parse(localStorage.getItem(KKEY)||'{}')||{}}catch(e){packed={}}
+function savePack(){try{localStorage.setItem(KKEY,JSON.stringify(packed))}catch(e){}}
+function pkKey(ci,ii){return ci+'|'+PACK[ci][2][ii]}
+function pkCount(ci){var n=0;PACK[ci][2].forEach(function(_,ii){if(packed[pkKey(ci,ii)])n++});return n}
+function pkRender(){
+  var h='';
+  PACK.forEach(function(c,ci){
+    var n=pkCount(ci), t=c[2].length;
+    h+='<details class="pk'+(n===t?' done':'')+'" data-c="'+ci+'"'+(packOpen[ci]===false?'':' open')+' style="--bgc:'+c[1]+'"><summary><span>'+esc(c[0])+'</span><span class="cnt">'+n+' / '+t+'</span></summary><ul>';
+    c[2].forEach(function(name,ii){
+      var k=pkKey(ci,ii), ck=!!packed[k];
+      h+='<li'+(ck?' class="ck"':'')+'><label><input type="checkbox" data-c="'+ci+'" data-i="'+ii+'"'+(ck?' checked':'')+'><span>'+esc(name)+'</span></label></li>';
+    });
+    h+='</ul></details>';
+  });
+  $('#pkList').innerHTML=h;
+  pkTotal();
+}
+function pkTotal(){
+  var n=0,t=0;PACK.forEach(function(c,ci){n+=pkCount(ci);t+=c[2].length});
+  $('#pkAll').innerHTML='已打包 <b>'+n+' / '+t+'</b> 項'+(n===t?' 🎉 全部帶齊了！':'');
+  var bar=$('#pkBar'); bar.style.width=(t?n/t*100:0)+'%'; bar.className=n===0?'z':'';
+}
+$('#pkList').addEventListener('change',function(e){
+  var x=e.target; if(!x.matches||!x.matches('input[type=checkbox]')) return;
+  var ci=+x.dataset.c, ii=+x.dataset.i, k=pkKey(ci,ii);
+  if(x.checked) packed[k]=1; else delete packed[k];
+  savePack();
+  x.closest('li').classList.toggle('ck',x.checked);
+  var d=x.closest('.pk'), n=pkCount(ci), t=PACK[ci][2].length;
+  d.querySelector('.cnt').textContent=n+' / '+t;
+  d.classList.toggle('done',n===t);
+  pkTotal();
+});
+$('#pkList').addEventListener('toggle',function(e){
+  var d=e.target; if(d.classList&&d.classList.contains('pk')) packOpen[d.dataset.c]=d.open;
+},true);
+$('#pkReset').addEventListener('click',function(){
+  if(!confirm('要把行李清單全部取消勾選嗎？')) return;
+  packed={};savePack();pkRender();
+});
+pkRender();
 
 /* ============================================================
    選單高亮
