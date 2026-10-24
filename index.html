@@ -115,6 +115,69 @@ h1{font-size:34px;line-height:1.25;font-weight:400;margin:10px 0 8px}
 .tag.reserve{background:var(--yellow)}
 .tag.plan{background:var(--blue)}
 
+/* ---------- 地圖 / 花費 ---------- */
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.map{display:inline-flex;align-items:center;gap:3px;text-decoration:none;color:var(--ink);background:var(--blue);border:2px solid var(--ink);border-radius:999px;padding:1px 12px;font-size:13px;line-height:1.55;white-space:nowrap;transition:transform .15s}
+.map:active{transform:scale(.92)}
+.map:focus-visible,.drow:focus-visible,.cost summary:focus-visible,.acts button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.cost{margin-top:9px;border-top:3px dotted var(--ink);padding-top:4px}
+.cost summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;min-height:34px;font-size:13.5px}
+.cost summary::-webkit-details-marker{display:none}
+.cost summary::after{content:"＋";margin-left:6px;font-size:15px;line-height:1}
+.cost[open] summary::after{content:"－"}
+.csum{margin-left:auto;background:var(--yellow);border:2px solid var(--ink);border-radius:999px;padding:0 10px;font-size:12.5px;line-height:1.5}
+.csum:empty{display:none}
+.crow{display:grid;grid-template-columns:1fr;gap:8px;margin:6px 0 4px}
+.crow label{display:flex;align-items:center;gap:8px;font-size:12.5px}
+.crow .pn{min-width:54px;text-align:center}
+.crow input,.crow select{font:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:var(--bw) solid var(--ink);border-radius:12px;padding:5px 8px;height:42px;min-width:0}
+.crow input{flex:1;width:100%}
+.crow select:focus,.crow input:focus{outline:none;background:var(--yellow)}
+.pn{display:inline-block;border:2px solid var(--ink);border-radius:999px;padding:0 10px;font-size:12.5px;line-height:1.5}
+.pn1{background:var(--coral)} .pn2{background:var(--blue)}
+.daycost{margin-top:6px;margin-bottom:6px;background:var(--white);border:var(--bw) solid var(--ink);border-radius:var(--r);padding:10px 14px 12px}
+.sumgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:10px}
+.sumgrid div{border:var(--bw) solid var(--ink);border-radius:var(--r);padding:8px 4px 6px;text-align:center}
+.sumgrid .s1{background:var(--coral)} .sumgrid .s2{background:var(--blue)}
+.sumgrid small{display:block;font-size:13px}
+.sumgrid b{display:block;font-weight:400;font-size:21px;line-height:1.35}
+.sumgrid b+b{font-size:17px}
+.drow{display:flex;flex-direction:column;align-items:flex-start;gap:0;width:100%;text-align:left;background:var(--white);border:var(--bw) solid var(--ink);border-radius:18px;padding:7px 12px;margin-bottom:8px;font-size:14px;line-height:1.5;transition:transform .15s}
+.drow:active{transform:scale(.98)}
+.drow b{font-weight:400}
+.drow em{font-style:normal;color:var(--soft)}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.acts button{background:var(--paper);border:var(--bw) solid var(--ink);border-radius:999px;padding:3px 16px;font-size:14px}
+.acts button:active{transform:scale(.95)}
+.cmsg{font-size:13px;color:var(--soft);min-height:22px;margin-top:6px}
+
+/* ---------- 其他花費 / 雙幣別 ---------- */
+.c2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.c2 div{border:var(--bw) solid var(--ink);border-radius:16px;padding:4px 4px 5px;text-align:center;line-height:1.4}
+.c2 div:nth-child(1){background:var(--coral)} .c2 div:nth-child(2){background:var(--blue)}
+.c2 small{display:block;font-size:12.5px}
+.c2 span{display:block;font-size:17px}
+.c2 span+span{font-size:15px}
+.rt{font-size:12.5px;color:var(--soft);margin-top:8px;text-align:center}
+.extra{margin-top:16px;background:var(--white);border:var(--bw) solid var(--ink);border-radius:var(--r);padding:10px 14px 14px}
+.extra .exh{font-size:16.5px;font-weight:400}
+.extra .exhint{font-size:12.5px;color:var(--soft);margin:2px 0 10px}
+.exrow{background:var(--paper);border:var(--bw) solid var(--ink);border-radius:16px;padding:8px 10px 10px;margin-bottom:8px}
+.ex-note{display:block;width:100%;border:0;border-bottom:2px dotted var(--ink);background:transparent;font:inherit;font-size:16px;color:var(--ink);padding:3px 0;margin-bottom:8px;outline:none}
+.ex-note:focus{border-bottom-style:solid}
+.exline{display:grid;grid-template-columns:auto 1fr auto auto;gap:6px;align-items:center}
+.exline select,.exline input{font:inherit;font-size:16px;color:var(--ink);background:var(--white);border:var(--bw) solid var(--ink);border-radius:12px;padding:5px 8px;height:42px;min-width:0;width:100%}
+.exline select{width:auto}
+.exline select:focus,.exline input:focus{outline:none;background:var(--yellow)}
+.ex-del{width:42px;height:42px;border:var(--bw) solid var(--ink);border-radius:50%;background:var(--coral);font-size:15px;line-height:1;padding:0}
+.ex-del:active{transform:scale(.9)}
+.ex-add{width:100%;background:var(--paper);border:var(--bw) dashed var(--ink);border-radius:16px;padding:7px 10px;font-size:15px}
+.ex-add:active{transform:scale(.98)}
+.rate{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--white);border:var(--bw) solid var(--ink);border-radius:var(--r);padding:8px 14px;margin-bottom:14px;font-size:15px}
+.rate input{width:96px;font:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:var(--bw) solid var(--ink);border-radius:12px;padding:3px 8px}
+.rate input:focus{outline:none;background:var(--yellow)}
+.rate small{flex-basis:100%;font-size:12.5px;color:var(--soft)}
+
 /* ---------- 住宿 ---------- */
 .stay{background:var(--white);border:var(--bw) solid var(--ink);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
 .stay-h{display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--cc);border-bottom:var(--bw) solid var(--ink);padding:7px 14px;font-size:16px}
@@ -152,6 +215,34 @@ svg *{transform-box:fill-box}
   h1{font-size:42px}
   .cd b{font-size:38px}
 }
+/* ---- 當日路線小地圖 ---- */
+.rmap{margin:0 0 14px;border:var(--bw) solid var(--ink);border-radius:var(--r);background:var(--white);overflow:hidden}
+.rmap>summary{list-style:none;cursor:pointer;padding:10px 14px;font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--yellow)}
+.rmap>summary::-webkit-details-marker{display:none}
+.rmap>summary::after{content:'收合 ▲';font-size:12px;font-weight:400}
+.rmap:not([open])>summary::after{content:'展開 ▼'}
+.rmap .mapbox{padding:10px 10px 4px}
+.rmap svg{display:block;width:100%;height:auto;border:var(--bw) solid var(--ink);border-radius:18px;background:#FFF4DC}
+.rmap svg text{font-family:inherit}
+.rmap .ln{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:2 9;animation:rflow 1.6s linear infinite}
+.rmap .ln.tr{stroke:#4F93B3;stroke-width:3.5;stroke-dasharray:10 8}
+.rmap .ln.fl{stroke:#D9705F;stroke-width:3;stroke-dasharray:3 8}
+.rmap .ln.alt{stroke-dasharray:2 7;opacity:.55;animation:none}
+@keyframes rflow{to{stroke-dashoffset:-22}}
+.rmap .pin{transform-box:fill-box;transform-origin:50% 100%;animation:pinDrop .55s cubic-bezier(.3,1.6,.5,1) both;animation-delay:calc(var(--i)*70ms + 120ms);cursor:pointer}
+.rmap .pin circle{stroke:var(--ink);stroke-width:3}
+.rmap .pin text{font-size:11px;font-weight:700;text-anchor:middle;fill:var(--ink);pointer-events:none}
+.rmap .pin.alt circle{stroke-dasharray:3 3}
+@keyframes pinDrop{0%{transform:translateY(-14px) scale(.3);opacity:0}70%{transform:translateY(2px) scale(1.12);opacity:1}100%{transform:none;opacity:1}}
+.rmap .lab{font-size:10px;fill:var(--soft);text-anchor:middle;letter-spacing:1px}
+.rmap .walker{font-size:14px}
+.rmap .legend{list-style:none;margin:0;padding:6px 10px 12px;display:flex;flex-wrap:wrap;gap:6px}
+.rmap .legend a{display:inline-flex;align-items:center;gap:5px;color:var(--ink);text-decoration:none;font-size:12.5px;background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:2px 9px 2px 3px}
+.rmap .legend b{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:50%;border:2px solid var(--ink);font-size:11px;background:var(--bgc)}
+.rmap .key{margin:0;padding:0 14px 10px;font-size:11.5px;color:var(--soft);display:flex;flex-wrap:wrap;gap:4px 12px}
+.rmap .key i{display:inline-block;width:11px;height:11px;border-radius:50%;border:2px solid var(--ink);vertical-align:-2px;margin-right:3px}
+.rmap .hint{margin:0;padding:0 14px 12px;font-size:11.5px;color:var(--soft)}
+@media (prefers-reduced-motion:reduce){.rmap .walker{display:none}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -184,6 +275,7 @@ svg *{transform-box:fill-box}
     <a href="#home" data-s="home"><i>🏠</i>首頁</a>
     <a href="#flights" data-s="flights"><i>✈️</i>航班</a>
     <a href="#days" data-s="days"><i>🗓️</i>行程</a>
+    <a href="#cost" data-s="cost"><i>💰</i>花費</a>
     <a href="#stay" data-s="stay"><i>🏨</i>住宿</a>
   </nav>
 </header>
@@ -302,6 +394,23 @@ svg *{transform-box:fill-box}
   <div class="wrap"><article class="panel" id="panel" role="tabpanel" tabindex="-1"></article></div>
 </section>
 
+<!-- ================= 花費 ================= -->
+<section id="cost">
+  <div class="wrap">
+    <h2 class="title c3">💰 花費總覽</h2>
+    <p class="note-s">景點花費與每日「其他花費」都可選歐元或台幣。佳俞、婕瑜分別統計，並同時標示歐元與台幣。資料只存在這台裝置的瀏覽器裡。</p>
+    <label class="rate">匯率　1 € = NT$ <input id="rateIn" type="number" inputmode="decimal" min="0" step="0.01" aria-label="歐元兌台幣匯率">
+      <small>預設 36.48（2026/10/24 的參考匯率），請依實際刷卡或換匯匯率修改。台幣金額都用這個匯率換算。</small></label>
+    <div class="sumgrid" id="sumGrid"></div>
+    <div id="sumDays"></div>
+    <div class="acts">
+      <button type="button" id="copyCost">📋 複製明細</button>
+      <button type="button" id="resetCost">清除全部花費</button>
+    </div>
+    <p class="cmsg" id="copyMsg" role="status"></p>
+  </div>
+</section>
+
 <!-- ================= 住宿 ================= -->
 <section id="stay">
   <div class="wrap">
@@ -342,6 +451,23 @@ var STAYS = [
   {city:'馬德里', n:2, c:'#F2A497', in:'2/8 (一)', out:'2/10 (三)', name:'Room Mate Collection Alba', who:'婕瑜訂 (Booking)', note:'文學區核心，步行至索菲亞／普拉多極近'},
   {city:'巴塞隆納', n:4, c:'#B9DAA5', in:'2/10 (三)', out:'2/14 (日)', name:'Hotel Pulitzer Barcelona', who:'婕瑜訂 (Booking)', note:'加泰隆尼亞廣場旁'}
 ];
+
+/* 每個景點的 Google 地圖查詢字詞（鍵：第幾天 → 該項目的時間字串） */
+var MAPQ = {
+ 1:{'10:35–12:30':"Humberto Delgado Airport Lisbon",'12:30–13:00':"Wilde Aparthotels Lisbon Liberdade",'13:00–14:10':"Forno d'Oro Lisboa",'14:10–14:35':"Baixa Lisboa",'14:35–15:00':"Praça do Comércio Lisboa",'15:00–15:25':"Rua da Conceição Lisboa",'15:25–15:45':"Elevador de Santa Justa Lisboa",'15:45–16:15':"A Brasileira Chiado Lisboa",'16:15–16:45':"Landeau Chocolate Lisboa",'16:45–17:45':"A Vida Portuguesa Chiado Lisboa",'17:45–18:45':"Largo do Carmo Lisboa",'19:00–20:15':"Uma Marisqueira Lisboa",'20:15–20:40':"Bairro Alto Lisboa",'20:40–22:15':"A Tasca do Chico Bairro Alto Lisboa"},
+ 2:{'08:15–09:00':"Torre de Belém Lisboa",'09:00–09:30':"Torre de Belém Lisboa",'09:30–09:50':"Mosteiro dos Jerónimos Lisboa",'09:50–11:20':"Mosteiro dos Jerónimos Lisboa",'11:25–12:05':"Pastéis de Belém Lisboa",'12:15–13:45':"O Frade Belém Lisboa",'13:45–14:30':"Alfama Lisboa",'14:30–15:15':"Tram 28 Martim Moniz Lisboa",'15:15–16:30':"Sé de Lisboa",'16:30–17:10':"Miradouro da Senhora do Monte Lisboa",'17:10–18:15':"Miradouro da Senhora do Monte Lisboa",'18:15–19:15':"Cervejaria Ramiro Lisboa",'19:15–20:45':"Cervejaria Ramiro Lisboa"},
+ 3:{'07:45–08:15':"Estação do Rossio Lisboa",'08:15–09:10':"Estação de Sintra",'09:10–10:00':"Palácio Nacional da Pena Sintra",'10:00–11:45':"Palácio Nacional da Pena Sintra",'11:45–12:30':"Vila de Sintra",'12:30–13:45':"Tascantiga Sintra",'13:45–14:30':"Quinta da Regaleira Sintra",'14:30–16:00':"Quinta da Regaleira Sintra",'16:00–16:35':"Casa Piriquita Sintra",'16:35–18:15':"Estação do Rossio Lisboa",'18:15–18:40':"Príncipe Real Lisboa",'18:40–19:30':"A Cevicheria Rua Dom Pedro V 129 Lisboa",'約 19:30–20:45':"A Cevicheria Rua Dom Pedro V 129 Lisboa",'20:45–21:15':"Chiado Lisboa",'21:15–22:30':"Toca da Raposa Rua da Condessa 45 Lisboa"},
+ 4:{'08:00–08:20':"Wilde Aparthotels Lisbon Liberdade",'08:20–08:40':"Filtrô Creative Lab Rua das Trinas 102 Lisboa",'08:40–09:40':"Filtrô Creative Lab Rua das Trinas 102 Lisboa",'09:40–10:30':"Wilde Aparthotels Lisbon Liberdade",'10:30–11:10':"Estação de Santa Apolónia Lisboa",'約 12:00–15:00':"Estação de Campanhã Porto",'15:30–15:45':"Torel 1884 Suites & Apartments Porto",'15:45–16:25':"Mercado do Bolhão Porto",'16:25–16:40':"Estação de São Bento Porto",'16:40–17:00':"Estação de São Bento Porto",'17:00–17:30':"Sé do Porto",'17:30–19:15':"Cais da Ribeira Porto",'19:15–20:45':"Taberna dos Carris Porto",'21:00–21:45':"Majestic Café Porto",'22:00–23:30':"The Royal Cocktail Club Porto"},
+ 5:{'09:00–09:35':"Combi Coffee Roasters Porto",'09:45–10:05':"Capela das Almas Porto",'10:05–10:20':"Igreja de Santo Ildefonso Porto",'10:20–10:40':"Avenida dos Aliados Porto",'10:40–11:00':"SO Coffee Roasters Sá de Noronha Porto",'11:00–11:50':"Livraria Lello Porto",'11:50–12:10':"Igreja do Carmo Porto",'12:15–13:15':"Brasão Aliados Porto",'13:15–13:45':"Palácio da Bolsa Porto",'14:00–14:45':"Palácio da Bolsa Porto",'14:45–15:15':"Graham's Port Lodge Vila Nova de Gaia",'15:30–17:00':"Graham's Port Lodge Vila Nova de Gaia",'17:00–17:20':"Teleférico de Gaia Cais de Gaia",'17:20–17:35':"Teleférico de Gaia Cais de Gaia",'17:35–17:55':"Miradouro da Serra do Pilar Vila Nova de Gaia",'17:55–18:25':"Ponte Luís I Porto",'18:25–19:00':"Meia-Nau Porto",'19:00–20:30':"Meia-Nau Porto",'20:30–20:50':"Capela Incomum Porto",'20:50–22:00':"Capela Incomum Porto",'22:00':"Torel 1884 Suites & Apartments Porto"},
+ 6:{'07:30–08:30':"Torel 1884 Suites & Apartments Porto",'08:30–09:15':"Aeroporto Francisco Sá Carneiro Porto",'09:15–11:30':"Aeroporto Francisco Sá Carneiro Porto",'12:25–14:45':"Adolfo Suárez Madrid-Barajas Airport",'15:45–16:45':"Room Mate Alba Madrid",'16:45–17:15':"Room Mate Alba Madrid",'17:15–17:40':"Calle de las Huertas Madrid",'17:40–19:15':"Museo Reina Sofía Madrid",'19:15–20:00':"Room Mate Alba Madrid",'20:00–21:30':"SAU Taberna entre aguas Madrid",'21:30 後':"Salmon Guru Madrid"},
+ 7:{'09:15–09:40':"Puerta del Sol Madrid",'09:40–10:15':"Palacio Real de Madrid",'10:30–12:00':"Palacio Real de Madrid",'12:00–12:25':"Catedral de la Almudena Madrid",'12:25–12:45':"Mercado de San Miguel Madrid",'13:00–14:30':"La Taberna de Peñalver Madrid",'14:30–15:00':"Museo del Prado Madrid",'15:00–17:00':"Museo del Prado Madrid",'17:00–17:35':"Templo de Debod Madrid",'17:35–18:50':"Templo de Debod Madrid",'18:50–19:15':"El Puertito Oyster Bar Madrid",'19:15–20:00':"El Puertito Oyster Bar Madrid",'20:00–20:30':"Gran Vía Madrid",'20:30–21:45':"Vinitus Gran Vía Madrid",'21:45 後':"Gran Vía Madrid"},
+ 8:{'08:30–08:45':"Room Mate Alba Madrid",'08:45–09:25':"Hola Coffee Fourquet Madrid",'09:25–09:45':"Room Mate Alba Madrid",'09:45–10:15':"Madrid Puerta de Atocha station",'10:15–11:00':"Madrid Puerta de Atocha station",'11:22–14:39':"Madrid Puerta de Atocha station",'14:40–15:45':"Hotel Pulitzer Barcelona",'16:15–17:00':"Els Quatre Gats Barcelona",'17:00–18:30':"Barri Gòtic Barcelona",'18:30–19:15':"Granja M. Viader Barcelona",'19:30–21:30':"Bar Cañete Barcelona"},
+ 9:{'08:30–09:20':"Park Güell Barcelona",'09:30–11:30':"Park Güell Barcelona",'11:45–13:15':"Recinte Modernista de Sant Pau Barcelona",'13:15–14:45':"Avinguda de Gaudí Barcelona",'15:00–16:30':"Sagrada Família Barcelona",'16:35–17:15':"Bar-Terrassa Sercotel Rosselló Barcelona",'17:25–18:10':"Nomad Coffee Lab & Shop Passatge Sert 12 Barcelona",'18:15–19:15':"Jon Cake Barcelona",'19:30–21:30':"Palau de la Música Catalana Barcelona",'21:30–23:00':"Can Cisa Bar Brutal Barcelona"},
+ 10:{'08:00–08:30':"Plaça Espanya Barcelona",'08:36–10:00':"Plaça Espanya FGC station Barcelona",'10:15–12:00':"Monestir de Montserrat",'12:15–14:30':"Funicular de Sant Joan Montserrat",'14:30–16:15':"Plaça Espanya Barcelona",'16:15–18:50':"Hotel Pulitzer Barcelona",'19:00–21:15':"Prado de Flores Restaurant Barcelona",'21:15–21:30':"Paradiso Carrer de Rera Palau 4 Barcelona",'21:30–23:15':"Paradiso Carrer de Rera Palau 4 Barcelona",'23:15 後':"Hotel Pulitzer Barcelona"},
+ 11:{'08:30–09:30':"Passeig de Gràcia railway station Barcelona",'09:30–15:30':"Sitges old town",'同時段替代':"Jardí Botànic Marimurtra Blanes",'15:30–18:15':"Passeig de Gràcia Barcelona",'18:15–19:30':"Hotel Pulitzer Barcelona",'20:00–21:45':"Gresca Carrer de Provença 230 Barcelona",'21:45–22:00':"Sips Carrer de Muntaner 108 Barcelona",'22:00–23:30':"Sips Carrer de Muntaner 108 Barcelona"},
+ 12:{'08:45–09:30':"Hotel Pulitzer Barcelona",'09:30–10:00':"Casa Milà La Pedrera Barcelona",'10:00–11:30':"Casa Batlló Barcelona",'11:30–12:25':"Rambla de Catalunya Barcelona",'12:30–14:00':"La Flauta Rambla de Catalunya Barcelona",'14:00–14:20':"Hotel Pulitzer Barcelona",'14:20–15:00':"Barcelona El Prat Airport Terminal 1",'15:00–18:20':"Barcelona El Prat Airport Terminal 1",'18:20 ➔ 2/15 17:40':"Barcelona El Prat Airport Terminal 1"}
+};
+function mapUrl(q){return 'https://www.google.com/maps/search/?api=1&amp;query='+encodeURIComponent(q)}
 
 var CITY = {
   lisbon:{bg:'#F6D27A',cc:'#F6D27A'},
@@ -729,6 +855,72 @@ var timer=setInterval(tick,1000); tick();
 /* ============================================================
    每日行程
    ============================================================ */
+/* ============================================================
+   花費記錄：景點花費（€）＋每日其他花費（€／NT$），存在瀏覽器
+   ============================================================ */
+var CKEY='esp-pt-cost-v1', EKEY='esp-pt-extra-v1', RKEY='esp-pt-rate-v1', DEF_RATE=36.48;
+var costs={}, extras={}, rate=DEF_RATE, lastP='a', lastCur='EUR';
+try{costs=JSON.parse(localStorage.getItem(CKEY)||'{}')||{}}catch(e){costs={}}
+try{extras=JSON.parse(localStorage.getItem(EKEY)||'{}')||{}}catch(e){extras={}}
+try{var r0=parseFloat(localStorage.getItem(RKEY));if(isFinite(r0)&&r0>0)rate=r0}catch(e){}
+function saveCosts(){try{localStorage.setItem(CKEY,JSON.stringify(costs))}catch(e){}}
+function saveExtras(){try{localStorage.setItem(EKEY,JSON.stringify(extras))}catch(e){}}
+function saveRate(){try{localStorage.setItem(RKEY,String(rate))}catch(e){}}
+function cKey(d,it){return 'd'+d.n+'|'+it[0]}
+function amt(v){var n=parseFloat(v);return isFinite(n)&&n>0?n:0}
+function nf(n,dp){var m=Math.pow(10,dp);return (Math.round(n*m)/m).toLocaleString('en-US',{maximumFractionDigits:dp})}
+function eur(n){return '€'+nf(n,2)}
+function twd(n){return 'NT$'+nf(n,0)}
+function toEur(v,cur){return cur==='TWD'?v/rate:v}
+function nat(v,cur){return cur==='TWD'?'NT$'+nf(v,2):eur(v)}
+function itemSum(k){var c=costs[k]||{};return {a:toEur(amt(c.a),c.ca),b:toEur(amt(c.b),c.cb)}}
+function spotSum(d){var a=0,b=0;d.items.forEach(function(it){var s=itemSum(cKey(d,it));a+=s.a;b+=s.b});return {a:a,b:b}}
+function extraSum(d){var a=0,b=0;(extras[d.n]||[]).forEach(function(e){var v=toEur(amt(e.amt),e.cur);if(e.p==='b')b+=v;else a+=v});return {a:a,b:b}}
+/* 每日合計（歐元等值）＝景點花費＋其他花費，台幣用匯率換算 */
+function daySum(d){var s=spotSum(d),x=extraSum(d);return {a:s.a+x.a,b:s.b+x.b}}
+function allSum(){var a=0,b=0;DAYS.forEach(function(d){var s=daySum(d);a+=s.a;b+=s.b});return {a:a,b:b}}
+function chipText(k){var c=costs[k]||{},p=[];if(amt(c.a)>0)p.push('佳俞 '+nat(amt(c.a),c.ca));if(amt(c.b)>0)p.push('婕瑜 '+nat(amt(c.b),c.cb));return p.join('｜')}
+function mapLink(d,it){
+  var q=(MAPQ[d.n]||{})[it[0]];
+  return q?'<a class="map" href="'+mapUrl(q)+'" target="_blank" rel="noopener" aria-label="在 Google 地圖開啟：'+esc(it[1])+'">📍 地圖</a>':'';
+}
+function costHTML(d,it){
+  var k=cKey(d,it), c=costs[k]||{}, ek=esc(k);
+  function field(p,cls,name){
+    var cur=c['c'+p]==='TWD'?'TWD':'EUR';
+    return '<label><span class="pn '+cls+'">'+name+'</span>'+
+      '<input class="cin" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0" data-k="'+ek+'" data-p="'+p+'" value="'+esc(c[p]||'')+'" aria-label="'+name+'的花費">'+
+      '<select class="ccur" data-k="'+ek+'" data-p="'+p+'" aria-label="'+name+'的幣別">'+
+        '<option value="EUR"'+(cur==='EUR'?' selected':'')+'>€ 歐元</option>'+
+        '<option value="TWD"'+(cur==='TWD'?' selected':'')+'>NT$ 台幣</option></select></label>';
+  }
+  return '<details class="cost"'+((c.a||c.b)?' open':'')+'><summary><span>💰 記錄花費</span><span class="csum">'+chipText(k)+'</span></summary>'+
+    '<div class="crow">'+field('a','pn1','佳俞')+field('b','pn2','婕瑜')+'</div></details>';
+}
+function dayCostInner(d){
+  var s=daySum(d);
+  return '<b style="font-weight:400">💰 本日花費（景點＋其他）</b>'+
+    '<div class="c2"><div><small>佳俞</small><span>'+eur(s.a)+'</span><span>'+twd(s.a*rate)+'</span></div>'+
+    '<div><small>婕瑜</small><span>'+eur(s.b)+'</span><span>'+twd(s.b*rate)+'</span></div></div>'+
+    '<p class="rt">匯率 1 € = NT$ '+nf(rate,2)+'</p>';
+}
+function newId(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+function exRow(e){
+  return '<div class="exrow" data-id="'+esc(e.id)+'">'+
+    '<input class="ex-note" type="text" maxlength="40" placeholder="項目（例如：計程車、早餐、紀念品）" value="'+esc(e.note||'')+'" aria-label="花費項目">'+
+    '<div class="exline">'+
+      '<select class="ex-p" aria-label="付款人"><option value="a"'+(e.p!=='b'?' selected':'')+'>佳俞</option><option value="b"'+(e.p==='b'?' selected':'')+'>婕瑜</option></select>'+
+      '<input class="ex-amt" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0" value="'+esc(e.amt||'')+'" aria-label="金額">'+
+      '<select class="ex-cur" aria-label="幣別"><option value="EUR"'+(e.cur!=='TWD'?' selected':'')+'>€ 歐元</option><option value="TWD"'+(e.cur==='TWD'?' selected':'')+'>NT$ 台幣</option></select>'+
+      '<button type="button" class="ex-del" aria-label="刪除這筆">✕</button>'+
+    '</div></div>';
+}
+function exInner(d){
+  var list=extras[d.n]||[];
+  return '<h3 class="exh">🧾 本日其他花費</h3><p class="exhint">景點以外的花費（餐飲、交通、購物…），每筆可選歐元或台幣。</p>'+
+    list.map(exRow).join('')+'<button type="button" class="ex-add">＋ 新增一筆</button>';
+}
+
 var tabsEl=$('#tabs'), panel=$('#panel'), cur=-1;
 
 function buildTabs(){
@@ -740,6 +932,77 @@ function buildTabs(){
   tabsEl.innerHTML=h;
 }
 
+/* ---- 當日路線小地圖：示意圖座標（畫布 320×190，方位概略，非精確比例） ----
+   s: [名稱, x, y, 類型(s景點/f吃喝/h住宿/t交通), Google 地圖搜尋字]
+   seq: 走訪順序（s 的索引，可重複）；tr/fl: 第 i 段(seq[i]→seq[i+1])為鐵路/捷運 或 飛行
+   alt: 備案點索引；altLine: [[from,to]] 以淡虛線連到備案 */
+function Q(n,t){return MAPQ[n][t]}
+var ROUTES = {
+ 1:{sea:'bottom',lab:[['TEJO 太加斯河',250,184],['LISBOA',60,32]],park:[[270,40,16],[246,62,10]],
+  s:[['Wilde 旅館',185,36,'h',Q(1,'12:30–13:00')],['Forno d’Oro 麵包',165,62,'f',Q(1,'13:00–14:10')],['Baixa 下城',176,118,'s',Q(1,'14:10–14:35')],['商業廣場',178,150,'s',Q(1,'14:35–15:00')],['Rua da Conceição',150,130,'s',Q(1,'15:00–15:25')],['聖胡斯塔升降梯',132,108,'s',Q(1,'15:25–15:45')],['A Brasileira 咖啡',100,98,'f',Q(1,'15:45–16:15')],['Landeau 巧克力蛋糕',82,118,'f',Q(1,'16:15–16:45')],['A Vida Portuguesa',112,126,'s',Q(1,'16:45–17:45')],['Largo do Carmo',130,86,'s',Q(1,'17:45–18:45')],['Uma 海鮮餐廳',98,64,'f',Q(1,'19:00–20:15')],['Bairro Alto',66,76,'s',Q(1,'20:15–20:40')],['A Tasca do Chico',48,94,'f',Q(1,'20:40–22:15')]]},
+ 2:{sea:'bottom',lab:[['TEJO 太加斯河',160,184],['BELÉM',52,102],['ALFAMA',250,156]],park:[[150,60,14]],
+  s:[['貝倫塔',24,152,'s',Q(2,'08:15–09:00')],['熱羅尼莫斯修道院',56,134,'s',Q(2,'09:50–11:20')],['貝倫蛋塔',80,120,'f',Q(2,'11:25–12:05')],['O Frade 午餐',100,136,'f',Q(2,'12:15–13:45')],['阿爾法瑪',226,128,'s',Q(2,'13:45–14:30')],['Martim Moniz 28號電車',196,96,'t',Q(2,'14:30–15:15')],['里斯本主教堂',214,148,'s',Q(2,'15:15–16:30')],['Senhora do Monte 觀景台',250,52,'s',Q(2,'17:10–18:15')],['Cervejaria Ramiro',186,60,'f',Q(2,'19:15–20:45')]]},
+ 3:{sea:'left',lab:[['SINTRA 辛特拉',92,14],['LISBOA',286,178]],park:[[48,76,18],[100,36,12]],tr:[0],seq:[0,1,2,3,4,5,6,0,7,8,9],
+  s:[['Rossio 車站',236,160,'t',Q(3,'07:45–08:15')],['辛特拉車站',126,52,'t',Q(3,'08:15–09:10')],['佩納宮',62,34,'s',Q(3,'10:00–11:45')],['辛特拉小鎮',108,78,'s',Q(3,'11:45–12:30')],['Tascantiga 午餐',136,96,'f',Q(3,'12:30–13:45')],['雷加萊拉莊園',84,102,'s',Q(3,'14:30–16:00')],['Casa Piriquita 點心',120,66,'f',Q(3,'16:00–16:35')],['Príncipe Real・Cevicheria',232,106,'f',Q(3,'18:40–19:30')],['Chiado 夜晚散步',262,126,'s',Q(3,'20:45–21:15')],['Toca da Raposa',226,146,'f',Q(3,'21:15–22:30')]]},
+ 4:{sea:'left',lab:[['LISBOA',72,182],['PORTO',232,12]],tr:[2],park:[[130,120,12]],
+  s:[['Wilde 旅館',64,152,'h',Q(4,'08:00–08:20')],['Filtrô Creative Lab',36,166,'f',Q(4,'08:20–09:40')],['Santa Apolónia 車站',106,170,'t',Q(4,'10:30–11:10')],['Campanhã 車站',288,112,'t',Q(4,'約 12:00–15:00')],['Torel 1884',186,22,'h',Q(4,'15:30–15:45')],['Bolhão 市場',236,24,'s',Q(4,'15:45–16:25')],['São Bento 車站',214,50,'s',Q(4,'16:25–16:40')],['波爾圖主教堂',196,74,'s',Q(4,'17:00–17:30')],['Ribeira 河岸',182,102,'s',Q(4,'17:30–19:15')],['Taberna dos Carris',140,90,'f',Q(4,'19:15–20:45')],['Majestic Café',270,36,'f',Q(4,'21:00–21:45')],['Royal Cocktail Club',246,68,'f',Q(4,'22:00–23:30')]]},
+ 5:{sea:'none',river:1,lab:[['DOURO 杜羅河',250,125],['GAIA 新城',250,172]],park:[[272,46,14]],
+  s:[['Combi Coffee',112,28,'f',Q(5,'09:00–09:35')],['Capela das Almas',160,20,'s',Q(5,'09:45–10:05')],['Santo Ildefonso',198,34,'s',Q(5,'10:05–10:20')],['Aliados 大道',170,52,'s',Q(5,'10:20–10:40')],['SO Coffee',132,54,'f',Q(5,'10:40–11:00')],['Livraria Lello 書店',90,62,'s',Q(5,'11:00–11:50')],['Igreja do Carmo',112,84,'s',Q(5,'11:50–12:10')],['Brasão Aliados 午餐',212,64,'f',Q(5,'12:15–13:15')],['證券交易所宮',208,98,'s',Q(5,'14:00–14:45')],['Graham’s 酒窖',54,158,'f',Q(5,'15:30–17:00')],['Gaia 纜車',178,152,'t',Q(5,'17:00–17:20')],['Serra do Pilar 觀景台',116,162,'s',Q(5,'17:35–17:55')],['路易一世橋',140,122,'s',Q(5,'17:55–18:25')],['Meia-Nau 晚餐',166,90,'f',Q(5,'19:00–20:30')],['Capela Incomum',258,78,'f',Q(5,'20:50–22:00')],['Torel 1884',274,42,'h',Q(5,'22:00')]]},
+ 6:{sea:'left',lab:[['PORTO',66,72],['MADRID',208,180]],fl:[1],seq:[0,1,2,3,4,5,3,6,7],park:[[262,152,14]],
+  s:[['Torel 旅館',54,44,'h',Q(6,'07:30–08:30')],['波爾圖機場',24,20,'t',Q(6,'08:30–09:15')],['馬德里機場',282,70,'t',Q(6,'12:25–14:45')],['Room Mate Alba',196,116,'h',Q(6,'15:45–16:45')],['Calle de las Huertas',216,132,'s',Q(6,'17:15–17:40')],['Reina Sofía 美術館',238,154,'s',Q(6,'17:40–19:15')],['SAU Taberna',170,140,'f',Q(6,'20:00–21:30')],['Salmon Guru 酒吧',216,98,'f',Q(6,'21:30 後')]]},
+ 7:{sea:'none',lab:[['MADRID',270,178]],park:[[254,104,20],[40,100,14]],
+  s:[['太陽門廣場',172,112,'s',Q(7,'09:15–09:40')],['皇宮',84,90,'s',Q(7,'09:40–10:15')],['Almudena 主教座堂',104,112,'s',Q(7,'12:00–12:25')],['San Miguel 市場',138,96,'f',Q(7,'12:25–12:45')],['La Taberna de Peñalver',198,66,'f',Q(7,'13:00–14:30')],['普拉多美術館',238,134,'s',Q(7,'15:00–17:00')],['德波神廟',46,62,'s',Q(7,'17:35–18:50')],['El Puertito 生蠔吧',132,68,'f',Q(7,'19:15–20:00')],['Gran Vía・Vinitus',168,82,'f',Q(7,'20:30–21:45')]]},
+ 8:{sea:'corner',lab:[['MADRID',60,16],['BARCELONA',210,182]],tr:[3],
+  s:[['Room Mate Alba',46,42,'h',Q(8,'08:30–08:45')],['Hola Coffee',24,76,'f',Q(8,'08:45–09:25')],['Atocha 車站',76,66,'t',Q(8,'09:45–10:15')],['Hotel Pulitzer',226,104,'h',Q(8,'14:40–15:45')],['Els Quatre Gats',254,114,'f',Q(8,'16:15–17:00')],['哥德區',222,132,'s',Q(8,'17:00–18:30')],['Granja M. Viader',186,144,'f',Q(8,'18:30–19:15')],['Bar Cañete',216,164,'f',Q(8,'19:30–21:30')]],seq:[0,1,0,2,3,4,5,6,7]},
+ 9:{sea:'corner',lab:[['BARCELONA',100,182]],park:[[150,40,18]],
+  s:[['奎爾公園',130,26,'s',Q(9,'09:30–11:30')],['聖十字聖保羅醫院',238,48,'s',Q(9,'11:45–13:15')],['高第大道',224,72,'s',Q(9,'13:15–14:45')],['聖家堂',204,94,'s',Q(9,'15:00–16:30')],['Sercotel 露台酒吧',164,108,'f',Q(9,'16:35–17:15')],['Nomad Coffee',214,132,'f',Q(9,'17:25–18:10')],['Jon Cake 甜點',160,138,'f',Q(9,'18:15–19:15')],['加泰隆尼亞音樂宮',184,156,'s',Q(9,'19:30–21:30')],['Can Cisa Bar Brutal',224,156,'f',Q(9,'21:30–23:00')]]},
+ 10:{sea:'corner',lab:[['MONTSERRAT',96,14],['BARCELONA',200,182]],park:[[54,64,22]],tr:[0,2],seq:[0,1,2,0,3,4,5,3],
+  s:[['Plaça Espanya 西班牙廣場',168,126,'t',Q(10,'08:00–08:30')],['蒙特塞拉特修道院',56,40,'s',Q(10,'10:15–12:00')],['Sant Joan 纜索',82,26,'t',Q(10,'12:15–14:30')],['Hotel Pulitzer',210,100,'h',Q(10,'16:15–18:50')],['Prado de Flores 晚餐',196,138,'f',Q(10,'19:00–21:15')],['Paradiso 酒吧',250,142,'f',Q(10,'21:30–23:15')]]},
+ 11:{sea:'corner',lab:[['SITGES 西切斯',50,128],['BARCELONA',226,182],['BLANES',276,14]],tr:[0,1],seq:[0,1,0,2,3,4],alt:[5],altLine:[[0,5]],
+  s:[['Passeig de Gràcia 車站',204,92,'t',Q(11,'08:30–09:30')],['Sitges 老城區',44,156,'s',Q(11,'09:30–15:30')],['Hotel Pulitzer',228,106,'h',Q(11,'18:15–19:30')],['Gresca 晚餐',208,66,'f',Q(11,'20:00–21:45')],['Sips 調酒吧',178,54,'f',Q(11,'22:00–23:30')],['備案：Marimurtra 植物園',282,36,'s',Q(11,'同時段替代')]]},
+ 12:{sea:'corner',lab:[['BARCELONA',216,182],['EL PRAT 機場',84,182]],tr:[5],seq:[0,1,2,3,4,0,5],
+  s:[['Hotel Pulitzer',196,114,'h',Q(12,'08:45–09:30')],['米拉之家',190,38,'s',Q(12,'09:30–10:00')],['巴特婁之家',188,62,'s',Q(12,'10:00–11:30')],['Rambla de Catalunya',166,90,'s',Q(12,'11:30–12:25')],['La Flauta 午餐',126,84,'f',Q(12,'12:30–14:00')],['El Prat 機場 T1',46,158,'t',Q(12,'14:20–15:00')]]}
+};
+var PINCOL={s:'#F2A497',f:'#F6D27A',h:'#A8D3E6',t:'#B9DAA5'};
+var SEAS={
+ bottom:'<path d="M0 170 Q20 163 40 170 T80 170 T120 170 T160 170 T200 170 T240 170 T280 170 T320 170 V190 H0Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>',
+ left:'<path d="M0 0 H30 Q16 24 30 48 T30 96 T30 144 T30 190 H0Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>',
+ corner:'<path d="M320 132 Q292 146 282 160 T268 190 H320Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>',
+ none:''
+};
+var RIVER='<path d="M0 118 Q80 104 160 116 T320 112 V130 Q240 140 160 130 T0 134Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/><path d="M138 108 L142 138" stroke="#3E3A39" stroke-width="4" stroke-linecap="round"/>';
+function routeMapHTML(d){
+  var R=ROUTES[d.n]; if(!R) return '';
+  var S=R.s, seq=R.seq||S.map(function(_,i){return i});
+  var altSet={}; (R.alt||[]).forEach(function(i){altSet[i]=1});
+  var tr={},fl={}; (R.tr||[]).forEach(function(i){tr[i]=1}); (R.fl||[]).forEach(function(i){fl[i]=1});
+  var g='';
+  (R.park||[]).forEach(function(p){g+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="'+p[2]+'" fill="#B9DAA5" opacity=".6"/>'});
+  g+=SEAS[R.sea||'none']||''; if(R.river) g+=RIVER;
+  (R.lab||[]).forEach(function(l){g+='<text class="lab" x="'+l[1]+'" y="'+l[2]+'">'+esc(l[0])+'</text>'});
+  var full='M'+S[seq[0]][1]+' '+S[seq[0]][2];
+  for(var i=0;i<seq.length-1;i++){
+    var a=S[seq[i]],b=S[seq[i+1]];
+    full+=' L'+b[1]+' '+b[2];
+    g+='<path class="ln'+(fl[i]?' fl':tr[i]?' tr':'')+'" d="M'+a[1]+' '+a[2]+' L'+b[1]+' '+b[2]+'"/>';
+  }
+  (R.altLine||[]).forEach(function(p){var a=S[p[0]],b=S[p[1]];g+='<path class="ln alt" d="M'+a[1]+' '+a[2]+' L'+b[1]+' '+b[2]+'"/>'});
+  g+='<path id="rp'+d.n+'" d="'+full+'" fill="none" stroke="none"/>';
+  var pins='',leg='';
+  S.forEach(function(p,i){
+    var u=mapUrl(p[4]), col=PINCOL[p[3]]||'#fff', alt=altSet[i];
+    pins+='<a href="'+u+'" target="_blank" rel="noopener" aria-label="'+(i+1)+'. '+esc(p[0])+'（開啟 Google 地圖）"><g class="pin'+(alt?' alt':'')+'" style="--i:'+i+'"><circle cx="'+p[1]+'" cy="'+p[2]+'" r="9" fill="'+col+'"/><text x="'+p[1]+'" y="'+(p[2]+4)+'">'+(alt?'備':(i+1))+'</text></g></a>';
+    leg+='<li><a href="'+u+'" target="_blank" rel="noopener"><b style="--bgc:'+col+'">'+(alt?'備':(i+1))+'</b>'+esc(p[0])+'</a></li>';
+  });
+  var dur=Math.max(6,seq.length*1.6);
+  var walker=reduce.matches?'':'<text class="walker" text-anchor="middle" dy="5">🚶<animateMotion dur="'+dur+'s" repeatCount="indefinite" rotate="0"><mpath href="#rp'+d.n+'"/></animateMotion></text>';
+  return '<details class="rmap" open><summary><span>🗺️ 今日路線小地圖</span></summary>'+
+    '<div class="mapbox"><svg viewBox="0 0 320 190" role="img" aria-label="Day '+d.n+' 當日路線示意圖">'+g+walker+pins+'</svg></div>'+
+    '<p class="key"><span><i style="background:#F2A497"></i>景點</span><span><i style="background:#F6D27A"></i>吃喝</span><span><i style="background:#A8D3E6"></i>住宿</span><span><i style="background:#B9DAA5"></i>交通</span></p>'+
+    '<ol class="legend">'+leg+'</ol>'+
+    '<p class="hint">示意圖：位置為概略方位、非精確比例。點圖釘或名稱可開 Google 地圖。</p></details>';
+}
+
 function panelHTML(d){
   var c=CITY[d.city];
   var items=d.items.map(function(it){
@@ -747,13 +1010,14 @@ function panelHTML(d){
     var must=/(^|,)must(,|$)/.test(fl);
     var tags=(it[3]||[]).map(transTag).join('')+flagTags(fl);
     return '<li class="tl'+(must?' must':'')+'"><div class="card">'+
-      '<span class="time">'+esc(it[0])+'</span>'+
+      '<div class="card-top"><span class="time">'+esc(it[0])+'</span>'+mapLink(d,it)+'</div>'+
       '<h4>'+esc(it[1])+'</h4>'+
       (it[2]?'<p class="nt">'+rich(it[2])+'</p>':'')+
       (tags?'<div class="tags">'+tags+'</div>':'')+
+      costHTML(d,it)+
     '</div></li>';
   }).join('');
-  return '<div class="banner" style="--bg:'+c.bg+'">'+BANNERS[d.city]+'</div>'+
+  return routeMapHTML(d)+'<div class="banner" style="--bg:'+c.bg+'">'+BANNERS[d.city]+'</div>'+
     '<div class="dayhead" style="--cc:'+c.cc+'">'+
       '<span class="dayno">DAY '+d.n+'｜'+d.date+' ('+d.wd+')</span>'+
       '<h3>'+esc(d.title)+'</h3>'+
@@ -761,7 +1025,9 @@ function panelHTML(d){
       '<p><b>當日動線</b>'+esc(d.route)+'</p>'+
       (d.tip?'<p class="tip">💡 '+esc(d.tip)+'</p>':'')+
     '</div>'+
-    '<ol class="timeline">'+items+'</ol>';
+    '<ol class="timeline">'+items+'</ol>'+
+    '<div class="extra" id="extra">'+exInner(d)+'</div>'+
+    '<div class="daycost" id="dayCost">'+dayCostInner(d)+'</div>';
 }
 
 function retrigger(el,cls){el.classList.remove(cls);void el.offsetWidth;el.classList.add(cls)}
@@ -815,6 +1081,144 @@ tabsEl.addEventListener('keydown',function(e){
 })();
 
 /* ============================================================
+   花費：輸入事件、總覽、複製、清除
+   ============================================================ */
+function refreshTotals(){
+  var dc=$('#dayCost'); if(dc) dc.innerHTML=dayCostInner(DAYS[cur]);
+  renderCostSummary();
+}
+function findExtra(row){
+  var list=extras[DAYS[cur].n]||[], id=row.dataset.id;
+  for(var i=0;i<list.length;i++) if(list[i].id===id) return list[i];
+  return null;
+}
+function onPanelEdit(e){
+  var x=e.target, c=x.classList; if(!c) return;
+  if(c.contains('cin')||c.contains('ccur')){
+    var k=x.dataset.k, p=x.dataset.p, row=x.closest('label');
+    var ent=costs[k]=costs[k]||{};
+    ent[p]=row.querySelector('.cin').value;
+    ent['c'+p]=row.querySelector('.ccur').value;
+    if(!ent.a&&!ent.b&&ent.ca!=='TWD'&&ent.cb!=='TWD') delete costs[k];
+    saveCosts();
+    x.closest('.cost').querySelector('.csum').textContent=chipText(k);
+    refreshTotals();
+    return;
+  }
+  if(c.contains('ex-note')||c.contains('ex-amt')||c.contains('ex-p')||c.contains('ex-cur')){
+    var ent=findExtra(x.closest('.exrow')); if(!ent) return;
+    if(c.contains('ex-note')) ent.note=x.value;
+    else if(c.contains('ex-amt')) ent.amt=x.value;
+    else if(c.contains('ex-p')){ent.p=x.value;lastP=x.value}
+    else {ent.cur=x.value;lastCur=x.value}
+    saveExtras();
+    refreshTotals();
+  }
+}
+panel.addEventListener('input',onPanelEdit);
+panel.addEventListener('change',onPanelEdit);
+panel.addEventListener('keydown',function(e){
+  if(e.key==='Enter'&&e.target.classList&&(e.target.classList.contains('cin')||e.target.classList.contains('ex-amt')||e.target.classList.contains('ex-note'))) e.target.blur();
+});
+panel.addEventListener('click',function(e){
+  var add=e.target.closest('.ex-add'), del=e.target.closest('.ex-del');
+  if(!add&&!del) return;
+  var n=DAYS[cur].n;
+  if(add){
+    (extras[n]=extras[n]||[]).push({id:newId(),note:'',p:lastP,amt:'',cur:lastCur});
+    saveExtras();
+    $('#extra').innerHTML=exInner(DAYS[cur]);
+    var ins=document.querySelectorAll('#extra .ex-note'); if(ins.length) ins[ins.length-1].focus();
+  }else{
+    var ent=findExtra(del.closest('.exrow'));
+    if(ent){extras[n]=extras[n].filter(function(z){return z!==ent});if(!extras[n].length)delete extras[n];}
+    saveExtras();
+    $('#extra').innerHTML=exInner(DAYS[cur]);
+    refreshTotals();
+  }
+});
+
+function both(v){return eur(v)+'（'+twd(v*rate)+'）'}
+function renderCostSummary(){
+  var t=allSum();
+  $('#sumGrid').innerHTML=
+    '<div class="s1"><small>佳俞 總花費</small><b>'+eur(t.a)+'</b><b>'+twd(t.a*rate)+'</b></div>'+
+    '<div class="s2"><small>婕瑜 總花費</small><b>'+eur(t.b)+'</b><b>'+twd(t.b*rate)+'</b></div>';
+  var h='';
+  DAYS.forEach(function(d,i){
+    var s=daySum(d);
+    h+='<button type="button" class="drow" data-i="'+i+'"><span><b>DAY '+d.n+'</b>｜'+d.date+' ('+d.wd+')</span>'+
+       '<span>'+((s.a+s.b)>0?'佳俞 '+both(s.a)+'<br>婕瑜 '+both(s.b):'<em>尚未記錄</em>')+'</span></button>';
+  });
+  $('#sumDays').innerHTML=h;
+}
+$('#sumDays').addEventListener('click',function(e){
+  var b=e.target.closest('.drow'); if(!b) return;
+  show(+b.dataset.i);
+  $('#days').scrollIntoView({behavior:smooth()});
+});
+
+/* 匯率 */
+$('#rateIn').value=rate;
+$('#rateIn').addEventListener('input',function(e){
+  var r=parseFloat(e.target.value);
+  if(isFinite(r)&&r>0){rate=r;saveRate();refreshTotals();}
+});
+$('#rateIn').addEventListener('blur',function(e){
+  var r=parseFloat(e.target.value);
+  if(!(isFinite(r)&&r>0)){e.target.value=rate;}
+});
+
+function who(p){return p==='b'?'婕瑜':'佳俞'}
+function costText(){
+  var L=['西葡之旅花費明細','匯率 1 € = NT$ '+nf(rate,2),''];
+  DAYS.forEach(function(d){
+    var ds=daySum(d); if(ds.a+ds.b<=0) return;
+    L.push('DAY '+d.n+'｜'+d.date+' ('+d.wd+')');
+    L.push('  佳俞 '+both(ds.a)+'｜婕瑜 '+both(ds.b));
+    d.items.forEach(function(it){
+      var ct=chipText(cKey(d,it)); if(!ct) return;
+      L.push('  ・'+it[1]+'：'+ct);
+    });
+    (extras[d.n]||[]).forEach(function(e){
+      var v=amt(e.amt); if(v<=0) return;
+      L.push('  ・其他'+(e.note?'（'+e.note+'）':'')+'：'+who(e.p)+' '+nat(v,e.cur));
+    });
+    L.push('');
+  });
+  var t=allSum();
+  L.push('全程總花費');
+  L.push('佳俞：'+both(t.a));
+  L.push('婕瑜：'+both(t.b));
+  return L.join('\n');
+}
+function copyText(txt,done){
+  function fallback(){
+    var ta=document.createElement('textarea');
+    ta.value=txt;ta.setAttribute('readonly','');ta.style.cssText='position:fixed;left:-9999px;top:0';
+    document.body.appendChild(ta);ta.select();
+    var ok=false;try{ok=document.execCommand('copy')}catch(e){}
+    document.body.removeChild(ta);done(ok);
+  }
+  if(navigator.clipboard&&window.isSecureContext){
+    navigator.clipboard.writeText(txt).then(function(){done(true)},fallback);
+  }else fallback();
+}
+$('#copyCost').addEventListener('click',function(){
+  var t=allSum();
+  if(t.a+t.b<=0){$('#copyMsg').textContent='還沒有任何花費紀錄。';return;}
+  copyText(costText(),function(ok){$('#copyMsg').textContent=ok?'已複製，可以貼到 LINE 或備忘錄 ✓':'複製失敗，請改用手動選取。'});
+});
+$('#resetCost').addEventListener('click',function(){
+  if(!confirm('要清除全部花費紀錄（景點花費與其他花費）嗎？匯率設定會保留。這個動作無法復原。')) return;
+  costs={};extras={};saveCosts();saveExtras();
+  panel.innerHTML=panelHTML(DAYS[cur]);
+  renderCostSummary();
+  $('#copyMsg').textContent='已清除全部花費。';
+});
+renderCostSummary();
+
+/* ============================================================
    住宿
    ============================================================ */
 (function(){
@@ -823,7 +1227,8 @@ tabsEl.addEventListener('keydown',function(e){
     h+='<article class="stay"><div class="stay-h" style="--cc:'+s.c+'"><b style="font-weight:400">'+esc(s.city)+'</b><span>'+s.n+' 晚</span></div>'+
       '<div class="stay-b"><h3>'+esc(s.name)+'</h3><dl>'+
       '<dt>入住</dt><dd>'+esc(s.in)+'</dd><dt>退房</dt><dd>'+esc(s.out)+'</dd>'+
-      '<dt>預訂</dt><dd>'+esc(s.who)+'</dd><dt>備註</dt><dd>'+esc(s.note)+'</dd></dl></div></article>';
+      '<dt>預訂</dt><dd>'+esc(s.who)+'</dd><dt>備註</dt><dd>'+esc(s.note)+'</dd></dl>'+
+      '<p style="margin-top:10px"><a class="map" href="'+mapUrl(s.name+' '+s.city)+'" target="_blank" rel="noopener">📍 地圖</a></p></div></article>';
   });
   $('#stayList').innerHTML=h;
 })();
