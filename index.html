@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>2027 西葡 12 天雙國之旅</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FFFCF6; --ink:#3E3A39; --soft:#5E5856;
+  --coral:#F2A497; --yellow:#F6D27A; --blue:#A8D3E6; --green:#B9DAA5; --white:#FFFFFF;
+  --bw:3px; --r:22px; --nav:58px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{color-scheme:light;scroll-behavior:smooth;scroll-padding-top:calc(var(--nav) + 12px)}
+body{margin:0;padding-top:var(--nav);background:var(--paper);color:var(--ink);
+  font-family:'Huninn','Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
+  font-size:16px;line-height:1.7;-webkit-text-size-adjust:100%}
+h1,h2,h3,h4,p,ul,ol{margin:0}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px}
+section{padding:34px 0 8px}
+button{font:inherit;color:inherit;cursor:pointer}
+
+/* ---------- 固定選單 ---------- */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav);z-index:100;background:var(--paper);border-bottom:var(--bw) solid var(--ink)}
+.nav nav{max-width:680px;margin:0 auto;height:100%;display:flex;gap:6px;align-items:center;justify-content:space-between;padding:0 10px}
+.nav a{flex:1;text-decoration:none;color:var(--ink);text-align:center;font-size:13px;line-height:1.15;padding:5px 2px;border:var(--bw) solid transparent;border-radius:16px;transition:background .2s,transform .2s}
+.nav a i{display:block;font-style:normal;font-size:17px}
+.nav a.on{background:var(--yellow);border-color:var(--ink)}
+.nav a:active{transform:scale(.94)}
+
+/* ---------- 標題貼紙 ---------- */
+h2.title{display:inline-block;font-size:22px;font-weight:400;background:var(--blue);border:var(--bw) solid var(--ink);border-radius:999px;padding:2px 18px;margin-bottom:16px;transform:rotate(-1.5deg)}
+h2.title.c1{background:var(--coral)} h2.title.c2{background:var(--yellow)} h2.title.c3{background:var(--green)}
+
+/* ---------- 首頁 ---------- */
+#home{padding-top:18px}
+.hero-art{background:var(--blue);border:var(--bw) solid var(--ink);border-radius:30px;overflow:hidden}
+.hero-art svg{display:block;width:100%;height:auto}
+.hero-text{text-align:center;padding:18px 4px 6px}
+.kicker{display:inline-block;background:var(--yellow);border:var(--bw) solid var(--ink);border-radius:999px;padding:0 14px;font-size:14px}
+h1{font-size:34px;line-height:1.25;font-weight:400;margin:10px 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;margin:8px 0 4px;font-size:14px}
+.chip{border:var(--bw) solid var(--ink);border-radius:999px;padding:0 11px}
+.chip.l{background:var(--yellow)} .chip.p{background:var(--blue)} .chip.m{background:var(--coral)} .chip.b{background:var(--green)}
+.who{font-size:14px;color:var(--soft);margin-top:6px}
+.count{margin-top:18px;background:var(--white);border:var(--bw) solid var(--ink);border-radius:var(--r);padding:16px 14px 18px;text-align:center}
+.count p{font-size:15px}
+.count small{display:block;color:var(--soft);font-size:12.5px;margin-top:10px}
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.cd div{border:var(--bw) solid var(--ink);border-radius:18px;padding:6px 0 4px}
+.cd div:nth-child(1){background:var(--coral)} .cd div:nth-child(2){background:var(--yellow)}
+.cd div:nth-child(3){background:var(--blue)} .cd div:nth-child(4){background:var(--green)}
+.cd b{display:block;font-size:30px;line-height:1.1;font-weight:400;font-variant-numeric:tabular-nums}
+.cd span{font-size:12.5px}
+.count .done{font-size:20px;padding:8px 0}
+
+/* ---------- 航班 ---------- */
+.note-s{font-size:13px;color:var(--soft);margin:-6px 0 14px}
+.flight{background:var(--white);border:var(--bw) solid var(--ink);border-radius:var(--r);padding:12px 14px 12px;margin-bottom:14px;position:relative}
+.f-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pill{display:inline-block;border:var(--bw) solid var(--ink);border-radius:999px;padding:0 11px;font-size:14px;background:var(--yellow)}
+.pill.k-air{background:var(--coral)} .pill.k-train{background:var(--blue)}
+.f-no{font-size:15px}
+.f-ok{margin-left:auto;background:var(--green);border:var(--bw) solid var(--ink);border-radius:999px;padding:0 10px;font-size:13px}
+.f-wait{margin-left:auto;background:var(--yellow);border:var(--bw) solid var(--ink);border-radius:999px;padding:0 10px;font-size:13px}
+.f-main{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:6px;margin:10px 0 6px;text-align:center}
+.f-main .t{font-size:26px;line-height:1.15;font-variant-numeric:tabular-nums}
+.f-main .t sup{font-size:12px;color:var(--soft)}
+.f-main .c{font-size:13px;color:var(--soft);line-height:1.35}
+.f-main .arrow{font-size:20px}
+.f-note{font-size:14px;color:var(--soft);border-top:3px dotted var(--ink);padding-top:8px;margin-top:4px}
+
+/* ---------- 每日行程 ---------- */
+.tabs{position:sticky;top:var(--nav);z-index:50;background:var(--paper);border-bottom:var(--bw) solid var(--ink)}
+.tabs-in{max-width:680px;margin:0 auto;display:flex;gap:8px;overflow-x:auto;padding:10px 16px 12px;scrollbar-width:none;scroll-snap-type:x proximity}
+.tabs-in::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;scroll-snap-align:center;min-width:66px;background:var(--white);border:var(--bw) solid var(--ink);border-radius:18px;padding:3px 8px 4px;text-align:center;line-height:1.3;position:relative}
+.tab small{display:block;font-size:11.5px;color:var(--soft)}
+.tab b{font-weight:400;font-size:15px}
+.tab::after{content:"";position:absolute;right:6px;top:6px;width:9px;height:9px;border-radius:50%;border:2px solid var(--ink);background:var(--cc,var(--yellow))}
+.tab[aria-selected="true"]{background:var(--yellow);transform:translateY(-2px)}
+.tab.bounce{animation:chipBounce .55s cubic-bezier(.3,1.6,.5,1)}
+@keyframes chipBounce{0%{transform:translateY(0) scale(1)}35%{transform:translateY(-10px) scale(1.07)}65%{transform:translateY(1px) scale(.97)}100%{transform:translateY(-2px) scale(1)}}
+
+.panel{margin-top:18px;outline:none}
+.panel.pop{animation:popIn .55s cubic-bezier(.3,1.4,.5,1)}
+@keyframes popIn{0%{transform:translateY(22px) scale(.95);opacity:0}55%{transform:translateY(-5px) scale(1.01);opacity:1}80%{transform:translateY(1px) scale(.998)}100%{transform:none;opacity:1}}
+.banner{border:var(--bw) solid var(--ink);border-radius:var(--r);overflow:hidden;background:var(--bg)}
+.banner svg{display:block;width:100%;height:auto}
+.dayhead{margin-top:14px;background:var(--white);border:var(--bw) solid var(--ink);border-radius:var(--r);padding:12px 14px 14px}
+.dayno{display:inline-block;background:var(--cc);border:var(--bw) solid var(--ink);border-radius:999px;padding:0 12px;font-size:13.5px}
+.dayhead h3{font-size:19px;line-height:1.4;font-weight:400;margin:8px 0 6px}
+.dayhead p{font-size:14.5px;margin-top:6px}
+.dayhead p b{display:inline-block;font-weight:400;background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:0 9px;font-size:12.5px;margin-right:6px}
+.dayhead .tip{background:var(--paper);border:2px dashed var(--ink);border-radius:14px;padding:6px 10px;margin-top:10px}
+
+.timeline{list-style:none;padding:0;margin:20px 0 0;position:relative}
+.timeline::before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:3px;background:var(--ink);border-radius:3px}
+.tl{position:relative;padding-left:40px;margin-bottom:14px}
+.tl::before{content:"";position:absolute;left:2px;top:15px;width:21px;height:21px;border-radius:50%;border:var(--bw) solid var(--ink);background:var(--blue)}
+.tl.must::before{background:var(--coral)}
+.tl .card{background:var(--white);border:var(--bw) solid var(--ink);border-radius:18px;padding:9px 12px 10px;position:relative}
+.time{display:inline-block;font-size:13px;background:var(--yellow);border:2px solid var(--ink);border-radius:999px;padding:0 9px;line-height:1.55}
+.tl h4{font-size:16.5px;line-height:1.45;font-weight:400;margin:6px 0 2px;padding-right:2px}
+.tl .nt{font-size:14px;color:var(--soft);line-height:1.65;margin-top:3px}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.tag{display:inline-block;font-size:12.5px;line-height:1.5;border:2px solid var(--ink);border-radius:999px;padding:0 9px;background:var(--white)}
+.tag.green{background:var(--green)} .tag.coral{background:var(--coral)} .tag.blue{background:var(--blue)} .tag.yellow{background:var(--yellow)}
+.tag.must{background:var(--coral);transform:rotate(-3deg);padding:0 10px}
+.tag.booked{background:var(--green)}
+.tag.reserve{background:var(--yellow)}
+.tag.plan{background:var(--blue)}
+
+/* ---------- 住宿 ---------- */
+.stay{background:var(--white);border:var(--bw) solid var(--ink);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
+.stay-h{display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--cc);border-bottom:var(--bw) solid var(--ink);padding:7px 14px;font-size:16px}
+.stay-h span{background:var(--white);border:2px solid var(--ink);border-radius:999px;padding:0 10px;font-size:13px}
+.stay-b{padding:10px 14px 12px}
+.stay-b h3{font-size:18px;line-height:1.4;font-weight:400}
+.stay-b dl{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:8px 0 0;font-size:14.5px}
+.stay-b dt{color:var(--soft)} .stay-b dd{margin:0}
+
+footer{text-align:center;padding:30px 16px 46px;font-size:14px;color:var(--soft)}
+footer svg{width:120px;height:auto;display:block;margin:0 auto 6px}
+
+/* ---------- 插畫動畫 ---------- */
+svg *{transform-box:fill-box}
+.a-rays{transform-origin:center;animation:spin 40s linear infinite}
+.a-bob{animation:bob 3.4s ease-in-out infinite}
+.a-bob2{animation:bob 4.6s ease-in-out infinite reverse}
+.a-cloud{animation:drift 12s ease-in-out infinite alternate}
+.a-cloud2{animation:drift 16s ease-in-out infinite alternate-reverse}
+.a-plane{animation:fly 9s ease-in-out infinite alternate}
+.a-tram{animation:tram 3.2s ease-in-out infinite alternate}
+.a-wave{animation:wave 3s linear infinite}
+.a-pulse{transform-origin:center;animation:pulse 3.6s ease-in-out infinite}
+.a-wag{transform-origin:left center;animation:wag 2.4s ease-in-out infinite alternate}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes drift{from{transform:translateX(-10px)}to{transform:translateX(16px)}}
+@keyframes fly{0%{transform:translate(-14px,3px) rotate(-2deg)}100%{transform:translate(28px,-7px) rotate(2deg)}}
+@keyframes tram{0%{transform:translateX(-4px) rotate(-.5deg)}100%{transform:translateX(12px) rotate(.6deg)}}
+@keyframes wave{from{transform:translateX(0)}to{transform:translateX(-20px)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@keyframes wag{from{transform:rotate(-4deg)}to{transform:rotate(5deg)}}
+
+@media (min-width:600px){
+  h1{font-size:42px}
+  .cd b{font-size:38px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- 共用插畫元件：黃色電車 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="tramSym" viewBox="0 -26 122 90">
+      <path d="M60 -5 L52 -22 M60 -5 L70 -22 M44 -22 H80" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="6" y="-7" width="108" height="11" rx="5.5" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
+      <rect x="1.5" y="1.5" width="117" height="49" rx="13" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+      <rect x="11" y="12" width="20" height="18" rx="5" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5"/>
+      <rect x="37" y="12" width="20" height="18" rx="5" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5"/>
+      <rect x="63" y="12" width="20" height="18" rx="5" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5"/>
+      <rect x="89" y="12" width="20" height="18" rx="5" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5"/>
+      <rect x="2" y="37" width="116" height="7" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
+      <circle cx="26" cy="54" r="8" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
+      <circle cx="96" cy="54" r="8" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
+      <circle cx="26" cy="54" r="2" fill="#3E3A39"/><circle cx="96" cy="54" r="2" fill="#3E3A39"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="nav">
+  <nav aria-label="主選單">
+    <a href="#home" data-s="home"><i>🏠</i>首頁</a>
+    <a href="#flights" data-s="flights"><i>✈️</i>航班</a>
+    <a href="#days" data-s="days"><i>🗓️</i>行程</a>
+    <a href="#stay" data-s="stay"><i>🏨</i>住宿</a>
+  </nav>
+</header>
+
+<main>
+<!-- ================= 首頁 ================= -->
+<section id="home">
+  <div class="wrap">
+    <div class="hero-art">
+      <svg viewBox="0 0 360 250" role="img" aria-label="繪本風插畫：里斯本黃色電車、貝倫塔、聖家堂與飛機">
+        <!-- 太陽 -->
+        <g>
+          <g class="a-rays" stroke="#3E3A39" stroke-width="3" stroke-linecap="round">
+            <path d="M290 14V22M316.9 25.1L311.2 30.8M328 52H320M316.9 78.9L311.2 73.2M290 90V82M263.1 78.9L268.8 73.2M252 52H260M263.1 25.1L268.8 30.8"/>
+          </g>
+          <circle cx="290" cy="52" r="24" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+          <path d="M280 52 q4 4 8 0 M293 52 q4 4 8 0" fill="none" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="278" cy="59" r="3.5" fill="#F2A497"/><circle cx="303" cy="59" r="3.5" fill="#F2A497"/>
+        </g>
+        <!-- 雲 -->
+        <g class="a-cloud"><path d="M30 62 Q20 62 22 53 Q24 45 34 46 Q36 36 48 38 Q58 34 64 44 Q76 42 78 53 Q80 62 70 62 Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/></g>
+        <g class="a-cloud2"><path d="M150 40 Q142 40 144 33 Q146 27 154 28 Q156 20 166 22 Q174 19 178 27 Q188 26 189 34 Q190 40 182 40 Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/></g>
+        <!-- 飛機 -->
+        <g class="a-plane">
+          <g transform="translate(92 88)">
+            <path d="M2 6 L-6 -8 L12 6Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M0 12 Q0 5 11 5 H44 Q58 7 63 12 Q58 17 44 19 H11 Q0 19 0 12Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M26 12 L14 30 L32 30 L44 13Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+            <circle cx="40" cy="11" r="2.6" fill="#A8D3E6" stroke="#3E3A39" stroke-width="1.8"/><circle cx="49" cy="11.5" r="2.6" fill="#A8D3E6" stroke="#3E3A39" stroke-width="1.8"/>
+          </g>
+        </g>
+        <!-- 遠山 -->
+        <path d="M0 172 Q60 132 130 160 T250 152 T360 166 V200 H0Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+        <!-- 貝倫塔 -->
+        <g>
+          <rect x="44" y="120" width="34" height="52" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
+          <path d="M44 120 V110 H52 V116 H60 V110 H68 V116 H78 V120" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M34 128 Q34 100 48 100 Q56 100 56 112 V128Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M45 100 V92" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/><circle cx="45" cy="90" r="3.5" fill="#F2A497" stroke="#3E3A39" stroke-width="2"/>
+          <rect x="56" y="132" width="9" height="16" rx="4.5" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5"/>
+          <rect x="39" y="140" width="8" height="12" rx="4" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5"/>
+        </g>
+        <!-- 聖家堂 -->
+        <g>
+          <g fill="#FFFFFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round">
+            <rect x="238" y="116" width="18" height="56"/><rect x="260" y="96" width="18" height="76"/>
+            <rect x="282" y="96" width="18" height="76"/><rect x="304" y="116" width="18" height="56"/>
+          </g>
+          <g fill="#F6D27A" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round">
+            <path d="M238 116 L247 90 L256 116Z"/><path d="M260 96 L269 62 L278 96Z"/>
+            <path d="M282 96 L291 62 L300 96Z"/><path d="M304 116 L313 90 L322 116Z"/>
+          </g>
+          <g fill="#F2A497" stroke="#3E3A39" stroke-width="2.2">
+            <circle cx="247" cy="86" r="4"/><circle cx="269" cy="58" r="4"/><circle cx="291" cy="58" r="4"/><circle cx="313" cy="86" r="4"/>
+          </g>
+          <g fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.2">
+            <rect x="244" y="128" width="6" height="14" rx="3"/><rect x="266" y="112" width="6" height="16" rx="3"/>
+            <rect x="288" y="112" width="6" height="16" rx="3"/><rect x="310" y="128" width="6" height="14" rx="3"/>
+          </g>
+        </g>
+        <!-- 海 -->
+        <rect x="0" y="170" width="360" height="30" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
+        <g clip-path="url(#seaClip)">
+          <g class="a-wave"><path d="M0 184 q10 -7 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/></g>
+        </g>
+        <defs><clipPath id="seaClip"><rect x="0" y="172" width="360" height="26"/></clipPath></defs>
+        <!-- 街道 -->
+        <rect x="0" y="198" width="360" height="60" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
+        <path d="M0 216 H360" stroke="#3E3A39" stroke-width="3" stroke-dasharray="14 10" stroke-linecap="round"/>
+        <path d="M0 124 H360" stroke="#3E3A39" stroke-width="0" />
+        <!-- 電車 -->
+        <g class="a-tram"><use href="#tramSym" x="100" y="122" width="122" height="90"/></g>
+        <!-- 小花 -->
+        <g stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round">
+          <path d="M26 238 V228 M326 240 V230"/>
+          <circle cx="26" cy="226" r="5" fill="#F2A497"/><circle cx="326" cy="228" r="5" fill="#F6D27A"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="hero-text">
+      <span class="kicker">2027.02.03 – 02.14</span>
+      <h1>西葡 12 天<br>雙國之旅</h1>
+      <div class="chips" aria-label="核心路線">
+        <span class="chip l">里斯本 3 晚</span>➜<span class="chip p">波多 2 晚</span>➜<span class="chip m">馬德里 2 晚</span>➜<span class="chip b">巴塞隆納 4 晚</span>
+      </div>
+      <p class="who">旅行成員：陳婕瑜 (Chieh-Yu Chen) ＆ 李佳俞 (Jia-Yu Li)</p>
+    </div>
+
+    <div class="count" id="count" aria-live="polite">
+      <p id="cdLabel">距離 2/2（二）22:00 桃園機場起飛，還有</p>
+      <div class="cd" id="cdBoxes">
+        <div><b id="cdD">--</b><span>天</span></div>
+        <div><b id="cdH">--</b><span>小時</span></div>
+        <div><b id="cdM">--</b><span>分</span></div>
+        <div><b id="cdS">--</b><span>秒</span></div>
+      </div>
+      <small>旅遊日期 2/3（三）〜 2/14（日），含航程 2/2 晚出發 〜 2/15 傍晚返台</small>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 航班 ================= -->
+<section id="flights">
+  <div class="wrap">
+    <h2 class="title c1">✈️ 航班與跨城交通</h2>
+    <p class="note-s">時間皆為當地時間。西班牙比葡萄牙快 1 小時。</p>
+    <div id="flightList"></div>
+  </div>
+</section>
+
+<!-- ================= 每日行程 ================= -->
+<section id="days" style="padding-bottom:0">
+  <div class="wrap"><h2 class="title c2">🗓️ 每日行程</h2></div>
+  <div class="tabs"><div class="tabs-in" id="tabs" role="tablist" aria-label="選擇日期"></div></div>
+  <div class="wrap"><article class="panel" id="panel" role="tabpanel" tabindex="-1"></article></div>
+</section>
+
+<!-- ================= 住宿 ================= -->
+<section id="stay">
+  <div class="wrap">
+    <h2 class="title">🏨 四城住宿</h2>
+    <div id="stayList"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <svg viewBox="0 0 120 60" aria-hidden="true">
+    <g class="a-bob"><path d="M10 40 Q0 40 2 31 Q4 23 14 24 Q16 14 28 16 Q38 12 44 22 Q56 20 58 31 Q60 40 50 40Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/></g>
+    <g class="a-bob2"><circle cx="92" cy="26" r="16" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/><path d="M85 26 q3 3 6 0 M96 26 q3 3 6 0" fill="none" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/></g>
+    <path d="M6 54 H114" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+  旅途愉快，平安回家 ♡
+</footer>
+
+<script>
+/* ============================================================
+   資料
+   ============================================================ */
+var TRIP_START = new Date('2027-02-02T22:00:00+08:00').getTime();
+
+var FLIGHTS = [
+  {d:'2/2 (二)', k:'air', no:'土耳其航空 TK 25', f:['22:00','TPE','台北桃園 T2'], t:['05:50','IST','伊斯坦堡'], plus:'+1', note:'飛行 11h 50m；轉機 2h 35m'},
+  {d:'2/3 (三)', k:'air', no:'土耳其航空 TK 1755', f:['08:25','IST','伊斯坦堡'], t:['10:35','LIS','里斯本 T1'], note:'飛行 5h 10m'},
+  {d:'2/6 (六)', k:'train', no:'葡萄牙國鐵 CP｜Alfa Pendular 高鐵', f:['約 12:00','里斯本','Santa Apolónia'], t:['約 15:00','波多','Campanhã'], note:'目標搭乘中午左右 Alfa Pendular（待購票確認班次）', st:'wait', stTxt:'待購票'},
+  {d:'2/8 (一)', k:'air', no:'伊比利航空 IB 546', f:['12:25','OPO','波多'], t:['14:45','MAD','馬德里'], note:'已訂妥 (€66)｜西葡時差 +1 小時', st:'ok', stTxt:'已訂妥'},
+  {d:'2/10 (三)', k:'train', no:'西班牙高鐵 Iryo Infinita', f:['11:22','馬德里','Atocha'], t:['14:39','巴塞隆納','Sants'], note:'已訂妥 (€88.08/雙人)｜訂位代號 B8OYTZ｜第 2 車廂 座位 11A / 11B', st:'ok', stTxt:'已訂妥'},
+  {d:'2/14 (日)', k:'air', no:'土耳其航空 TK 1856', f:['18:20','BCN','巴塞隆納 T1'], t:['23:55','IST','伊斯坦堡'], note:'飛行 3h 35m；轉機 2h 00m'},
+  {d:'2/15 (一)', k:'air', no:'土耳其航空 TK 24', f:['01:55','IST','伊斯坦堡'], t:['17:40','TPE','台北桃園 T2'], note:'飛行 10h 45m；平安返抵台灣'}
+];
+
+var STAYS = [
+  {city:'里斯本', n:3, c:'#F6D27A', in:'2/3 (三)', out:'2/6 (六)', name:'Wilde Aparthotels, Lisbon, Liberdade', who:'佳俞訂 (Agoda)', note:'自由大道旁，近首日披薩餐廳 Forno d\'Oro'},
+  {city:'波多', n:2, c:'#A8D3E6', in:'2/6 (六)', out:'2/8 (一)', name:'Torel 1884 Suites & Apartments', who:'婕瑜訂 (Booking)', note:'歷史城區奢華宮殿精品公寓'},
+  {city:'馬德里', n:2, c:'#F2A497', in:'2/8 (一)', out:'2/10 (三)', name:'Room Mate Collection Alba', who:'婕瑜訂 (Booking)', note:'文學區核心，步行至索菲亞／普拉多極近'},
+  {city:'巴塞隆納', n:4, c:'#B9DAA5', in:'2/10 (三)', out:'2/14 (日)', name:'Hotel Pulitzer Barcelona', who:'婕瑜訂 (Booking)', note:'加泰隆尼亞廣場旁'}
+];
+
+var CITY = {
+  lisbon:{bg:'#F6D27A',cc:'#F6D27A'},
+  porto:{bg:'#A8D3E6',cc:'#A8D3E6'},
+  madrid:{bg:'#F2A497',cc:'#F2A497'},
+  barcelona:{bg:'#B9DAA5',cc:'#B9DAA5'}
+};
+
+/* 欄位：[時間, 標題, 備註, [交通], 旗標]；旗標：must 必去｜booked 已訂妥｜reserve[:文字] 需預約｜plan:文字 */
+var DAYS = [
+ {n:1,date:'2/3',wd:'三',city:'lisbon',
+  title:'抵達里斯本・經典老城・黃色電車・Fado',
+  theme:'拿坡里披薩、里斯本建築、選物店、海鮮飯與葡萄牙傳統音樂。',
+  route:'飯店 ➔ Forno d\'Oro ➔ Baixa ➔ 黃色電車 ➔ 聖胡斯塔升降機 ➔ Chiado ➔ Uma ➔ Bairro Alto',
+  items:[
+   ['10:35–12:30','抵達里斯本 LIS 機場','辦理入境、領取行李，搭乘車前往飯店。',['搭車']],
+   ['12:30–13:00','Wilde Aparthotels 寄放行李','於飯店寄放行李（今日下午不安排返回飯店休息）。',[]],
+   ['13:00–14:10','🍕 午餐：Forno d\'Oro','第一餐享用拿坡里式披薩（以長時間發酵麵團與金色柴燒窯聞名，位置靠近住宿區域，建議預約 13:00）。',[],'must,reserve:建議預約'],
+   ['14:10–14:35','前往 Baixa（下城區）','搭乘 Bolt 或大眾運輸前往下城區。',['Bolt','大眾運輸']],
+   ['14:35–15:00','商業廣場 (Praça do Comércio) ＆ 奧古斯塔街 (Rua Augusta)','漫步里斯本最氣派的河畔廣場與主要步行街。',['步行']],
+   ['15:00–15:25','Rua da Conceição 經典黃色電車街拍','在下城區經典街角捕捉黃色電車穿梭的畫面。',['步行']],
+   ['15:25–15:45','聖胡斯塔升降機 (Elevador de Santa Justa)','安排約 20 分鐘欣賞新哥德式鐵製升降機外觀與拍照（不以實際排隊搭乘為前提，避免壓縮後續行程）。',[]],
+   ['15:45–16:15','☕ A Brasileira（巴西人咖啡館）','造訪希亞多區最具代表性的百年文人歷史咖啡館，與詩人佩索亞銅像合影。',[]],
+   ['16:15–16:45','🍰 Landeau Chocolate','品嚐里斯本傳奇的招牌多層次苦甜巧克力蛋糕。',[]],
+   ['16:45–17:45','A Vida Portuguesa ＆ Bertrand 書店','逛葡萄牙最美復古選物店與金氏世界紀錄最古老營運中書店。',[]],
+   ['17:45–18:45','Chiado / Carmo 自由散步','於希亞多與卡爾莫廣場周邊悠閒逛街、欣賞建築。',['步行']],
+   ['19:00–20:15','🍲 晚餐：Uma Marisqueira','品嚐招牌葡萄牙海鮮飯 (Arroz de Marisco)，以番茄與豐富海鮮熬煮，質地濕潤鮮美。',[],'must'],
+   ['20:15–20:40','前往 Bairro Alto（上城區）','晚餐後散步步行上坡前往上城區。',['步行']],
+   ['20:40–22:15','🎶 A Tasca do Chico (Fado Vadio 現場演出)','氣氛親密的小型傳統 Fado 酒館（不提前於 18:30 排隊，採晚餐後約 20:40 抵達，現場視座位狀況候位入場欣賞演出）。',[],'must']
+  ]},
+ {n:2,date:'2/4',wd:'四',city:'lisbon',
+  title:'Belém 世界遺產・Alfama 老城・山上聖母觀景台夕陽',
+  theme:'葡萄牙航海歷史、經典蛋塔、28E 黃色電車，以及里斯本最期待的夕陽與海鮮聖殿。',
+  route:'Belém ➔ Baixa ➔ Alfama ➔ 山上聖母觀景台 ➔ Ramiro',
+  tip:'四天中行程最滿的一天，MAAT 為首個可彈性刪除項目。',
+  items:[
+   ['08:15–09:15','早餐、前往 Belém（貝倫區）','享用早餐後提早出發前往貝倫區。',[]],
+   ['09:30–11:00','🏛 熱羅尼莫斯修道院 (Mosteiro dos Jerónimos)','葡萄牙曼努埃爾式建築顛峰代表作，入內參觀絕美雙層石雕迴廊（預留約 90 分鐘）。',[],'must'],
+   ['11:05–11:45','🥧 Pastéis de Belém','品嚐創始於 1837 年的經典葡式蛋塔，剛出爐撒上肉桂粉與糖粉。',[],'must'],
+   ['11:45–12:20','前往貝倫塔','沿太加斯河岸散步或搭乘交通工具前往。',['步行','交通工具']],
+   ['12:20–12:50','貝倫塔 (Torre de Belém)','僅於河畔欣賞外觀與拍照，不入內參觀。',[]],
+   ['12:50–13:45','🍴 Belém 午餐（三間備選）','1. O Frade（阿連特茹地方料理、鴨肉飯，美食體驗首選；若選此間建議預留 75–90 分鐘並直接刪除 MAAT）\n2. Taberna dos Ferreiros（傳統葡萄牙家常菜）\n3. Miolo（咖啡、早午餐、輕食，對行程節奏最有彈性）',[]],
+   ['13:45–14:20','MAAT 建築外觀、河岸散步','欣賞流線型當代藝術博物館外觀（可視午餐時間彈性刪除）。',['步行']],
+   ['14:20–15:00','返回 Baixa 轉往 Alfama','搭車返回市中心準備銜接老城電車體驗。',['搭車']],
+   ['15:00–15:30','🚋 28E 黃色電車實際搭乘體驗','體驗穿梭在起伏巷弄中的復古木造電車（若候車排隊過久，可縮短搭乘段落或改搭車，優先保留觀景台夕陽）。',['電車'],'must'],
+   ['15:30–16:30','Sé 主教座堂、Santa Luzia、Portas do Sol','Alfama 老城漫步三大停留點：里斯本主教座堂 (Sé)、聖露西亞觀景台（藍白磁磚與拱廊）、太陽門觀景台（紅瓦屋頂與河景）。',['步行']],
+   ['16:30–17:10','步行上山前往觀景台','沿山城坡道緩步往上或搭車前往最高點觀景台。',['步行','搭車']],
+   ['17:10–18:15','🌅 山上聖母觀景台 (Miradouro da Senhora do Monte)','里斯本最期待的指定夕陽觀景台！一次飽覽聖若熱城堡、里斯本老城紅瓦屋頂與塔霍河（2 月初日落約在 18:00 前後）。',[],'must'],
+   ['18:15–19:15','下山前往 Ramiro','漫步下山，預留充裕交通與緩衝時間。',['步行']],
+   ['19:15–20:45','🦐 晚餐：Cervejaria Ramiro','里斯本最具代表性的海鮮聖殿！必嚐招牌蒜香奶油蝦、巨型紅蝦、各式貝類與當季海鮮，最後以豬扒包收尾。',[],'must']
+  ]},
+ {n:3,date:'2/5',wd:'五',city:'lisbon',
+  title:'Sintra 一日遊・A Cevicheria・Toca da Raposa',
+  theme:'浪漫宮殿、神祕花園、葡萄牙小盤料理、秘魯風格海鮮與創意調酒。',
+  route:'Rossio ➔ Sintra ➔ 佩納宮 ➔ Tascantiga ➔ 雷加萊拉莊園 ➔ Piriquita ➔ 里斯本 ➔ A Cevicheria ➔ Toca da Raposa',
+  items:[
+   ['07:45–08:15','早餐、前往 Rossio 車站','早起享用早餐，前往市中心羅西歐火車站。',[]],
+   ['08:15–09:10','搭乘火車：Rossio ➔ Sintra','搭乘郊區火車直達辛特拉站。',['火車']],
+   ['09:10–10:00','前往佩納宮','轉乘山區巴士 (434 號) 或叫車上山，並預留從園區入口步行至宮殿本體的時間。',['巴士 434','叫車','步行']],
+   ['10:00–11:45','🏰 佩納宮 (Pena Palace)','辛特拉最具代表性的浪漫主義彩色宮殿（務必留意門票上的宮殿指定入場時段）。',[],'must,reserve:留意入場時段'],
+   ['11:45–12:30','下山前往 Sintra 老城','搭車下山回到辛特拉歷史老城區。',['搭車']],
+   ['12:30–13:45','🍴 午餐：Tascantiga','辛特拉老城高人氣葡萄牙小盤料理 (Petiscos)，品嚐多樣家常風味。\n備選：Cantinho Gourmet，若 Tascantiga 候位超過 20 分鐘可直接改吃備選，避免壓縮下午莊園時間。',[]],
+   ['13:45–14:30','前往雷加萊拉莊園','從老城散步前往莊園，預留緩衝時間。',['步行']],
+   ['14:30–16:00','🌀 雷加萊拉莊園 (Quinta da Regaleira)','安排約 90 分鐘探索神祕主義風格花園、地下迷宮通道與最著名的螺旋「啟蒙井 (Initiation Well)」。',[],'must'],
+   ['16:00–16:35','🥐 下午甜點：Casa Piriquita','品嚐辛特拉兩大傳統甜點：Travesseiro（杏仁蛋黃餡酥皮枕頭酥）與 Queijada（肉桂風味起司小塔，含乳製品需留意）。考量偏好不過甜，建議各買一個淺嚐即可。（精品咖啡 Loja 5 列為彈性備選）',[]],
+   ['16:35–18:15','返回里斯本市區','搭乘火車返回里斯本並銜接市區交通。',['火車']],
+   ['18:15–18:40','前往 Príncipe Real（王子花園區域）','直接前往餐廳所在街區（視交通狀況調整）。',[]],
+   ['18:40–19:30','🐙 A Cevicheria 現場排隊候位','不接受預約、採現場候位（地址：Rua Dom Pedro V 129）。可邊喝杯 Pisco Sour 邊等候，若辛特拉提早結束可更早來排。',[],'reserve:現場候位'],
+   ['約 19:30–20:45','🍽 晚餐：A Cevicheria','名廚 Kiko Martins 打造，結合秘魯 Ceviche 技法、葡萄牙海鮮與亞洲風味，天花板懸掛巨型章魚裝置藝術。推薦必點：Ceviche Puro（經典酸橘汁醃魚）、Tuna Belly（鮪魚腹肉料理）與 Pisco Sour。',[],'must'],
+   ['20:45–21:15','前往 Chiado','餐後從 Príncipe Real 步行或搭車前往鄰近的 Chiado（相距不遠）。',['步行','搭車']],
+   ['21:15–22:30','🍸 酒吧：Toca da Raposa','地址：Rua da Condessa 45。以季節性食材、香草植物與創意調酒聞名。點酒攻略：可直接告訴調酒師偏好 Gin-based, dry, herbal, not too sweet（若晚餐排隊較久，酒吧可順延至 22:00 左右或改備選 Onda Cocktail Room）。',[]]
+  ]},
+ {n:4,date:'2/6',wd:'六',city:'porto',
+  title:'Filtrô 精品咖啡・前往波多・Bolhão 市場・老城區・歷史咖啡館與調酒',
+  theme:'里斯本手沖咖啡與輕早餐、悠閒搭火車北上波多、傳統市場生蠔配白酒、藍白磁磚車站、美好年代咖啡館與經典 Gin Martini。',
+  route:'Filtrô ➔ Santa Apolónia ➔ 波多 Campanhã ➔ Torel 1884 ➔ Bolhão ➔ São Bento ➔ Ribeira ➔ Majestic Café',
+  items:[
+   ['08:00–08:20','整理行李、寄放飯店','於里斯本飯店整理大件行李並先寄放櫃檯。',[]],
+   ['08:20–08:40','搭乘 Bolt 前往 Filtrô','前往 Santos / Lapa 街區。',['Bolt']],
+   ['08:40–09:40','☕ 早餐：Filtrô - Creative Lab','地址：Rua das Trinas 102。以精品手沖聞名，推薦選擇 V60，向店員詢問當日豆單並挑選花香、柑橘或乾淨明亮風味的咖啡，簡單搭配糕點或輕食即可。',[]],
+   ['09:40–10:30','返回飯店、取行李與 Check-out','09:40–10:05 車程返回飯店，10:05–10:30 取行李辦理退房。',['搭車']],
+   ['10:30–11:10','前往 Lisboa Santa Apolónia 車站','搭車前往聖阿波羅尼亞火車站候車。',['搭車']],
+   ['約 12:00–15:00','🚆 搭乘 Alfa Pendular 高鐵前往波多','目標搭乘中午約 12:00 出發班次，約 15:00 抵達 Porto Campanhã，再轉乘前往市區飯店（14:00–15:30 為預計抵達區間）。',['高鐵','搭車'],'reserve:待購票'],
+   ['15:30–15:45','Torel 1884 Check-in / 寄放行李','飯店位於波多歷史城區核心，辦理入住卸下行李。',[]],
+   ['15:45–16:25','🦪 Mercado do Bolhão + Casa das Ostras','造訪整修後保留歷史建築特色的波多代表性傳統市場（週日公休，必須排在週六）！於市場內的 Casa das Ostras 品嚐新鮮生蠔搭配清爽葡萄牙白酒。',[],'must'],
+   ['16:25–16:40','步行前往聖本篤車站','漫步老城街道，步行約 10–15 分鐘。',['步行']],
+   ['16:40–17:00','聖本篤車站 (São Bento)','停留約 20 分鐘，欣賞大廳內由兩萬片藍白磁磚拼貼而成的葡萄牙歷史與常民生活壁畫。',[],'must'],
+   ['17:00–17:30','波多主教座堂 (Sé do Porto)','推薦參觀迴廊的藍白磁磚（若火車較晚抵達或超過最後入場時間，則改為欣賞教堂外觀與廣場全景，不壓縮市場時間）。',[]],
+   ['17:30–19:15','Ribeira 里貝拉河岸 ＆ 自由散步','17:30–18:30 欣賞杜羅河與路易一世大橋暮色與夜景；18:30–19:15 於河岸自由散步拍照，感受老城氛圍。',['步行']],
+   ['19:15–20:45','🐙 晚餐：Taberna dos Carris','享用道地葡萄牙料理晚餐，推薦必點：Polvo à Lagareiro（橄欖油烤章魚）、Bacalhau（葡萄牙鹽漬鱈魚料理）搭配葡萄牙白酒。',[]],
+   ['21:00–21:45','☕ Majestic Café','安排於晚餐後造訪，避開白天人潮，從容欣賞華麗的「美好年代 (Belle Époque)」室內裝潢，點杯飯後咖啡與一份甜點。',[]],
+   ['22:00–23:30','🍸 酒吧：THE ROYAL COCKTAIL CLUB','極適合經典調酒愛好者的頂級酒吧！建議先點一杯 Gin Martini，再依 Bartender 推薦嘗試創意調酒（23:30 返回飯店休息）。',[]]
+  ]},
+ {n:5,date:'2/7',wd:'日',city:'porto',
+  title:'精品咖啡・萊羅書店・證券交易所宮・Graham\'s 酒莊・Gaia 纜車與海鮮晚餐',
+  theme:'波多主要觀光日！上午穿梭老城雙精品咖啡館、藍白磁磚教堂與魔幻書店；下午探索阿拉伯廳，接著先搭車過河參觀 Graham\'s 酒莊，再搭纜車上行至觀景台、從路易一世大橋上層步行回波多市區享用 Meia-Nau Porto 海鮮料理與舊教堂葡萄酒吧。',
+  route:'Combi ➔ 阿瑪斯教堂 ➔ 萊羅書店 ➔ 證券交易所宮 ➔ Graham\'s ➔ 蓋亞纜車 ➔ 路易一世大橋 ➔ Meia-Nau ➔ Capela Incomum',
+  items:[
+   ['09:00–09:35','☕ 早餐：Combi Coffee Roasters','波多知名的精品咖啡烘焙品牌，適合以一杯品質好的咖啡開始一天。',[]],
+   ['09:45–10:05','阿瑪斯教堂 (Capela das Almas)','欣賞整座外牆覆滿巨幅聖人故事的藍白磁磚外牆。',[]],
+   ['10:05–10:20','聖伊爾德豐索教堂 (Igreja de Santo Ildefonso)','於巴洛克式雙塔與磁磚立面外觀拍照。',[]],
+   ['10:20–10:40','自由大道 (Aliados 大道)','漫步波多市政廳與中央廣場大道。',['步行']],
+   ['10:40–11:00','☕ SO Coffee Roasters','第二間精品咖啡館（安排 Sá de Noronha 分店，距離萊羅書店很近；因早上已喝過 Combi，建議以外帶或短暫停留為主）。',[]],
+   ['11:00–11:50','📚 萊羅書店 (Livraria Lello)','以新哥德式建築、紅色樓梯與彩繪玻璃聞名（建議預留 45–50 分鐘，提前預約 11:00 指定時段門票）。',[],'must,reserve'],
+   ['11:50–12:10','卡爾莫教堂 (Igreja do Carmo)','走出書店即可順賞壯觀的藍白磁磚立面。',[]],
+   ['12:15–13:15','🥪 午餐：Brasão Aliados','品嚐波多代表性料理 Francesinha（濕搭搭三明治）——夾有肉類、覆蓋起司並淋上濃郁醬汁，搭配薯條（份量相當大，建議上午不要吃太多甜點）。',[],'must'],
+   ['13:15–13:45','步行前往證券交易所宮','經過歷史老城區步行下坡前往。',['步行']],
+   ['14:00–14:45','🏛 證券交易所宮 (Palácio da Bolsa)','預約 14:00 左右的英文導覽入內參觀，最值得看的就是具有華麗摩爾復興式裝飾的阿拉伯廳 (Salão Árabe)。',[],'must,reserve'],
+   ['14:45–15:15','搭 Uber / Bolt 前往 Graham\'s 酒莊','預留叫車與跨河交通時間，直接搭車前往蓋亞新城的酒莊山坡，省去爬坡體力。',['Uber','Bolt']],
+   ['15:30–17:00','🍷 Graham\'s Port Lodge','參加百年歷史酒窖導覽＋經典波特酒品飲（待確認場次，提早於 15:30 進行時間最充裕）。',[],'must,reserve:待確認場次'],
+   ['17:00–17:20','前往 Gaia 纜車河岸站','結束品酒後建議搭車前往蓋亞河岸纜車站。',['搭車']],
+   ['17:20–17:35','🚡 蓋亞纜車 (Teleférico de Gaia)','改採纜車上行（從河岸站搭乘上升至大橋高處，冬季末班車時間待確認），輕鬆將杜羅河與波多紅瓦老城景致盡收眼底。',['纜車']],
+   ['17:35–17:55','🌅 Serra do Pilar 觀景台','走出纜車上站即達觀景台，欣賞黃昏時分的波多城市與鐵橋全景。',[]],
+   ['17:55–18:25','🌉 路易一世大橋 (Ponte de Dom Luís I)','從大橋上層悠閒步行跨河返回波多城區，飽覽杜羅河兩岸華燈初上的暮色。',['步行'],'must'],
+   ['18:25–19:00','前往 Meia-Nau Porto','從大橋波多端步行或搭車前往餐廳。',['步行','搭車']],
+   ['19:00–20:30','🍽 晚餐：Meia-Nau Porto','享用高品質的道地葡萄牙海鮮料理（如炭烤鮮魚、橄欖油烤章魚與海鮮飯等），取代原本遠在酒莊的餐廳，回飯店動線更順暢。',[]],
+   ['20:30–20:50','步行前往 Capela Incomum','餐後散步約 10–20 分鐘前往酒吧。',['步行']],
+   ['20:50–22:00','🥂 酒吧：Capela Incomum','設於 16 世紀舊教堂空間內的獨特葡萄酒吧！在歷史氛圍中品飲一杯葡萄牙綠酒 (Vinho Verde) 或杜羅河谷白酒。',[]],
+   ['22:00','返回 Torel 1884','返回飯店休息，準備明日飛往馬德里。',[]]
+  ]},
+ {n:6,date:'2/8',wd:'一',city:'madrid',
+  title:'波多飛往馬德里・文學區散步・現代藝術與百大調酒',
+  theme:'從容搭機跨國移動、初識馬德里文學區、畢卡索《格爾尼卡》、現代餐酒館與傳奇調酒。',
+  route:'Torel 1884 ➔ 波多機場 ➔ 馬德里 ➔ Room Mate Alba ➔ 索菲亞王后藝術中心 ➔ SAU ➔ Salmon Guru',
+  tip:'由於有托運行李，上午在波多保留完整 3 小時機場報到與安檢時間，不額外排景點。索菲亞王后藝術中心週二休館，故安排於週一傍晚以《格爾尼卡》為核心重點；若航班延誤無法於 18:00 左右進館，則彈性改為文學區散步與晚餐。',
+  items:[
+   ['07:30–08:30','Torel 1884 早餐、整理行李與退房','07:30–08:15 享用早餐與最後整理，08:15–08:30 辦理退房。',[]],
+   ['08:30–09:15','搭乘 Uber / Bolt 前往波多機場 (OPO)','從容搭車前往機場。',['Uber','Bolt']],
+   ['09:15–11:30','辦理行李托運、安檢與候機','預留充裕時間完成報到與通關。',[]],
+   ['12:25–14:45','✈️ 搭乘 Iberia IB 546 飛往馬德里 (MAD)','機票已訂妥 (€66)。西班牙比葡萄牙快 1 小時；14:45 抵達後預留 1 小時領取行李。',['飛機'],'must,booked'],
+   ['15:45–16:45','前往馬德里飯店','建議直接搭乘計程車前往市中心飯店。',['計程車']],
+   ['16:45–17:15','入住 Room Mate Collection Alba','辦理 Check-in、於房內稍作休息。',[]],
+   ['17:15–17:40','Barrio de las Letras 文學區散步','沿著鑲嵌黃金世紀文豪詩句的 Calle de las Huertas 石板街散步前往美術館。',['步行']],
+   ['17:40–19:15','🎨 索菲亞王后藝術中心 (Museo Reina Sofía)','直奔 2 樓 206 展廳欣賞畢卡索震撼反戰巨作《格爾尼卡 (Guernica)》及現代藝術館藏，不必追求看完所有展廳。',[],'must'],
+   ['19:15–20:00','返回飯店休息','保留正式晚餐前的從容空檔，換裝梳洗。',[]],
+   ['20:00–21:30','🍴 晚餐：SAU Taberna entre aguas','享用精緻道地的西班牙現代餐酒館正式晚餐。',[]],
+   ['21:30 後','🍸 酒吧：Salmon Guru（可選）','距離飯店步行僅 3 分鐘的世界百大創意調酒殿堂（依當晚體力決定是否前往）。',['步行']]
+  ]},
+ {n:7,date:'2/9',wd:'二',city:'madrid',
+  title:'皇宮、藝術、海鮮飯與夕陽',
+  theme:'馬德里經典建築、普拉多名畫、拉丁區海鮮飯、古埃及神廟夕陽、生蠔白酒與 Tapas。',
+  route:'Puerta del Sol ➔ 皇宮 ➔ 聖米格爾市場 ➔ 普拉多 ➔ 德波神廟 ➔ El Puertito ➔ Vinitus Gran Vía',
+  tip:'整趟旅行最充實的一天。皇宮與普拉多各安排約 1.5–2 小時精華參觀，兩間正式餐廳之間保留充裕時間。麗池公園不列入固定行程，普拉多結束後直接搭車前往德波神廟追夕陽；晚間 Vinitus 可依稍早在生蠔酒吧的份量，點選少量 Tapas 即可。',
+  items:[
+   ['08:30–09:15','自由早餐','於飯店附近自行選擇咖啡館享用早餐。',[]],
+   ['09:15–09:40','太陽門廣場 (Puerta del Sol)','參觀西班牙公路網起點「零公里標誌 (Km 0)」與馬德里市徽「熊與草莓樹雕像」。',[]],
+   ['09:40–10:15','步行前往馬德里皇宮','沿途欣賞東方廣場 (Plaza de Oriente) 的皇家雕像與花園景致。',['步行']],
+   ['10:30–12:00','👑 馬德里皇宮 (Palacio Real)','建議預訂 10:30 入場，參觀歐洲規模名列前茅的皇室宮殿、御座廳與宴會廳。',[],'must,reserve'],
+   ['12:00–12:25','阿穆德納聖母主教座堂 (Catedral de la Almudena)','於皇宮正對面欣賞新古典主義外觀並入內短暫參觀。',[]],
+   ['12:25–12:45','聖米格爾市場 (Mercado de San Miguel)','逛馬德里最美百年鑄鐵玻璃市場、拍照感受熱鬧氛圍（留肚子不在此吃正餐）。',[]],
+   ['13:00–14:30','🥘 午餐：La Taberna de Peñalver — La Latina','於拉丁區享用道地美味的西班牙海鮮飯午餐。',[],'must'],
+   ['14:30–15:00','前往普拉多博物館','建議搭乘計程車前往，節省步行體力。',['計程車']],
+   ['15:00–17:00','🖼 普拉多博物館 (Museo del Prado)','鎖定三大鎮館名家真跡：委拉斯開茲 (Velázquez)《侍女》、哥雅 (Goya) 與艾爾．葛雷柯 (El Greco)。',[],'must'],
+   ['17:00–17:35','前往德波神廟','建議直接搭乘計程車前往神廟山丘。',['計程車']],
+   ['17:35–18:50','🌅 德波神廟 (Templo de Debod)','欣賞擁有兩千多年歷史的古埃及神廟倒影，靜候約 18:43 的絕美夕陽。',[],'must'],
+   ['18:50–19:15','前往生蠔酒吧','交通移動緩衝時間。',['搭車']],
+   ['19:15–20:00','🦪 Pre-dinner：El Puertito Oyster Bar','晚餐前的高雅微醺時光：品嚐來自多國產區的新鮮現開生蠔配冰鎮白酒。',[]],
+   ['20:00–20:30','前往 Gran Vía 大道','交通緩衝與漫步格蘭維亞大道。',['步行']],
+   ['20:30–21:45','🍴 晚餐：Vinitus Gran Vía','享用精緻海鮮與經典 Tapas（依稍早吃生蠔的份量彈性點選少量招牌菜即可）。',[]],
+   ['21:45 後','Gran Vía 夜景漫步','視體力散步欣賞馬德里不夜城建築燈光或返回飯店休息。',['步行']]
+  ]},
+ {n:8,date:'2/10',wd:'三',city:'barcelona',
+  title:'精品咖啡・高鐵前往巴塞隆納・哥德區漫步・殿堂級 Tapas 與百大酒吧',
+  theme:'享受最後一杯馬德里精品咖啡、從容搭乘商務艙高鐵、穿梭巴塞隆納哥德區千年巷弄、品嚐 Bar Cañete 與世界第一冰箱門酒吧。',
+  route:'Hola Coffee ➔ Atocha ➔ Iryo 高鐵 ➔ Sants ➔ Hotel Pulitzer ➔ 四貓餐廳 ➔ 哥德區 ➔ Bar Cañete ➔ Paradiso',
+  items:[
+   ['08:00–08:30','起床、整理行李','於馬德里飯店房內完成行李打包。',[]],
+   ['08:30–08:45','飯店退房','辦理退房並將大件行李暫寄放於飯店櫃檯。',[]],
+   ['08:45–09:25','☕ 早餐：Hola Coffee Fourquet','造訪馬德里最具代表性的精品咖啡館，享用單品手沖或義式咖啡與簡單早餐。',[]],
+   ['09:25–09:45','返回飯店取行李','散步回飯店領取行李。',['步行']],
+   ['09:45–10:15','前往 Madrid-Puerta de Atocha 車站','建議搭乘計程車直達阿托查高鐵站。',['計程車']],
+   ['10:15–11:00','安檢、確認月台、候車','西班牙高鐵上車前需過行李 X 光安檢，提前確認月台從容候車。',[]],
+   ['11:22–14:39','🚆 搭乘 Iryo 高鐵前往巴塞隆納 (Sants)','已訂妥 (€88.08/雙人)｜訂位代號：B8OYTZ｜第 2 車廂 11A / 11B 座位。',['高鐵'],'must,booked'],
+   ['14:40–15:45','抵達巴塞隆納 Sants ➔ 入住 Hotel Pulitzer','搭乘計程車或地鐵前往位於加泰隆尼亞廣場旁的 Hotel Pulitzer 辦理入住並安頓行李。',['計程車','地鐵']],
+   ['16:15–17:00','四貓餐廳 (Els Quatre Gats)','走訪畢卡索年輕時舉辦首次個展與設計菜單的現代主義歷史餐館（可入內喝下午茶或於經典拱門外觀拍照）。',[]],
+   ['17:00–18:30','哥德區 (Barri Gòtic) 深度漫步','穿梭中世紀石板巷弄：欣賞巴塞隆納主座堂 (Catedral)、打卡嘆息橋風格的主教橋 (Pont del Bisbe)、靜謐的聖菲利普內里廣場與古羅馬城牆遺址。',['步行'],'must'],
+   ['18:30–19:15','Granja M. Viader 百年老店（或漫步蘭布拉大道）','可順遊創立於 1870 年的百年乳品老店（Cacaolat 巧克力奶發源地），隨後散步前往餐廳。',['步行']],
+   ['19:30–21:15','🍴 晚餐：Bar Cañete','已完成訂位！巴塞隆納殿堂級海鮮 Tapas 名店，推薦入座吧台區感受主廚團隊熱絡出菜氛圍，必點時令海鮮、牛尾與朝鮮薊料理。',[],'must,booked'],
+   ['21:30–23:00','🍸 酒吧：Paradiso','曾獲世界 50 大第一名的傳奇秘境酒吧（採現場掃 QR Code 虛擬排隊制，建議於晚餐尾聲先去門口掃碼登記候位）。',[],'reserve:掃碼候位']
+  ]},
+ {n:9,date:'2/11',wd:'四',city:'barcelona',
+  title:'高第建築巡禮・屋頂夕陽・Nomad 精品咖啡・音樂宮音樂會與自然酒',
+  theme:'奎爾公園與聖保羅醫院雙世界遺產、聖家堂午後斜陽光影、屋頂酒吧平視聖家堂、波恩區精品咖啡與流心巴斯克蛋糕、音樂宮專場演出。',
+  route:'奎爾公園 ➔ 聖保羅醫院 ➔ 高第大道 ➔ 聖家堂 ➔ 屋頂酒吧 ➔ Nomad ➔ Jon Cake ➔ 音樂宮 ➔ Can Cisa / Bar Brutal',
+  items:[
+   ['08:30–09:20','早餐 ＆ 前往奎爾公園','享用早餐後，建議直接搭乘計程車直達奎爾公園山腰入口，保留體力。',['計程車']],
+   ['09:30–11:30','🦎 奎爾公園 (Park Güell)','預約 09:30 場次。於晨光中漫步自然廣場波浪馬賽克長椅、百柱廳（多立克柱廊）、糖果屋與著名的大蜥蜴噴泉。',[],'must,reserve:09:30 場次'],
+   ['11:45–13:15','🏥 聖保羅十字醫院 (Recinte Modernista de Sant Pau)','現代主義建築大師多明尼克代表作，欣賞粉紅磚雕、馬賽克圓頂與地下連通迴廊。',[]],
+   ['13:15–14:45','高第大道 (Avinguda de Gaudí) 散步與輕食午餐','沿著連接聖保羅醫院與聖家堂的景觀步行大道漫步，於沿途挑選咖啡館享用輕食午餐。',['步行']],
+   ['15:00–16:30','⛪ 聖家堂 (Sagrada Família)','鎖定黃金 15:00 場次！此時段冬日午後斜陽正好穿透西側橘紅與金黃彩繪玻璃，光影震撼至極；細賞高第生前完成的「誕生立面」與蘇比拉克斯雕塑的「受難立面」。',[],'must,reserve:15:00 場次'],
+   ['16:35–17:15','🌇 屋頂酒吧：Bar-Terrassa Sercotel Rosselló','從聖家堂步行 3 分鐘即達。於飯店頂樓露台點杯氣泡酒或調酒，以毫無遮蔽的平視視角近距離欣賞聖家堂高塔與夕陽餘暉。',['步行']],
+   ['17:25–18:10','☕ 精品咖啡：Nomad Coffee Lab & Shop','從屋頂酒吧搭計程車約 8 分鐘抵達波恩區私密綠意巷弄（Passatge Sert, 12）。在打烊前品嚐巴塞隆納最頂尖的獨立烘焙手沖或 Flat White。\n若在屋頂酒吧停留較晚超過 18:00，可改去步行 5 分鐘外的分支據點 Nomad Everyday。',['計程車']],
+   ['18:15–19:15','🍰 甜點：Jon Cake ＆ 波恩區散步','從 Nomad 步行 4 分鐘即達！外帶或現場品嚐全巴塞隆納最紅、濃郁絲滑的流心巴斯克乳酪蛋糕。',['步行']],
+   ['19:30–21:30','🎶 加泰隆尼亞音樂宮音樂會 (Palau de la Música Catalana)','20:00 音樂會已訂妥！務必於 19:30 提早進場，在大廳與二樓露台拍攝絕美的「倒置水滴狀彩繪玻璃天窗」與馬賽克玫瑰花柱。',[],'must,booked'],
+   ['21:30–23:00','🍷 晚餐 / 微醺：Can Cisa / Bar Brutal','音樂會結束後步行 7 分鐘深入波恩區，在巴塞隆納最具指標性的自然酒餐酒館品飲精選自然酒配精緻佐酒料理。',['步行']]
+  ]},
+ {n:10,date:'2/12',wd:'五',city:'barcelona',
+  title:'Montserrat 聖山奇岩一日遊・擴展區美食與世界第一調酒',
+  theme:'登鋸齒聖山參拜黑面聖母、高空纜車與奇岩健行步道、道地加泰隆尼亞通心粉與流心烘蛋、世界第一調酒 Sips。',
+  route:'西班牙廣場站 ➔ FGC R5 ➔ 蒙特塞拉特修道院 ➔ 聖胡安纜車 ➔ 返回市區 ➔ Bar Bocata 2 Diagonal ➔ Sips',
+  items:[
+   ['08:00–08:30','早餐 ＆ 前往西班牙廣場站 (Plaça Espanya)','準備出發前往近郊聖山。',[]],
+   ['08:36–10:00','搭乘 FGC R5 火車 ➔ 轉乘登山纜車 (Aeri) 或齒軌火車','於 Plaça Espanya 站搭乘 R5 線火車，於 Aeri de Montserrat 站轉乘高空風景纜車（或於 Monistrol 轉乘齒軌火車 Cremallera）直達海拔 720 公尺修道院。',['火車','纜車','齒軌火車']],
+   ['10:15–12:00','⛰️ 蒙特塞拉特修道院 ＆ 參拜黑面聖母 (La Moreneta)','依預約時段進入大殿親手觸摸巴塞隆納守護神「黑面聖母」手中圓球祈福，參觀大教堂與中庭廣場（若時間對上可於 13:00 聆聽歐洲最古老的 Escolania 男童合唱團天籟）。',[],'must,reserve:依預約時段'],
+   ['12:15–14:30','聖胡安纜車 (Funicular de Sant Joan) ＆ 奇岩全景步道','搭乘陡峭山壁纜車登上 1,000 公尺高處，漫步於高第建築靈感來源的鋸齒狀奇岩步道，俯瞰加泰隆尼亞平原壯闊全景，並於山上簡單果腹。',['纜車','步行'],'must'],
+   ['14:30–16:15','下山返回巴塞隆納市區','搭乘纜車與火車返回西班牙廣場站。',['纜車','火車']],
+   ['16:15–19:00','返回飯店午茶與充分休息','聖山健行後回飯店泡澡、歇腿休息，換裝準備迎接週五微醺之夜。',[]],
+   ['19:30–21:00','🍴 晚餐：Bar Bocata 2 Diagonal','位於擴展區的高人氣時髦餐館！必點招牌起司肉醬通心粉 (Macarrones de la abuela)、流心馬鈴薯烘蛋 (Tortilla) 與伊比利火腿可樂餅。',[]],
+   ['21:30–23:00','🍸 酒吧：Sips (Drinkery House)','由傳奇調酒師 Simone Caporale 與 Marc Álvarez 聯手打造、榮登「世界 50 大酒吧第一名」的殿堂級酒吧！打破傳統吧台隔閡，體驗如同劇場藝術般的分子創意調酒。',[],'must']
+  ]},
+ {n:11,date:'2/13',wd:'六',city:'barcelona',
+  title:'地中海海岸小鎮漫遊（Sitges / Blanes 雙方案）・精品大道採買・Gresca 週末饗宴',
+  theme:'地中海冬日暖陽與白色海濱小鎮（依當日天氣與心情二選一）、格拉西亞大道精品與伴手禮採買、米其林推薦現代加泰隆尼亞料理 Gresca。',
+  route:'Passeig de Gràcia 站 ➔ Sitges（方案 A）或 Blanes（方案 B）➔ 格拉西亞大道 ➔ Hotel Pulitzer ➔ Gresca',
+  items:[
+   ['08:30–09:30','悠閒早餐 ＆ 前往火車站','睡到自然醒享用早餐，步行前往 Passeig de Gràcia 車站（或 Sants 車站）。',['步行']],
+   ['09:30–15:30','🌊 錫切斯 (Sitges) 白色藝術海濱小鎮','車程僅 35–40 分鐘，班次最密集。\n• 09:40–10:20 交通：於 Passeig de Gràcia 站搭乘 Rodalies R2 Sud 近郊火車直達 Sitges。\n• 10:20–12:30 老城與海岸散步：穿過純白藍窗的地中海巷弄，造訪矗立於海岬礁石上的粉紅地標聖巴托洛梅與聖特克拉教堂 (Església de Sant Bartomeu i Santa Tecla)；參觀現代主義大師聖地亞哥．魯西尼奧爾的藍白磁磚故居考費拉特博物館 (Museu del Cau Ferrat) 與瑪麗賽爾宮 (Palau de Maricel) 絕美海景拱廊。\n• 12:30–14:15 海濱午餐：沿棕櫚樹搖曳的 Passeig Marítim 海濱大道散步，於海景餐廳（如 El Vivero 或 La Zorra）享用道地加泰隆尼亞烤蔥 (Calçots) 或地中海海鮮飯配白酒。\n• 14:30–15:15 返程：搭火車返回巴塞隆納市區。',['火車','步行'],'must,plan:方案 A・首選'],
+   ['同時段替代','🌿 布拉內斯 (Blanes) 懸崖植物園','布拉瓦海岸起點，適合極度晴朗天氣。\n• 09:00–10:25 交通：搭乘 Rodalies R1 海岸線火車（沿途緊貼地中海行駛，坐右側靠窗海景極美）抵達 Blanes，轉乘計程車 8 分鐘上山。\n• 10:35–12:30 瑪麗穆特拉植物園 (Jardí Botànic Marimurtra)：歐洲最美懸崖植物園！漫步於百尺峭壁上的亞熱帶森林，在全白古典圓亭林奈神殿 (Templet de Linné) 俯瞰寶石藍地中海灣與奇岩。\n• 12:45–14:15 漁港午餐：下山至 Blanes 漁港旁享用現撈海鮮午餐，並打卡海岸分界巨石 Sa Palomera。\n• 14:15–15:40 返程：搭車返回巴塞隆納市區。',['火車','計程車'],'plan:方案 B・替代'],
+   ['15:30–18:15','🛍 格拉西亞大道 (Passeig de Gràcia) ＆ 蘭布拉大道伴手禮採買','返回市區展開最後黃金採買時光：\n• 精品與設計：漫步格拉西亞大道欣賞華麗街燈長椅，逛西班牙皇室皮具 Loewe 旗艦店與在地服飾品牌。\n• 美食伴手禮：前往 El Corte Inglés 英國宮百貨超市（就在飯店旁）或百年老店 Colmado Múrria，採買頂級 100% 橡果飼養伊比利火腿真空包 (Jamón Ibérico de Bellota)、鵝肝醬、西班牙早摘橄欖油，並至 Vicens 選購手工杏仁牛軋糖 (Turrón)。',['步行']],
+   ['18:15–19:30','返回 Hotel Pulitzer 休息 ＆ 預先整理大件行李','把採購戰利品與明日要托運的大件行李先整理妥當，換裝準備前往晚間重頭戲。',[]],
+   ['20:00–22:00','🍽 晚餐：Gresca','巴塞隆納老饕與美食家一致推崇的米其林推薦現代料理名店（主廚 Rafa Peña 主理）。可選擇坐溫馨料理區或充滿活力的 Wine Bar 區，必點招牌 Gresca 比基尼三明治（松露起司火腿）、酥炸腦花或當季野味海鮮創意料理，搭配侍酒師精選的自然酒或陳年佳釀，為西葡之旅最後一晚畫下完美句點！',[],'must']
+  ]},
+ {n:12,date:'2/14',wd:'日',city:'barcelona',
+  title:'巴特婁之家・El Born 漫步・林蔭大道告別午餐與搭機返台',
+  theme:'高第海洋奇幻建築、文藝街區晨間漫步、完美順路告別午餐、從容退稅返台。',
+  route:'Hotel Pulitzer ➔ 米拉之家 ➔ 巴特婁之家 ➔ Rambla de Catalunya ➔ La Flauta ➔ BCN 機場 ➔ 返台',
+  items:[
+   ['08:45–09:30','早餐、辦理退房並寄放行李','於飯店完成退房，將行李寄放於 Hotel Pulitzer 櫃檯，輕裝出門。',[]],
+   ['09:30–10:00','米拉之家外觀 (Casa Milà / La Pedrera) ＆ 格拉西亞大道散步','趁早晨人潮未湧現，欣賞米拉之家波浪形石造立面與鍛鐵陽台，再往回散步 5 分鐘至巴特婁之家。',['步行']],
+   ['10:00–11:30','🐉 巴特婁之家 (Casa Batlló)','預約 10:00 場次。走進高第以「海洋」與「聖喬治屠龍傳說」為靈感打造的魔幻宅邸：細賞深淺漸層藍色磁磚天井、蘑菇壁爐、巨龍鱗片屋頂與沉浸式光影展廳。',[],'must,reserve:10:00 場次'],
+   ['11:30–12:25','加泰隆尼亞蘭布拉大道 (Rambla de Catalunya) 或 El Born 漫步','把握在巴塞隆納最後的冬日暖陽，沿著綠樹成蔭、充滿獨立小店與露天座位的林蔭大道悠閒漫步。',['步行']],
+   ['12:30–14:00','🍴 告別午餐：La Flauta','Rambla de Catalunya 分店。',[]],
+   ['14:00–14:20','順路散步返回 Hotel Pulitzer 領取行李','從餐廳沿著 Rambla de Catalunya 直走下坡約 10 分鐘即回到飯店，完全不走回頭路。',['步行']],
+   ['14:20–15:00','前往巴塞隆納機場 (BCN T1)','搭乘計程車（或加泰隆尼亞廣場直達的 Aerobus A1 機場巴士）前往第一航廈。',['計程車','機場巴士']],
+   ['15:00–18:20','辦理 DIVA 機器退稅、行李托運與免稅店最後巡禮','西班牙購物極為便利：先在機場海關處掃描退稅單條碼（DIVA 機台顯示綠勾即完成，無須排人工蓋章），隨後辦理土航報到與安檢。',[]],
+   ['18:20 ➔ 2/15 17:40','✈️ 搭乘土耳其航空 TK 1856 ➔ 轉機 TK 24 返抵台北','18:20 起飛，23:55 抵達伊斯坦堡（轉機 2 小時）；01:55 搭乘 TK 24 起飛，於 2/15 (一) 17:40 平安返抵台北桃園機場！',['飛機']]
+  ]}
+];
+
+/* ============================================================
+   城市插畫
+   ============================================================ */
+var BANNERS = {
+lisbon:
+'<svg viewBox="0 0 320 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+
+ '<g class="a-bob"><circle cx="270" cy="34" r="15" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/></g>'+
+ '<g class="a-cloud"><path d="M180 30 Q172 30 174 23 Q176 17 184 18 Q186 10 196 12 Q204 9 208 17 Q218 16 219 24 Q220 30 212 30Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/></g>'+
+ '<g stroke="#3E3A39" stroke-width="3" stroke-linejoin="round">'+
+  '<rect x="34" y="30" width="22" height="64" fill="#FFFFFF"/><rect x="30" y="22" width="30" height="10" rx="3" fill="#F2A497"/>'+
+  '<path d="M34 46H56M34 58H56M34 70H56M34 82H56" fill="none"/>'+
+  '<rect x="56" y="52" width="38" height="9" fill="#FFFFFF"/></g>'+
+ '<rect x="0" y="92" width="320" height="30" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>'+
+ '<g class="a-tram"><use href="#tramSym" x="130" y="21" width="100" height="74"/></g>'+
+ '<path d="M0 104H320" stroke="#3E3A39" stroke-width="3" stroke-dasharray="12 9" stroke-linecap="round"/>'+
+'</svg>',
+porto:
+'<svg viewBox="0 0 320 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+
+ '<g class="a-bob"><circle cx="40" cy="26" r="13" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/></g>'+
+ '<path d="M0 90 Q50 56 110 80 T230 74 T320 84 V92 H0Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>'+
+ '<g stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round">'+
+  '<rect x="284" y="66" width="14" height="24" fill="#F2A497"/><rect x="298" y="58" width="14" height="32" fill="#F6D27A"/>'+
+  '<rect x="4" y="70" width="14" height="20" fill="#F6D27A"/><rect x="18" y="62" width="14" height="28" fill="#F2A497"/></g>'+
+ '<g stroke="#3E3A39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">'+
+  '<rect x="38" y="34" width="16" height="58" fill="#FFFFFF"/><rect x="266" y="34" width="16" height="58" fill="#FFFFFF"/>'+
+  '<path d="M20 34H300"/><path d="M50 80H270"/>'+
+  '<path d="M50 80 Q160 -30 270 80"/>'+
+  '<path d="M70 34V62M90 34V47M110 34V37M210 34V37M230 34V47M250 34V62"/></g>'+
+ '<rect x="0" y="88" width="320" height="34" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>'+
+ '<g class="a-wave"><path d="M-20 104 q10 -6 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0" fill="none" stroke="#A8D3E6" stroke-width="3" stroke-linecap="round"/></g>'+
+ '<g class="a-bob2"><g transform="translate(136 94)" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round">'+
+  '<path d="M0 8 H46 L40 18 H8Z" fill="#F2A497"/><path d="M23 8V-18" fill="none" stroke-linecap="round"/><path d="M23 -18 L23 6 L42 4Z" fill="#FFFFFF"/></g></g>'+
+'</svg>',
+madrid:
+'<svg viewBox="0 0 320 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+
+ '<g class="a-cloud"><path d="M14 30 Q6 30 8 23 Q10 17 18 18 Q20 10 30 12 Q38 9 42 17 Q52 16 53 24 Q54 30 46 30Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/></g>'+
+ '<g class="a-cloud2"><path d="M256 26 Q250 26 252 20 Q254 15 260 16 Q262 9 270 11 Q277 8 280 15 Q288 14 289 21 Q290 26 284 26Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/></g>'+
+ '<g class="a-pulse"><circle cx="160" cy="70" r="32" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/></g>'+
+ '<rect x="0" y="92" width="320" height="30" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>'+
+ '<g fill="#FFFFFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round">'+
+  '<rect x="64" y="86" width="192" height="8" rx="2"/>'+
+  '<rect x="82" y="46" width="9" height="40"/><rect x="109" y="46" width="9" height="40"/><rect x="76" y="38" width="48" height="9" rx="2"/>'+
+  '<rect x="138" y="42" width="9" height="44"/><rect x="173" y="42" width="9" height="44"/><rect x="132" y="34" width="56" height="9" rx="2"/>'+
+  '<rect x="202" y="46" width="9" height="40"/><rect x="229" y="46" width="9" height="40"/><rect x="196" y="38" width="48" height="9" rx="2"/></g>'+
+ '<rect x="70" y="100" width="180" height="14" rx="7" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>'+
+ '<g class="a-wave"><path d="M60 107 q10 -4 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/></g>'+
+'</svg>',
+barcelona:
+'<svg viewBox="0 0 320 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+
+ '<g class="a-bob"><circle cx="36" cy="30" r="15" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/></g>'+
+ '<g class="a-cloud2"><path d="M246 26 Q240 26 242 20 Q244 15 250 16 Q252 9 260 11 Q267 8 270 15 Q278 14 279 21 Q280 26 274 26Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/></g>'+
+ '<g fill="#FFFFFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round">'+
+  '<rect x="96" y="58" width="18" height="36"/><rect x="118" y="42" width="18" height="52"/><rect x="140" y="34" width="20" height="60"/>'+
+  '<rect x="164" y="42" width="18" height="52"/><rect x="186" y="58" width="18" height="36"/></g>'+
+ '<g fill="#F6D27A" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round">'+
+  '<path d="M96 58 L105 36 L114 58Z"/><path d="M118 42 L127 18 L136 42Z"/><path d="M140 34 L150 6 L160 34Z"/>'+
+  '<path d="M164 42 L173 18 L182 42Z"/><path d="M186 58 L195 36 L204 58Z"/></g>'+
+ '<g fill="#F2A497" stroke="#3E3A39" stroke-width="2"><circle cx="105" cy="33" r="3.5"/><circle cx="127" cy="15" r="3.5"/><circle cx="150" cy="3" r="3.5"/><circle cx="173" cy="15" r="3.5"/><circle cx="195" cy="33" r="3.5"/></g>'+
+ '<g fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.2"><rect x="102" y="66" width="6" height="12" rx="3"/><rect x="124" y="52" width="6" height="14" rx="3"/><rect x="147" y="46" width="6" height="16" rx="3"/><rect x="170" y="52" width="6" height="14" rx="3"/><rect x="192" y="66" width="6" height="12" rx="3"/></g>'+
+ '<rect x="0" y="94" width="320" height="28" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>'+
+ '<g class="a-wag"><g transform="translate(246 70)" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">'+
+  '<path d="M0 22 Q-12 24 -10 34" fill="none"/>'+
+  '<path d="M0 22 Q8 6 26 10 Q42 12 48 22 Q36 30 20 28 Q8 30 0 22Z" fill="#F6D27A"/>'+
+  '<circle cx="40" cy="16" r="2" fill="#3E3A39" stroke="none"/>'+
+  '<circle cx="14" cy="18" r="3.5" fill="#F2A497" stroke-width="2"/><circle cx="26" cy="22" r="3.5" fill="#A8D3E6" stroke-width="2"/>'+
+  '<path d="M12 28 V36 M34 28 V36" fill="none"/></g></g>'+
+'</svg>'
+};
+
+/* ============================================================
+   小工具
+   ============================================================ */
+var $ = function(s,r){return (r||document).querySelector(s)};
+var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+var smooth = function(){return reduce.matches ? 'auto' : 'smooth'};
+function esc(s){return String(s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+function rich(s){return esc(s).replace(/\n/g,'<br>')}
+
+var TAGS = [
+  ['步行','🚶','green'],['飛機','✈️','coral'],['高鐵','🚄','blue'],['火車','🚆','blue'],
+  ['纜車','🚡',''],['電車','🚋',''],['巴士','🚌',''],['地鐵','🚇',''],['大眾','🚇',''],
+  ['Bolt','🚕','yellow'],['Uber','🚕','yellow'],['計程車','🚕','yellow'],['叫車','🚕','yellow'],['搭車','🚕','yellow'],
+  ['交通工具','🚌','']
+];
+function transTag(label){
+  for(var i=0;i<TAGS.length;i++){
+    if(label.indexOf(TAGS[i][0])>-1) return '<span class="tag '+TAGS[i][2]+'">'+TAGS[i][1]+' '+esc(label)+'</span>';
+  }
+  return '<span class="tag">'+esc(label)+'</span>';
+}
+function flagTags(f){
+  var out='';
+  (f||'').split(',').forEach(function(x){
+    if(!x) return;
+    var p=x.split(':'), k=p[0], v=p.slice(1).join(':');
+    if(k==='must') out='<span class="tag must">★ 必去</span>'+out;
+    else if(k==='booked') out+='<span class="tag booked">✅ 已訂妥</span>';
+    else if(k==='reserve') out+='<span class="tag reserve">📌 '+esc(v||'需預約')+'</span>';
+    else if(k==='plan') out+='<span class="tag plan">'+esc(v)+'</span>';
+  });
+  return out;
+}
+
+/* ============================================================
+   倒數
+   ============================================================ */
+function pad(n){return n<10?'0'+n:''+n}
+function tick(){
+  var d=TRIP_START-Date.now();
+  if(d<=0){
+    $('#cdBoxes').innerHTML='<div class="done" style="grid-column:1/-1;background:#B9DAA5">旅程已經出發囉！一路順風 ✈️</div>';
+    $('#cdLabel').textContent='西葡之旅';
+    clearInterval(timer);
+    return;
+  }
+  var s=Math.floor(d/1000);
+  $('#cdD').textContent=Math.floor(s/86400);
+  $('#cdH').textContent=pad(Math.floor(s%86400/3600));
+  $('#cdM').textContent=pad(Math.floor(s%3600/60));
+  $('#cdS').textContent=pad(s%60);
+}
+var timer=setInterval(tick,1000); tick();
+
+/* ============================================================
+   航班
+   ============================================================ */
+(function(){
+  var h='';
+  FLIGHTS.forEach(function(f){
+    var icon=f.k==='train'?'🚄':'✈️';
+    var st=f.st==='ok'?'<span class="f-ok">✅ '+f.stTxt+'</span>':(f.st==='wait'?'<span class="f-wait">⏳ '+f.stTxt+'</span>':'');
+    h+='<article class="flight">'+
+      '<div class="f-top"><span class="pill k-'+f.k+'">'+esc(f.d)+'</span><span class="f-no">'+icon+' '+esc(f.no)+'</span>'+st+'</div>'+
+      '<div class="f-main">'+
+        '<div><div class="t">'+esc(f.f[0])+'</div><div class="c"><b style="font-weight:400">'+esc(f.f[1])+'</b><br>'+esc(f.f[2])+'</div></div>'+
+        '<div class="arrow">➜</div>'+
+        '<div><div class="t">'+esc(f.t[0])+(f.plus?'<sup>'+f.plus+'</sup>':'')+'</div><div class="c"><b style="font-weight:400">'+esc(f.t[1])+'</b><br>'+esc(f.t[2])+'</div></div>'+
+      '</div>'+
+      '<p class="f-note">'+esc(f.note)+'</p>'+
+    '</article>';
+  });
+  $('#flightList').innerHTML=h;
+})();
+
+/* ============================================================
+   每日行程
+   ============================================================ */
+var tabsEl=$('#tabs'), panel=$('#panel'), cur=-1;
+
+function buildTabs(){
+  var h='';
+  DAYS.forEach(function(d,i){
+    h+='<button type="button" class="tab" role="tab" id="tab'+i+'" aria-selected="false" aria-controls="panel" data-i="'+i+'" style="--cc:'+CITY[d.city].cc+'">'+
+       '<small>DAY '+d.n+'</small><b>'+d.date+' '+d.wd+'</b></button>';
+  });
+  tabsEl.innerHTML=h;
+}
+
+function panelHTML(d){
+  var c=CITY[d.city];
+  var items=d.items.map(function(it){
+    var fl=it[4]||'';
+    var must=/(^|,)must(,|$)/.test(fl);
+    var tags=(it[3]||[]).map(transTag).join('')+flagTags(fl);
+    return '<li class="tl'+(must?' must':'')+'"><div class="card">'+
+      '<span class="time">'+esc(it[0])+'</span>'+
+      '<h4>'+esc(it[1])+'</h4>'+
+      (it[2]?'<p class="nt">'+rich(it[2])+'</p>':'')+
+      (tags?'<div class="tags">'+tags+'</div>':'')+
+    '</div></li>';
+  }).join('');
+  return '<div class="banner" style="--bg:'+c.bg+'">'+BANNERS[d.city]+'</div>'+
+    '<div class="dayhead" style="--cc:'+c.cc+'">'+
+      '<span class="dayno">DAY '+d.n+'｜'+d.date+' ('+d.wd+')</span>'+
+      '<h3>'+esc(d.title)+'</h3>'+
+      '<p><b>今日主題</b>'+esc(d.theme)+'</p>'+
+      '<p><b>當日動線</b>'+esc(d.route)+'</p>'+
+      (d.tip?'<p class="tip">💡 '+esc(d.tip)+'</p>':'')+
+    '</div>'+
+    '<ol class="timeline">'+items+'</ol>';
+}
+
+function retrigger(el,cls){el.classList.remove(cls);void el.offsetWidth;el.classList.add(cls)}
+
+function show(i,opts){
+  opts=opts||{};
+  if(i<0||i>=DAYS.length||i===cur) return;
+  cur=i;
+  var tabs=tabsEl.querySelectorAll('.tab');
+  tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===i?'true':'false');t.tabIndex=k===i?0:-1});
+  var t=tabs[i];
+  retrigger(t,'bounce');
+  tabsEl.scrollTo({left:t.offsetLeft-(tabsEl.clientWidth-t.offsetWidth)/2,behavior:opts.init?'auto':smooth()});
+  panel.setAttribute('aria-labelledby','tab'+i);
+  panel.innerHTML=panelHTML(DAYS[i]);
+  if(!opts.init) retrigger(panel,'pop');
+  if(!opts.init){
+    var bar=tabsEl.parentElement.getBoundingClientRect().height;
+    var top=panel.getBoundingClientRect().top+window.scrollY-parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav'))-bar-10;
+    if(window.scrollY>top) window.scrollTo({top:top,behavior:smooth()});
+  }
+}
+
+buildTabs();
+tabsEl.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(b) show(+b.dataset.i);
+});
+tabsEl.addEventListener('keydown',function(e){
+  if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+    var n=cur+(e.key==='ArrowRight'?1:-1);
+    if(n>=0&&n<DAYS.length){show(n);tabsEl.querySelectorAll('.tab')[n].focus();e.preventDefault();}
+  }
+});
+/* 左右滑動切換日期 */
+(function(){
+  var sx=0,sy=0;
+  panel.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+  panel.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy;
+    if(Math.abs(dx)>70&&Math.abs(dx)>Math.abs(dy)*1.8) show(cur+(dx<0?1:-1));
+  },{passive:true});
+})();
+
+/* 旅程期間自動停在當天，否則 Day 1 */
+(function(){
+  var start=cur=-1, now=new Date(), idx=0;
+  var base=new Date('2027-02-03T00:00:00+01:00').getTime();
+  var diff=Math.floor((now.getTime()-base)/86400000);
+  if(diff>=0&&diff<DAYS.length) idx=diff;
+  show(idx,{init:true});
+})();
+
+/* ============================================================
+   住宿
+   ============================================================ */
+(function(){
+  var h='';
+  STAYS.forEach(function(s){
+    h+='<article class="stay"><div class="stay-h" style="--cc:'+s.c+'"><b style="font-weight:400">'+esc(s.city)+'</b><span>'+s.n+' 晚</span></div>'+
+      '<div class="stay-b"><h3>'+esc(s.name)+'</h3><dl>'+
+      '<dt>入住</dt><dd>'+esc(s.in)+'</dd><dt>退房</dt><dd>'+esc(s.out)+'</dd>'+
+      '<dt>預訂</dt><dd>'+esc(s.who)+'</dd><dt>備註</dt><dd>'+esc(s.note)+'</dd></dl></div></article>';
+  });
+  $('#stayList').innerHTML=h;
+})();
+
+/* ============================================================
+   選單高亮
+   ============================================================ */
+(function(){
+  var links=document.querySelectorAll('.nav a'), secs=[].map.call(links,function(a){return document.getElementById(a.dataset.s)});
+  function on(){
+    var y=window.scrollY+90, k=0;
+    secs.forEach(function(s,i){if(s.offsetTop<=y)k=i});
+    if(window.innerHeight+window.scrollY>=document.body.scrollHeight-4) k=secs.length-1;
+    links.forEach(function(a,i){a.classList.toggle('on',i===k)});
+  }
+  window.addEventListener('scroll',on,{passive:true});window.addEventListener('resize',on);on();
+})();
+</script>
+</body>
+</html>
