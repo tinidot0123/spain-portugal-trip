@@ -82,7 +82,7 @@ h1{font-size:34px;line-height:1.25;font-weight:400;margin:10px 0 8px}
 .tab{flex:0 0 auto;scroll-snap-align:center;min-width:66px;background:var(--white);border:var(--bw) solid var(--ink);border-radius:18px;padding:3px 8px 4px;text-align:center;line-height:1.3;position:relative}
 .tab small{display:block;font-size:11.5px;color:var(--soft)}
 .tab b{font-weight:400;font-size:15px}
-.tab::after{content:"";position:absolute;right:6px;top:6px;width:9px;height:9px;border-radius:50%;border:2px solid var(--ink);background:var(--cc,var(--yellow))}
+.tab::after{content:"";position:absolute;left:calc(50% - 5px);bottom:-9px;width:10px;height:10px;border-radius:50%;border:2px solid var(--ink);background:var(--cc,var(--yellow))}
 .tab[aria-selected="true"]{background:var(--yellow);transform:translateY(-2px)}
 .tab.bounce{animation:chipBounce .55s cubic-bezier(.3,1.6,.5,1)}
 @keyframes chipBounce{0%{transform:translateY(0) scale(1)}35%{transform:translateY(-10px) scale(1.07)}65%{transform:translateY(1px) scale(.97)}100%{transform:translateY(-2px) scale(1)}}
@@ -90,9 +90,9 @@ h1{font-size:34px;line-height:1.25;font-weight:400;margin:10px 0 8px}
 .panel{margin-top:18px;outline:none}
 .panel.pop{animation:popIn .55s cubic-bezier(.3,1.4,.5,1)}
 @keyframes popIn{0%{transform:translateY(22px) scale(.95);opacity:0}55%{transform:translateY(-5px) scale(1.01);opacity:1}80%{transform:translateY(1px) scale(.998)}100%{transform:none;opacity:1}}
-.banner{border:var(--bw) solid var(--ink);border-radius:var(--r);overflow:hidden;background:var(--bg)}
+.banner{margin-bottom:14px;border:var(--bw) solid var(--ink);border-radius:var(--r);overflow:hidden;background:var(--bg)}
 .banner svg{display:block;width:100%;height:auto}
-.dayhead{margin-top:14px;background:var(--white);border:var(--bw) solid var(--ink);border-radius:var(--r);padding:12px 14px 14px}
+.dayhead{margin:14px 0 12px;background:var(--white);border:var(--bw) solid var(--ink);border-radius:var(--r);padding:12px 14px 14px}
 .dayno{display:inline-block;background:var(--cc);border:var(--bw) solid var(--ink);border-radius:999px;padding:0 12px;font-size:13.5px}
 .dayhead h3{font-size:19px;line-height:1.4;font-weight:400;margin:8px 0 6px}
 .dayhead p{font-size:14.5px;margin-top:6px}
@@ -318,7 +318,7 @@ svg *{transform-box:fill-box}
 .pform[open]{background:var(--paper)}
 .pform .eform{padding:2px 10px 10px}
 /* ---- 浮動「記一筆」 ---- */
-.fab{position:fixed;right:14px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:90;background:var(--coral);color:var(--ink);border:var(--bw) solid var(--ink);border-radius:999px;padding:8px 18px;font-size:16px;box-shadow:0 3px 0 var(--ink);transform:translateY(90px) scale(.8);opacity:0;pointer-events:none;transition:transform .35s cubic-bezier(.3,1.6,.5,1),opacity .2s}
+.fab{display:inline-flex;align-items:center;gap:5px;position:fixed;right:14px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:90;background:var(--coral);color:var(--ink);border:var(--bw) solid var(--ink);border-radius:999px;padding:5px 14px 5px 9px;font-size:13px;box-shadow:0 3px 0 var(--ink);transform:translateY(90px) scale(.8);opacity:0;pointer-events:none;transition:transform .35s cubic-bezier(.3,1.6,.5,1),opacity .2s}
 .fab.on{transform:none;opacity:1;pointer-events:auto}
 .fab:active{transform:scale(.94)}
 .fab:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
@@ -328,7 +328,7 @@ svg *{transform-box:fill-box}
 .sheet .box{position:relative;width:100%;max-width:680px;background:var(--paper);border:var(--bw) solid var(--ink);border-bottom:0;border-radius:var(--r) var(--r) 0 0;padding:14px 16px calc(16px + env(safe-area-inset-bottom));animation:sheetUp .3s cubic-bezier(.3,1.3,.5,1)}
 @keyframes sheetUp{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
 .sheet h3{font-size:17px;font-weight:400;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:8px}
-.sheet .ok{font-size:13px;color:#4d7a3a;min-height:20px;margin-top:6px}
+.sheet .ok{font-size:13px;color:#4D7A3A;min-height:20px;margin-top:6px}
 /* ---- 糖果透明感按鈕：底色半透明、文字與框線維持實色 ---- */
 :root{
   --t-coral:rgba(242,164,151,.6); --t-yellow:rgba(246,210,122,.62); --t-blue:rgba(168,211,230,.62);
@@ -363,14 +363,14 @@ svg *{transform-box:fill-box}
 .pk>summary{background:var(--bgc)}
 /* ---- 更通透：所有色塊都改成半透明（文字、框線仍是實色） ---- */
 :root{
-  --coral:rgba(242,164,151,.5); --yellow:rgba(246,210,122,.5); --blue:rgba(168,211,230,.5); --green:rgba(185,218,165,.52); --white:rgba(255,255,255,.55);
-  --t-coral:rgba(242,164,151,.42); --t-yellow:rgba(246,210,122,.45); --t-blue:rgba(168,211,230,.45);
-  --t-green:rgba(185,218,165,.48); --t-pink:rgba(247,196,212,.5); --t-lav:rgba(214,202,242,.52); --t-white:rgba(255,255,255,.5);
+  --coral:rgba(242,164,151,.36); --yellow:rgba(246,210,122,.38); --blue:rgba(168,211,230,.38); --green:rgba(185,218,165,.4); --white:rgba(255,255,255,.42);
+  --t-coral:rgba(242,164,151,.3); --t-yellow:rgba(246,210,122,.34); --t-blue:rgba(168,211,230,.34);
+  --t-green:rgba(185,218,165,.36); --t-pink:rgba(247,196,212,.38); --t-lav:rgba(214,202,242,.4); --t-white:rgba(255,255,255,.38);
 }
-.banner{background:color-mix(in srgb,var(--bg) 40%,transparent)}
-.dayno{background:color-mix(in srgb,var(--cc) 50%,transparent)}
-.stay-h{background:color-mix(in srgb,var(--cc) 50%,transparent)}
-.rmap svg{background:rgba(255,244,220,.55)}
+.banner{background:color-mix(in srgb,var(--bg) 28%,transparent)}
+.dayno{background:color-mix(in srgb,var(--cc) 36%,transparent)}
+.stay-h{background:color-mix(in srgb,var(--cc) 36%,transparent)}
+.rmap svg{background:rgba(255,244,220,.4)}
 .pk li.ck label{background:var(--t-green)}
 .sheet .box{background:var(--paper)}
 .tabs,.nav{background:var(--paper)}
@@ -382,6 +382,80 @@ svg *{transform-box:fill-box}
 .nav .brand b{display:block;font-size:13px;font-weight:700;white-space:nowrap}
 .nav nav{gap:4px}
 .nav a[data-s]{font-size:13px;padding:8px 0}
+/* ---- 行李清單編輯 ---- */
+.pk li.ed{grid-column:auto}
+.pk-ed{display:flex;align-items:center;justify-content:space-between;gap:6px;min-height:46px;padding:4px 6px 4px 12px;border:var(--bw) dashed var(--ink);border-radius:16px;background:var(--t-white);font-size:15px;line-height:1.3}
+.pk-ed span{min-width:0;overflow-wrap:anywhere}
+.pk-add{display:flex;gap:8px;padding:0 10px 12px}
+.pk-add input{flex:1;min-width:0;font:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:var(--bw) solid var(--ink);border-radius:12px;padding:5px 10px;height:42px}
+.pk-add input:focus{outline:none;background:var(--yellow)}
+.pk-add .fb-ok{flex:none}
+.pk-empty{padding:2px 14px 12px;font-size:13px;color:var(--soft)}
+.acts button[hidden]{display:none}
+/* ---- 列印／PDF ---- */
+#printArea{display:none}
+.pdfrow{text-align:center}
+.pdf-btn{font:inherit;font-size:14px;color:var(--ink);background:var(--t-lav);border:var(--bw) solid var(--ink);border-radius:999px;padding:4px 16px;box-shadow:var(--pop)}
+.pdf-btn:active{transform:translateY(1px);box-shadow:0 1px 0 var(--ink)}
+@media print{
+  @page{size:A4;margin:14mm}
+  html,body{background:#fff!important;padding:0!important}
+  body>*:not(#printArea){display:none!important}
+  #printArea{display:block!important;color:#3E3A39;font-size:11pt;line-height:1.5}
+  .rp header{border-bottom:3px solid #3E3A39;padding-bottom:6px;margin-bottom:10px}
+  .rp h1{font-size:19pt;font-weight:700;margin:0}
+  .rp header p{font-size:10pt;margin:2px 0 0;color:#5E5856}
+  .rp-tot{display:flex;align-items:baseline;gap:18px;border:3px solid #3E3A39;border-radius:14px;padding:8px 14px;margin-bottom:12px;background:#FBE3DD!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .rp-tot span{font-size:12pt;flex:1}.rp-tot b{font-size:16pt;font-weight:700}
+  .rp-b{break-inside:avoid;margin-bottom:10px}
+  .rp-b h2{display:flex;justify-content:space-between;gap:10px;font-size:11.5pt;font-weight:700;margin:0;padding:4px 10px;border:2px solid #3E3A39;border-bottom:0;border-radius:10px 10px 0 0;background:#FBF0C8!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .rp table{width:100%;border-collapse:collapse;font-size:10pt;border:2px solid #3E3A39}
+  .rp th,.rp td{border-bottom:1px solid #B9B4B1;padding:3px 8px;text-align:left}
+  .rp th{background:#F6F2EA!important;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .rp .r{text-align:right;white-space:nowrap}
+  .rp table{table-layout:fixed}.rp th:nth-child(1){width:46%}.rp th:nth-child(2){width:20%}.rp th:nth-child(3){width:19%}.rp th:nth-child(4){width:15%}
+  .rp tr{break-inside:avoid}
+  .rp-foot{font-size:9pt;color:#5E5856;margin-top:8px}
+  .rp-empty{font-size:12pt;padding:20px 0}
+}
+/* ---- 記錄花費按鈕靠右下 ---- */
+.cost{border-top:0;margin-top:6px;padding-top:0}
+.cost summary{justify-content:flex-end;gap:8px}
+.cost summary::after,.cost[open] summary::after{content:none}
+.cost summary>.csum{order:-1;margin-right:auto;font-size:12.5px;color:var(--soft)}
+.cost summary>span:first-child{display:inline-flex;align-items:center;gap:4px;font-size:13px;background:var(--t-yellow);border:2px solid var(--ink);border-radius:999px;padding:2px 12px;box-shadow:inset 0 3px 0 rgba(255,255,255,.65),0 2px 0 var(--ink)}
+.cost summary>span:first-child::after{content:"＋";font-size:14px;line-height:1}
+.cost[open] summary>span:first-child::after{content:"－"}
+.cost summary:active>span:first-child{transform:translateY(1px)}
+/* ---- 可愛小動畫 ---- */
+.a-twk{transform-box:fill-box;transform-origin:center;animation:twinkle 2.6s ease-in-out infinite}
+.a-twk.d1{animation-delay:.8s}.a-twk.d2{animation-delay:1.6s}
+@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.55) rotate(0)}50%{opacity:1;transform:scale(1.1) rotate(25deg)}}
+.a-birds{animation:birdfly 17s linear infinite}
+@keyframes birdfly{from{transform:translateX(-50px)}to{transform:translateX(380px)}}
+.a-flap{transform-box:fill-box;transform-origin:50% 100%;animation:flap .5s ease-in-out infinite alternate}
+@keyframes flap{from{transform:scaleY(1)}to{transform:scaleY(.35)}}
+.a-wheel{transform-box:fill-box;transform-origin:center;animation:spin .9s linear infinite}
+.a-trail{stroke-dasharray:5 7;animation:trail .7s linear infinite}
+@keyframes trail{to{stroke-dashoffset:-12}}
+.a-blink{transform-box:fill-box;transform-origin:center;animation:blink 4.2s ease-in-out infinite}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.a-fly2{animation:fly2 2.6s ease-in-out infinite alternate}
+@keyframes fly2{from{transform:translate(-1.5px,1.5px) rotate(1.5deg)}to{transform:translate(2px,-2px) rotate(-2deg)}}
+.a-rail2{animation:rail2 .5s ease-in-out infinite alternate}
+@keyframes rail2{from{transform:translateY(0)}to{transform:translateY(-.8px)}}
+.a-flip{transform-box:fill-box;transform-origin:center;animation:coinflip 3.6s ease-in-out infinite}
+@keyframes coinflip{0%,68%,100%{transform:scaleX(1)}84%{transform:scaleX(.12)}}
+.emo{display:inline-block;transform-origin:50% 85%;animation:wiggle 3.6s ease-in-out infinite}
+@keyframes wiggle{0%,60%,100%{transform:rotate(0) scale(1)}68%{transform:rotate(-14deg) scale(1.15)}76%{transform:rotate(12deg) scale(1.15)}84%{transform:rotate(-7deg)}92%{transform:rotate(0)}}
+.f-no svg{vertical-align:-7px;margin-right:3px}
+/* ---- 小圖示：不動、較小 ---- */
+.f-no svg,.fab svg,.brand svg,.emo,.f-no svg *,.fab svg *,.brand svg *{animation:none!important}
+.f-no svg{width:30px;height:18px;vertical-align:-4px;margin-right:2px}
+.fab svg{width:20px;height:20px}
+.fab{gap:4px;padding:4px 12px 4px 8px}
+.nav .brand svg{width:27px;height:27px}
+.emo{font-size:.78em;transform:none!important}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -404,7 +478,8 @@ svg *{transform-box:fill-box}
       <rect x="2" y="37" width="116" height="7" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
       <circle cx="26" cy="54" r="8" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
       <circle cx="96" cy="54" r="8" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
-      <circle cx="26" cy="54" r="2" fill="#3E3A39"/><circle cx="96" cy="54" r="2" fill="#3E3A39"/>
+      <g class="a-wheel"><path d="M26 47.5 V60.5 M19.5 54 H32.5" stroke="#3E3A39" stroke-width="2" stroke-linecap="round"/></g><g class="a-wheel"><path d="M96 47.5 V60.5 M89.5 54 H102.5" stroke="#3E3A39" stroke-width="2" stroke-linecap="round"/></g><circle cx="26" cy="54" r="2" fill="#3E3A39"/><circle cx="96" cy="54" r="2" fill="#3E3A39"/>
+      <path class="a-twk" d="M88 -18 l1.6 3.6 3.6 1.6 -3.6 1.6 -1.6 3.6 -1.6 -3.6 -3.6 -1.6 3.6 -1.6z" fill="#F6D27A" stroke="#3E3A39" stroke-width="1.4" stroke-linejoin="round"/>
     </symbol>
   </defs>
 </svg>
@@ -414,10 +489,10 @@ svg *{transform-box:fill-box}
     <a class="brand" href="#home" aria-label="2027 西葡之旅，回到首頁">
       <svg viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><g class="a-bob">
         <circle cx="18" cy="19" r="12.5" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.6"/>
-        <circle cx="13.5" cy="18" r="1.6" fill="#3E3A39"/><circle cx="22.5" cy="18" r="1.6" fill="#3E3A39"/>
+        <circle class="a-blink" cx="13.5" cy="18" r="1.6" fill="#3E3A39"/><circle class="a-blink" cx="22.5" cy="18" r="1.6" fill="#3E3A39"/>
         <path d="M14 22.5 q4 3.2 8 0" fill="none" stroke="#3E3A39" stroke-width="2.2" stroke-linecap="round"/>
         <circle cx="9.6" cy="22" r="2.2" fill="#F2A497"/><circle cx="26.4" cy="22" r="2.2" fill="#F2A497"/>
-        <path d="M27 31 L38 25 L33 36 L31 31 Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.2" stroke-linejoin="round"/>
+        <path class="a-fly2" d="M27 31 L38 25 L33 36 L31 31 Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.2" stroke-linejoin="round"/>
       </g></svg>
       <span><small>2027</small><b>西葡之旅</b></span>
     </a>
@@ -450,6 +525,7 @@ svg *{transform-box:fill-box}
         <g class="a-cloud2"><path d="M150 40 Q142 40 144 33 Q146 27 154 28 Q156 20 166 22 Q174 19 178 27 Q188 26 189 34 Q190 40 182 40 Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/></g>
         <!-- 飛機 -->
         <g class="a-plane">
+          <path class="a-trail" d="M86 100 H52 M80 108 H40 M84 93 H60" fill="none" stroke="#3E3A39" stroke-width="2.6" stroke-linecap="round" opacity=".55"/>
           <g transform="translate(92 88)">
             <path d="M2 6 L-6 -8 L12 6Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
             <path d="M0 12 Q0 5 11 5 H44 Q58 7 63 12 Q58 17 44 19 H11 Q0 19 0 12Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
@@ -457,6 +533,7 @@ svg *{transform-box:fill-box}
             <circle cx="40" cy="11" r="2.6" fill="#A8D3E6" stroke="#3E3A39" stroke-width="1.8"/><circle cx="49" cy="11.5" r="2.6" fill="#A8D3E6" stroke="#3E3A39" stroke-width="1.8"/>
           </g>
         </g>
+        <path class="a-twk " transform="translate(200 22) scale(1.1)" d="M0 -6 L1.8 -1.8 L6 0 L1.8 1.8 L0 6 L-1.8 1.8 L-6 0 L-1.8 -1.8Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.6" stroke-linejoin="round"/><g transform="translate(112 18) scale(0.8)"><path class="a-twk d1" d="M0 -6 L1.8 -1.8 L6 0 L1.8 1.8 L0 6 L-1.8 1.8 L-6 0 L-1.8 -1.8Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.6" stroke-linejoin="round"/></g><g transform="translate(20 120) scale(0.9)"><path class="a-twk d2" d="M0 -6 L1.8 -1.8 L6 0 L1.8 1.8 L0 6 L-1.8 1.8 L-6 0 L-1.8 -1.8Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.6" stroke-linejoin="round"/></g><g transform="translate(340 110) scale(0.8)"><path class="a-twk d1" d="M0 -6 L1.8 -1.8 L6 0 L1.8 1.8 L0 6 L-1.8 1.8 L-6 0 L-1.8 -1.8Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.6" stroke-linejoin="round"/></g><g transform="translate(0 70)"><g class="a-birds" fill="none" stroke="#3E3A39" stroke-width="2" stroke-linecap="round"><g><path class="a-flap" d="M0 0 q4 -5 8 0 q4 -5 8 0"/></g><g transform="translate(20 7) scale(.75)"><path class="a-flap" d="M0 0 q4 -5 8 0 q4 -5 8 0"/></g></g></g>
         <!-- 遠山 -->
         <path d="M0 172 Q60 132 130 160 T250 152 T360 166 V200 H0Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
         <!-- 貝倫塔 -->
@@ -574,14 +651,20 @@ svg *{transform-box:fill-box}
 <section id="pack">
   <div class="wrap">
     <h2 class="title c1">🧳 行李清單</h2>
-    <p class="note-s">帶了就打勾。勾選狀態只存在這台裝置的瀏覽器裡。</p>
+    <p class="note-s">帶了就打勾；按「編輯清單」可以自己新增或刪除項目。清單與勾選狀態只存在這台裝置的瀏覽器裡。</p>
     <div class="pk-top"><span id="pkAll"></span><div class="bar" aria-hidden="true"><i id="pkBar"></i></div>
-      <div class="acts" style="margin-top:8px"><button type="button" id="pkReset">全部取消勾選</button></div></div>
+      <div class="acts" style="margin-top:8px"><button type="button" id="pkEdit">✏️ 編輯清單</button><button type="button" id="pkReset">全部取消勾選</button><button type="button" id="pkDef" hidden>還原預設清單</button></div></div>
     <div id="pkList"></div>
   </div>
 </section>
 
-<button type="button" class="fab" id="fab" aria-label="記一筆當日其他花費">💰 記一筆</button>
+<button type="button" class="fab" id="fab" aria-label="記一筆當日其他花費"><svg viewBox="0 0 28 28" width="27" height="27" aria-hidden="true"><g class="a-bob"><g class="a-flip">
+    <circle cx="13" cy="15" r="10" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.4"/>
+    <circle cx="13" cy="15" r="6.2" fill="none" stroke="#3E3A39" stroke-width="1.4" stroke-dasharray="2 2.2"/>
+    <path d="M15.8 12.2 q-2.6-1.6-4.6.2 q-1.8 1.8-.2 4 q2 2 4.8.6 M8.8 14.4 h5 M8.8 16.4 h4.6" fill="none" stroke="#3E3A39" stroke-width="1.6" stroke-linecap="round"/>
+  </g>
+    <path class="a-twk" d="M22.5 3.5 l1 2.4 2.4 1-2.4 1-1 2.4-1-2.4-2.4-1 2.4-1z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.3" stroke-linejoin="round"/>
+  </g></svg><span>其他花費</span></button>
 <div class="sheet" id="fabSheet" hidden role="dialog" aria-modal="true" aria-labelledby="fabTitle">
   <div class="bg" id="fabBg"></div>
   <div class="box">
@@ -597,11 +680,14 @@ svg *{transform-box:fill-box}
   </div>
 </div>
 
+<div id="printArea" aria-hidden="true"></div>
+
 <footer>
   <svg viewBox="0 0 120 60" aria-hidden="true">
     <g class="a-bob"><path d="M10 40 Q0 40 2 31 Q4 23 14 24 Q16 14 28 16 Q38 12 44 22 Q56 20 58 31 Q60 40 50 40Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/></g>
     <g class="a-bob2"><circle cx="92" cy="26" r="16" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/><path d="M85 26 q3 3 6 0 M96 26 q3 3 6 0" fill="none" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/></g>
     <path d="M6 54 H114" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+    <path class="a-twk " transform="translate(70 12) scale(0.9)" d="M0 -6 L1.8 -1.8 L6 0 L1.8 1.8 L0 6 L-1.8 1.8 L-6 0 L-1.8 -1.8Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.6" stroke-linejoin="round"/><g transform="translate(112 40) scale(0.7)"><path class="a-twk d1" d="M0 -6 L1.8 -1.8 L6 0 L1.8 1.8 L0 6 L-1.8 1.8 L-6 0 L-1.8 -1.8Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.6" stroke-linejoin="round"/></g>
   </svg>
   旅途愉快，平安回家 ♡
 </footer>
@@ -888,6 +974,7 @@ var DAYS = [
 /* ============================================================
    城市插畫
    ============================================================ */
+var BANNER_DECOR='<path class="a-twk " transform="translate(24 18) scale(0.9)" d="M0 -6 L1.8 -1.8 L6 0 L1.8 1.8 L0 6 L-1.8 1.8 L-6 0 L-1.8 -1.8Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.6" stroke-linejoin="round"/><g transform="translate(150 12) scale(0.7)"><path class="a-twk d1" d="M0 -6 L1.8 -1.8 L6 0 L1.8 1.8 L0 6 L-1.8 1.8 L-6 0 L-1.8 -1.8Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.6" stroke-linejoin="round"/></g><g transform="translate(298 16) scale(0.8)"><path class="a-twk d2" d="M0 -6 L1.8 -1.8 L6 0 L1.8 1.8 L0 6 L-1.8 1.8 L-6 0 L-1.8 -1.8Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.6" stroke-linejoin="round"/></g><g transform="translate(0 26)"><g class="a-birds" fill="none" stroke="#3E3A39" stroke-width="2" stroke-linecap="round"><g><path class="a-flap" d="M0 0 q4 -5 8 0 q4 -5 8 0"/></g><g transform="translate(20 7) scale(.75)"><path class="a-flap" d="M0 0 q4 -5 8 0 q4 -5 8 0"/></g></g></g>';
 var BANNERS = {
 lisbon:
 '<svg viewBox="0 0 320 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+
@@ -1007,6 +1094,7 @@ function tick(){
   $('#cdS').textContent=pad(s%60);
 }
 var timer=setInterval(tick,1000); tick();
+[].forEach.call(document.querySelectorAll('h2.title'),function(t){var s=t.textContent,i=s.indexOf(' ');if(i>0)t.innerHTML='<span class="emo">'+s.slice(0,i)+'</span>'+esc(s.slice(i))});
 
 /* ============================================================
    航班
@@ -1014,10 +1102,10 @@ var timer=setInterval(tick,1000); tick();
 (function(){
   var h='';
   FLIGHTS.forEach(function(f){
-    var icon=f.k==='train'?'🚄':'✈️';
+    var icon=f.k==='train'?'<svg class="fi" viewBox="0 0 46 28" width="42" height="26" aria-hidden="true"><path class="a-trail" d="M1 11 H8 M3 16 H10" fill="none" stroke="#3E3A39" stroke-width="2" stroke-linecap="round" opacity=".55"/><g class="a-rail2"><path d="M10 20 V9 Q10 4 15 4 H33 Q43 5 44 15 V20 Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.2" stroke-linejoin="round"/><rect x="10" y="16" width="34" height="4" fill="#F2A497" stroke="#3E3A39" stroke-width="2"/><rect x="14" y="7.5" width="6" height="5" rx="1.5" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.6"/><rect x="23" y="7.5" width="6" height="5" rx="1.5" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.6"/><rect x="32" y="7.5" width="7" height="5" rx="1.5" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.6"/><circle cx="18" cy="22.5" r="3.4" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/><circle cx="35" cy="22.5" r="3.4" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/><g class="a-wheel"><path d="M18 19.8 V25.2 M15.3 22.5 H20.7" stroke="#3E3A39" stroke-width="1.3" stroke-linecap="round"/></g><g class="a-wheel"><path d="M35 19.8 V25.2 M32.3 22.5 H37.7" stroke="#3E3A39" stroke-width="1.3" stroke-linecap="round"/></g></g><path d="M4 27 H44" stroke="#3E3A39" stroke-width="2" stroke-linecap="round" class="a-trail"/></svg>':'<svg class="fi" viewBox="0 0 46 28" width="42" height="26" aria-hidden="true"><g class="a-fly2"><path class="a-trail" d="M1 13 H9 M4 19 H12" fill="none" stroke="#3E3A39" stroke-width="2" stroke-linecap="round" opacity=".55"/><g transform="translate(11 5) scale(.42)"><path d="M2 6 L-6 -8 L12 6Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3.4" stroke-linejoin="round"/><path d="M0 12 Q0 5 11 5 H44 Q58 7 63 12 Q58 17 44 19 H11 Q0 19 0 12Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3.4" stroke-linejoin="round"/><path d="M26 12 L14 30 L32 30 L44 13Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="3.4" stroke-linejoin="round"/><circle cx="40" cy="11" r="2.6" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.2"/><circle cx="49" cy="11.5" r="2.6" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.2"/></g></g></svg>';
     var st=f.st==='ok'?'<span class="f-ok">✅ '+f.stTxt+'</span>':(f.st==='wait'?'<span class="f-wait">⏳ '+f.stTxt+'</span>':'');
     h+='<article class="flight">'+
-      '<div class="f-top"><span class="pill k-'+f.k+'">'+esc(f.d)+'</span><span class="f-no">'+icon+' '+esc(f.no)+'</span>'+st+'</div>'+
+      '<div class="f-top"><span class="pill k-'+f.k+'">'+esc(f.d)+'</span><span class="f-no">'+icon+esc(f.no)+'</span>'+st+'</div>'+
       '<div class="f-main">'+
         '<div><div class="t">'+esc(f.f[0])+'</div><div class="c"><b style="font-weight:400">'+esc(f.f[1])+'</b><br>'+esc(f.f[2])+'</div></div>'+
         '<div class="arrow">➜</div>'+
@@ -1143,6 +1231,8 @@ function routeMapHTML(d){
   var g='';
   (R.park||[]).forEach(function(p){g+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="'+p[2]+'" fill="#B9DAA5" opacity=".6"/>'});
   g+=SEAS[R.sea||'none']||''; if(R.river) g+=RIVER;
+  var bt={bottom:[40,176],left:[14,110],corner:[298,174]}[R.sea||'none']; if(R.river) bt=[70,126]; if(bt) g+='<g transform="translate('+bt[0]+' '+bt[1]+')"><g class="a-bob"><path d="M-9 0 H9 L6 6 H-6Z" fill="#F2A497" stroke="#3E3A39" stroke-width="2" stroke-linejoin="round"/><path d="M0 -1 V-14 L8 -3Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2" stroke-linejoin="round"/></g></g>';
+  g+='<g transform="translate(300 22) scale(0.8)"><path class="a-twk d1" d="M0 -6 L1.8 -1.8 L6 0 L1.8 1.8 L0 6 L-1.8 1.8 L-6 0 L-1.8 -1.8Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.6" stroke-linejoin="round"/></g><g transform="translate(24 24) scale(0.7)"><path class="a-twk d2" d="M0 -6 L1.8 -1.8 L6 0 L1.8 1.8 L0 6 L-1.8 1.8 L-6 0 L-1.8 -1.8Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.6" stroke-linejoin="round"/></g>';
   (R.lab||[]).forEach(function(l){g+='<text class="lab" x="'+l[1]+'" y="'+l[2]+'">'+esc(l[0])+'</text>'});
   var full='M'+S[seq[0]][1]+' '+S[seq[0]][2];
   for(var i=0;i<seq.length-1;i++){
@@ -1160,13 +1250,15 @@ function routeMapHTML(d){
   });
   var dur=Math.max(6,seq.length*1.6);
   var walker=reduce.matches?'':'<text class="walker" text-anchor="middle" dy="5">🚶<animateMotion dur="'+dur+'s" repeatCount="indefinite" rotate="0"><mpath href="#rp'+d.n+'"/></animateMotion></text>';
-  return '<details class="rmap" open><summary><span>🗺️ 今日路線小地圖</span></summary>'+
+  return '<details class="rmap"><summary><span>🗺️ 今日路線小地圖</span></summary>'+
     '<div class="mapbox"><svg viewBox="0 0 320 190" role="img" aria-label="Day '+d.n+' 當日路線示意圖">'+g+walker+pins+'</svg></div>'+
     '<p class="key"><span><i style="background:#F2A497"></i>景點</span><span><i style="background:#F6D27A"></i>吃喝</span><span><i style="background:#A8D3E6"></i>住宿</span><span><i style="background:#B9DAA5"></i>交通</span></p>'+
     '<ol class="legend">'+leg+'</ol>'+
     '<p class="hint">示意圖：位置為概略方位、非精確比例。點圖釘或名稱可開 Google 地圖。</p></details>';
 }
 
+(function(){for(var k in BANNERS) BANNERS[k]=BANNERS[k].replace('</svg>',BANNER_DECOR+'</svg>')})();
+var DAYLOC={1:'里斯本',2:'里斯本',3:'辛特拉',4:'里斯本 ➔ 波多',5:'波多',6:'波多 ➔ 馬德里',7:'馬德里',8:'馬德里 ➔ 巴塞隆納',9:'巴塞隆納',10:'蒙特塞拉特',11:'西切斯',12:'巴塞隆納'};
 function panelHTML(d){
   var c=CITY[d.city];
   var items=d.items.map(function(it){
@@ -1181,14 +1273,15 @@ function panelHTML(d){
       costHTML(d,it)+
     '</div></li>';
   }).join('');
-  return xbarHTML(d)+routeMapHTML(d)+'<div class="banner" style="--bg:'+c.bg+'">'+BANNERS[d.city]+'</div>'+
-    '<div class="dayhead" style="--cc:'+c.cc+'">'+
-      '<span class="dayno">DAY '+d.n+'｜'+d.date+' ('+d.wd+')</span>'+
+  return '<div class="dayhead" style="--cc:'+c.cc+'">'+
+      '<span class="dayno">DAY '+d.n+'｜'+d.date+' ('+d.wd+') '+(DAYLOC[d.n]||'')+'</span>'+
       '<h3>'+esc(d.title)+'</h3>'+
       '<p><b>今日主題</b>'+esc(d.theme)+'</p>'+
       '<p><b>當日動線</b>'+esc(d.route)+'</p>'+
       (d.tip?'<p class="tip">💡 '+esc(d.tip)+'</p>':'')+
     '</div>'+
+    '<div class="banner" style="--bg:'+c.bg+'">'+BANNERS[d.city]+'</div>'+
+    routeMapHTML(d)+
     '<ol class="timeline">'+items+'</ol>'+
     '<div class="daycost" id="dayCost">'+dayCostInner(d)+'</div>';
 }
@@ -1404,6 +1497,7 @@ function renderCostSummary(){
       if(!rows) return;
       body+='<div class="pg"><div class="ph"><button type="button" class="jump" data-i="'+i+'"><b>DAY '+d.n+'</b>｜'+d.date+' ('+d.wd+')</button><span>'+bothTW(ds)+'</span></div><ul class="pl">'+rows+'</ul></div>';
     });
+    body+='<div class="pg pdfrow"><button type="button" class="pdf-btn" data-p="'+p+'">📄 輸出'+who(p)+'的花費明細（PDF）</button></div>';
     h+='<article class="pcard '+(p==='a'?'p1':'p2')+'"><div class="pt"><b>'+who(p)+' 的明細</b></div>'+body+'</article>';
   });
   $('#cardGrid').innerHTML=h;
@@ -1449,6 +1543,50 @@ $('#sumGrid').addEventListener('click',function(e){
     addEventListener('scroll',f,{passive:true});f();
   }
 })();
+/* ---- 個人花費明細輸出成 PDF（用瀏覽器的列印→儲存為 PDF） ---- */
+function buildReport(p){
+  var name=who(p), tot=(p==='a'?allSum().a:allSum().b);
+  function row(label,e,cur,v){
+    var ev=toEur(v,cur);
+    return '<tr><td>'+label+'</td><td class="r">'+nat(v,cur)+'</td><td class="r">'+twd(ev*rate)+'</td><td class="r">'+eur(ev)+'</td></tr>';
+  }
+  function block(title,rows,sum){
+    return '<section class="rp-b"><h2><span>'+title+'</span><span>'+bothTW(sum)+'</span></h2>'+
+      '<table><thead><tr><th>項目</th><th class="r">原幣金額</th><th class="r">NT$</th><th class="r">€</th></tr></thead><tbody>'+rows+'</tbody></table></section>';
+  }
+  var out='', pl=pre.filter(function(e){return (e.p==='b'?'b':'a')===p&&amt(e.amt)>0});
+  if(pl.length){
+    var r='',s=0;
+    pl.forEach(function(e){var dt=mdStr(e.date);r+=row(esc((dt?dt+'　':'')+(e.note||'未命名')),e,e.cur,amt(e.amt));s+=toEur(amt(e.amt),e.cur)});
+    out+=block('行前花費',r,s);
+  }
+  DAYS.forEach(function(d){
+    var r='',s=0;
+    d.items.forEach(function(it){
+      var c=costs[cKey(d,it)]||{}, v=amt(c[p]);
+      if(v>0){r+=row(esc(shortName(it[1])),null,c['c'+p],v);s+=toEur(v,c['c'+p])}
+    });
+    (extras[d.n]||[]).forEach(function(e){
+      if((e.p==='b'?'b':'a')!==p||amt(e.amt)<=0) return;
+      r+=row('其他・'+esc(e.note||'未命名'),e,e.cur,amt(e.amt));s+=toEur(amt(e.amt),e.cur);
+    });
+    if(r) out+=block('DAY '+d.n+'｜'+d.date+' ('+d.wd+')｜'+esc(d.title.split('・')[0]),r,s);
+  });
+  if(!out) out='<p class="rp-empty">目前還沒有任何花費紀錄。</p>';
+  var now=new Date();
+  $('#printArea').innerHTML='<div class="rp"><header><h1>西葡之旅花費明細｜'+name+'</h1>'+
+    '<p>旅程 2027/2/3–2/14　·　匯率 1 € = NT$ '+nf(rate,2)+'　·　製表日 '+now.getFullYear()+'/'+(now.getMonth()+1)+'/'+now.getDate()+'</p></header>'+
+    '<div class="rp-tot"><span>'+name+' 總花費</span><b>'+twd(tot*rate)+'</b><b>'+eur(tot)+'</b></div>'+out+
+    '<p class="rp-foot">台幣金額依上列匯率換算；以台幣輸入的項目以原金額為準。</p></div>';
+  return name;
+}
+function exportPDF(p){
+  var nm=buildReport(p), old=document.title;
+  document.title='西葡之旅花費明細-'+nm;
+  var done=function(){document.title=old;$('#printArea').innerHTML='';window.removeEventListener('afterprint',done)};
+  window.addEventListener('afterprint',done);
+  setTimeout(function(){window.print();},50);
+}
 var cg=$('#cardGrid');
 cg.addEventListener('toggle',function(e){var d=e.target; if(d.classList&&d.classList.contains('pform')) openForm[d.dataset.p]=d.open},true);
 function onCardEdit(e){
@@ -1473,6 +1611,8 @@ cg.addEventListener('submit',function(e){
   savePre();renderCostSummary();
 });
 cg.addEventListener('click',function(e){
+  var pb=e.target.closest('.pdf-btn');
+  if(pb){exportPDF(pb.dataset.p);return}
   var j=e.target.closest('.jump');
   if(j){show(+j.dataset.i);$('#days').scrollIntoView({behavior:smooth()});return}
   var c=e.target.closest('.f-cancel');
@@ -1591,7 +1731,13 @@ var PACK=[
  ['👜 隨身用品','#F2A497',['行充','雨傘','髮圈','電子書','錢包','耳機','水壺','乾洗手','墨鏡','防陽帽','髮箍']],
  ['🎒 其他','#B9DAA5',['香水','耳環','備用隱眼','隱眼藥水','藥品','新露露','夾腳拖','布鞋','換洗衣物','免洗內褲','垃圾袋','浴毛巾','維持器','眼鏡','吹風機','睡衣','髮膠','旅行袋','口罩','卷髮乳','枕頭套']]
 ];
-var KKEY='esp-pt-pack-v1', packed={}, packOpen={};
+var KKEY='esp-pt-pack-v1', LKEY='esp-pt-packlist-v1', packed={}, packOpen={}, pkEdit=false;
+var PACK_DEF=PACK.map(function(c){return c[2].slice()});
+try{
+  var pl0=JSON.parse(localStorage.getItem(LKEY)||'null');
+  if(Array.isArray(pl0)&&pl0.length===PACK.length&&pl0.every(Array.isArray)) pl0.forEach(function(a,i){PACK[i][2]=a.filter(function(s){return typeof s==='string'&&s})});
+}catch(e){}
+function savePackList(){try{localStorage.setItem(LKEY,JSON.stringify(PACK.map(function(c){return c[2]})))}catch(e){}}
 try{packed=JSON.parse(localStorage.getItem(KKEY)||'{}')||{}}catch(e){packed={}}
 function savePack(){try{localStorage.setItem(KKEY,JSON.stringify(packed))}catch(e){}}
 function pkKey(ci,ii){return ci+'|'+PACK[ci][2][ii]}
@@ -1600,14 +1746,21 @@ function pkRender(){
   var h='';
   PACK.forEach(function(c,ci){
     var n=pkCount(ci), t=c[2].length;
-    h+='<details class="pk'+(n===t?' done':'')+'" data-c="'+ci+'"'+(packOpen[ci]===false?'':' open')+' style="--bgc:'+c[1]+'"><summary><span>'+esc(c[0])+'</span><span class="cnt">'+n+' / '+t+'</span></summary><ul>';
+    h+='<details class="pk'+(n===t&&t>0?' done':'')+'" data-c="'+ci+'"'+(packOpen[ci]===false?'':' open')+' style="--bgc:'+c[1]+'"><summary><span>'+esc(c[0])+'</span><span class="cnt">'+n+' / '+t+'</span></summary><ul>';
     c[2].forEach(function(name,ii){
       var k=pkKey(ci,ii), ck=!!packed[k];
-      h+='<li'+(ck?' class="ck"':'')+'><label><input type="checkbox" data-c="'+ci+'" data-i="'+ii+'"'+(ck?' checked':'')+'><span>'+esc(name)+'</span></label></li>';
+      if(pkEdit) h+='<li class="ed"><div class="pk-ed"><span>'+esc(name)+'</span><button type="button" class="eb dl pk-del" data-c="'+ci+'" data-i="'+ii+'" aria-label="刪除 '+esc(name)+'">✕</button></div></li>';
+      else h+='<li'+(ck?' class="ck"':'')+'><label><input type="checkbox" data-c="'+ci+'" data-i="'+ii+'"'+(ck?' checked':'')+'><span>'+esc(name)+'</span></label></li>';
     });
-    h+='</ul></details>';
+    h+='</ul>';
+    if(!t) h+='<p class="pk-empty">這個分類還沒有項目'+(pkEdit?'':'，按上方「編輯清單」新增')+'。</p>';
+    if(pkEdit) h+='<form class="pk-add" data-c="'+ci+'" autocomplete="off"><input type="text" maxlength="20" placeholder="新增項目…" aria-label="新增到'+esc(c[0])+'"><button type="submit" class="fb-ok">＋ 新增</button></form>';
+    h+='</details>';
   });
   $('#pkList').innerHTML=h;
+  $('#pkEdit').textContent=pkEdit?'✔ 完成編輯':'✏️ 編輯清單';
+  $('#pkDef').hidden=!pkEdit;
+  $('#pkReset').hidden=pkEdit;
   pkTotal();
 }
 function pkTotal(){
@@ -1629,6 +1782,27 @@ $('#pkList').addEventListener('change',function(e){
 $('#pkList').addEventListener('toggle',function(e){
   var d=e.target; if(d.classList&&d.classList.contains('pk')) packOpen[d.dataset.c]=d.open;
 },true);
+$('#pkEdit').addEventListener('click',function(){pkEdit=!pkEdit;pkRender()});
+$('#pkDef').addEventListener('click',function(){
+  if(!confirm('要還原成預設的行李清單嗎？你新增或刪除的項目都會恢復成預設（勾選狀態會保留）。')) return;
+  PACK.forEach(function(c,i){c[2]=PACK_DEF[i].slice()});
+  savePackList();pkRender();
+});
+$('#pkList').addEventListener('click',function(e){
+  var b=e.target.closest('.pk-del'); if(!b) return;
+  var ci=+b.dataset.c, ii=+b.dataset.i, k=pkKey(ci,ii);
+  delete packed[k]; PACK[ci][2].splice(ii,1);
+  savePack();savePackList();pkRender();
+});
+$('#pkList').addEventListener('submit',function(e){
+  var f=e.target; if(!f.matches||!f.matches('form.pk-add')) return;
+  e.preventDefault();
+  var ci=+f.dataset.c, inp=f.querySelector('input'), v=inp.value.trim();
+  if(!v) return;
+  if(PACK[ci][2].indexOf(v)>=0){inp.value='';inp.placeholder='「'+v+'」已經有了';return}
+  PACK[ci][2].push(v); savePackList(); pkRender();
+  var ni=document.querySelector('#pkList form.pk-add[data-c="'+ci+'"] input'); if(ni) ni.focus();
+});
 $('#pkReset').addEventListener('click',function(){
   if(!confirm('要把行李清單全部取消勾選嗎？')) return;
   packed={};savePack();pkRender();
