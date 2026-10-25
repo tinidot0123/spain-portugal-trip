@@ -622,7 +622,7 @@ details.bk-more>.bk-in{margin-top:10px}
 </svg>
 
 <header class="nav">
-  <div class="nt-bar" id="twClock" role="timer" aria-label="台灣時間"><svg class="twf" viewBox="0 0 24 16" width="17" height="11" aria-hidden="true"><rect width="24" height="16" rx="2.5" fill="#E8574D"/><rect width="12" height="8" fill="#3C5FA8"/><circle cx="6" cy="4" r="2.4" fill="#fff"/><circle cx="6" cy="4" r="1.5" fill="#3C5FA8"/><circle cx="6" cy="4" r="1.1" fill="#fff"/><rect width="24" height="16" rx="2.5" fill="none" stroke="#3E3A39" stroke-width="1.6"/></svg><span>時間 --:--</span></div>
+  <div class="nt-bar" id="twClock" role="timer" aria-label="台灣時間"><svg class="twf" viewBox="0 0 24 16" width="17" height="11" aria-hidden="true"><rect width="24" height="16" rx="2.5" fill="#E8574D"/><rect width="12" height="8" fill="#3C5FA8"/><circle cx="6" cy="4" r="2.4" fill="#fff"/><circle cx="6" cy="4" r="1.5" fill="#3C5FA8"/><circle cx="6" cy="4" r="1.1" fill="#fff"/><rect width="24" height="16" rx="2.5" fill="none" stroke="#3E3A39" stroke-width="1.6"/></svg><span>--:--</span></div>
   <nav aria-label="主選單">
     <a class="brand" href="#home" aria-label="2027 西葡之旅，回到首頁">
       <svg viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><g class="a-bob">
@@ -2335,7 +2335,7 @@ function renderCharts(){
   function tick(){
     var o={}; f.formatToParts(new Date()).forEach(function(p){o[p.type]=p.value});
     var hh=o.hour==='24'?'00':o.hour, s=o.month+'/'+o.day+'（'+o.weekday+'）'+hh+':'+o.minute;
-    el.lastChild.textContent='時間 '+s; el.setAttribute('aria-label','台灣時間 '+s);
+    el.lastChild.textContent=s; el.setAttribute('aria-label','台灣時間 '+s);
   }
   tick(); setInterval(tick,15000);
   document.addEventListener('visibilitychange',function(){if(!document.hidden)tick()});
