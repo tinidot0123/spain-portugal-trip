@@ -18,7 +18,7 @@
 :root{
   --paper:#FFFCF6; --ink:#3E3A39; --soft:#5E5856;
   --coral:#F2A497; --yellow:#F6D27A; --blue:#A8D3E6; --green:#B9DAA5; --white:#FFFFFF;
-  --bw:3px; --r:22px; --nav:58px;
+  --bw:3px; --r:22px; --nav:80px;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{color-scheme:light;scroll-behavior:smooth;scroll-padding-top:calc(var(--nav) + 12px)}
@@ -32,7 +32,10 @@ button{font:inherit;color:inherit;cursor:pointer}
 
 /* ---------- 固定選單 ---------- */
 .nav{position:fixed;top:0;left:0;right:0;height:var(--nav);z-index:100;background:var(--paper);border-bottom:var(--bw) solid var(--ink)}
-.nav nav{max-width:680px;margin:0 auto;height:100%;display:flex;gap:6px;align-items:center;justify-content:space-between;padding:0 10px}
+.nav{display:flex;flex-direction:column}
+.nav .nt-bar{flex:none;height:21px;display:flex;align-items:center;justify-content:center;gap:5px;font-size:11.5px;line-height:1;color:var(--ink);background:var(--t-yellow);border-bottom:2px solid var(--ink)}
+.nav .nt-bar svg{width:16px;height:11px;flex:none}
+.nav nav{width:100%;max-width:680px;margin:0 auto;flex:1;min-height:0;display:flex;gap:6px;align-items:center;justify-content:space-between;padding:0 10px}
 .nav a{flex:1;text-decoration:none;color:var(--ink);text-align:center;font-size:14.5px;line-height:1.2;padding:8px 2px;background:var(--c,var(--yellow));border:var(--bw) solid var(--ink);border-radius:14px;transition:transform .2s,box-shadow .2s}
 .nav a:nth-child(2){--c:var(--yellow)} .nav a:nth-child(3){--c:var(--blue)} .nav a:nth-child(4){--c:var(--coral)}
 .nav a:nth-child(5){--c:var(--green)} .nav a:nth-child(6){--c:var(--yellow)} .nav a:nth-child(7){--c:var(--blue)}
@@ -386,6 +389,9 @@ svg *{transform-box:fill-box}
 .nav .brand span{display:block;line-height:1.1}
 .nav .brand small{display:block;font-size:11px;letter-spacing:1px;color:var(--soft)}
 .nav .brand b{display:block;font-size:13px;font-weight:700;white-space:nowrap}
+.nav .brand svg.twf{display:inline-block;width:17px;height:11px;vertical-align:-1px;margin-right:4px}
+.nav .brand .twt span{display:inline}
+.nav .brand .twt{display:block;font-style:normal;font-size:10.5px;line-height:1.2;color:var(--soft);white-space:nowrap;letter-spacing:.2px;margin-top:1px}
 .nav nav{gap:4px}
 .nav a[data-s]{font-size:13px;padding:8px 0}
 /* ---- 行李清單編輯 ---- */
@@ -528,6 +534,7 @@ details.bk-more>.bk-in{margin-top:10px}
 .pk{background:rgba(255,255,255,.5)}
 .pk li label{background:rgba(255,255,255,.7)}
 .pk li.ck label{background:rgba(185,218,165,.38)}
+.nowbtn[hidden]{display:none}
 .nowbtn{display:block;margin:6px auto 0;font:inherit;font-size:13.5px;color:var(--ink);background:var(--t-coral);border:var(--bw) solid var(--ink);border-radius:999px;padding:2px 16px;box-shadow:var(--pop);cursor:pointer}
 .tl.now::before{background:var(--coral);box-shadow:0 0 0 4px rgba(242,164,151,.4)}
 .tl.now .card{box-shadow:0 0 0 3px rgba(242,164,151,.55)}
@@ -614,6 +621,7 @@ details.bk-more>.bk-in{margin-top:10px}
 </svg>
 
 <header class="nav">
+  <div class="nt-bar" id="twClock" role="timer" aria-label="台灣時間"><svg class="twf" viewBox="0 0 24 16" width="17" height="11" aria-hidden="true"><rect width="24" height="16" rx="2.5" fill="#E8574D"/><rect width="12" height="8" fill="#3C5FA8"/><circle cx="6" cy="4" r="2.4" fill="#fff"/><circle cx="6" cy="4" r="1.5" fill="#3C5FA8"/><circle cx="6" cy="4" r="1.1" fill="#fff"/><rect width="24" height="16" rx="2.5" fill="none" stroke="#3E3A39" stroke-width="1.6"/></svg><span>時間 --:--</span></div>
   <nav aria-label="主選單">
     <a class="brand" href="#home" aria-label="2027 西葡之旅，回到首頁">
       <svg viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><g class="a-bob">
@@ -1764,7 +1772,7 @@ $('#sumGrid').addEventListener('click',function(e){
   var inDays=false;
   function vis(){fab.classList.toggle('on',inDays&&sheet.hidden)}
   if('IntersectionObserver' in window){
-    new IntersectionObserver(function(es){inDays=es[0].isIntersecting;vis()},{rootMargin:'-90px 0px 0px 0px'}).observe($('#days'));
+    new IntersectionObserver(function(es){inDays=es[0].isIntersecting;vis()},{rootMargin:'-112px 0px 0px 0px'}).observe($('#days'));
   }else{
     var f=function(){var r=$('#days').getBoundingClientRect();inDays=r.top<innerHeight&&r.bottom>0;vis()};
     addEventListener('scroll',f,{passive:true});f();
@@ -2142,7 +2150,7 @@ bkRender();
 (function(){
   var links=document.querySelectorAll('.nav a[data-s]'), secs=[].map.call(links,function(a){return document.getElementById(a.dataset.s)});
   function on(){
-    var y=window.scrollY+90, k=0;
+    var y=window.scrollY+112, k=0;
     secs.forEach(function(s,i){if(s.offsetTop<=y)k=i});
     if(window.innerHeight+window.scrollY>=document.body.scrollHeight-4) k=secs.length-1;
     links.forEach(function(a,i){a.classList.toggle('on',i===k)});
@@ -2318,6 +2326,21 @@ function renderCharts(){
   });
 })();
 
+
+/* ---- 台灣時間（左上角） ---- */
+(function(){
+  var el=document.getElementById('twClock'); if(!el||!window.Intl) return;
+  var tf=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Taipei',hour:'2-digit',minute:'2-digit',hour12:false});
+  var df=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'});
+  function tick(){
+    var n=new Date(), t=tf.format(n).replace('24:','00:'), tw=df.format(n);
+    var loc=n.getFullYear()+'-'+('0'+(n.getMonth()+1)).slice(-2)+'-'+('0'+n.getDate()).slice(-2);
+    var tag=tw>loc?'（隔天）':tw<loc?'（前一天）':'';
+    el.lastChild.textContent='時間 '+t+tag; el.setAttribute('aria-label','台灣時間 '+t+tag);
+  }
+  tick(); setInterval(tick,15000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)tick()});
+})();
 </script>
 </body>
 </html>
