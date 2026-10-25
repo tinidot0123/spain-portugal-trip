@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light">
 <title>2027 西葡 12 天雙國之旅</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#FFFCF6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="西葡之旅">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
@@ -424,7 +430,8 @@ svg *{transform-box:fill-box}
 .cost summary::after,.cost[open] summary::after{content:none}
 .cost summary>.csum{order:-1;margin-right:auto;font-size:12.5px;color:var(--soft)}
 .cost summary>span:first-child{display:inline-flex;align-items:center;gap:4px;font-size:13px;background:var(--t-yellow);border:2px solid var(--ink);border-radius:999px;padding:2px 12px;box-shadow:inset 0 3px 0 rgba(255,255,255,.65),0 2px 0 var(--ink)}
-.cost summary>span:first-child::after{content:"＋";font-size:14px;line-height:1}
+.cost summary>span:first-child::after{content:"▼";font-size:10px;line-height:1}
+.cost[open] summary>span:first-child::after{content:"▲"}
 .cost[open] summary>span:first-child::after{content:"－"}
 .cost summary:active>span:first-child{transform:translateY(1px)}
 /* ---- 可愛小動畫 ---- */
@@ -514,6 +521,70 @@ details.bk-more>.bk-in{margin-top:10px}
 .bk-mon>summary em{font-style:normal;font-size:12px;margin-left:8px;padding:0 9px;border:1.5px solid var(--ink);border-radius:999px;background:var(--t-yellow);vertical-align:2px}
 .bk-mon.full>summary em{background:var(--t-green)}
 .bk-mon{margin-bottom:10px}
+.legnote{font-size:12px;color:var(--soft);margin:14px 2px 0}
+.timeline .leg{position:relative;padding-left:40px;margin:-6px 0 8px;list-style:none}
+.timeline .leg span{display:inline-block;font-size:11.5px;line-height:1.5;padding:0 9px;border:1.5px solid var(--ink);border-radius:999px;background:var(--t-blue);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.6)}
+.pk>summary{background:rgba(255,255,255,.55);background:color-mix(in srgb,var(--bgc) 34%,transparent)}
+.pk{background:rgba(255,255,255,.5)}
+.pk li label{background:rgba(255,255,255,.7)}
+.pk li.ck label{background:rgba(185,218,165,.38)}
+.nowbtn{display:block;margin:6px auto 0;font:inherit;font-size:13.5px;color:var(--ink);background:var(--t-coral);border:var(--bw) solid var(--ink);border-radius:999px;padding:2px 16px;box-shadow:var(--pop);cursor:pointer}
+.tl.now::before{background:var(--coral);box-shadow:0 0 0 4px rgba(242,164,151,.4)}
+.tl.now .card{box-shadow:0 0 0 3px rgba(242,164,151,.55)}
+.tl.now .card::before{content:'📍 現在';position:absolute;top:-11px;right:16px;font-size:11.5px;line-height:1.5;padding:0 9px;border:1.5px solid var(--ink);border-radius:999px;background:var(--t-coral)}
+.dayhead .wx{background:var(--t-blue);border:2px solid var(--ink);border-radius:14px;padding:6px 10px;margin-top:10px;line-height:1.6;font-size:13.5px}
+.wxs{font-size:12px;color:var(--soft)}
+.clim{margin:10px 2px 4px;background:var(--t-white);border:2px solid var(--ink);border-radius:16px;padding:6px 12px;font-size:13.5px}
+.clim summary{cursor:pointer;list-style:none}
+.clim summary::-webkit-details-marker{display:none}
+.clim ul{list-style:none;margin:8px 0 4px;padding:0}
+.clim li{margin:5px 0;line-height:1.55}
+.clim li span{font-size:12.5px;color:var(--soft)}
+.offbar{position:fixed;left:50%;transform:translateX(-50%);top:calc(var(--nav,56px) + 8px);z-index:95;font-size:12px;background:var(--t-yellow);border:2px solid var(--ink);border-radius:999px;padding:1px 12px;white-space:nowrap;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.offbar[hidden]{display:none}
+.offnote{font-size:12px;color:var(--soft);margin:10px 16px 0;line-height:1.6;text-align:center}
+.fxrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:-4px 2px 12px}
+.fxrow button{font:inherit;font-size:13px;color:var(--ink);background:var(--t-blue);border:2px solid var(--ink);border-radius:999px;padding:1px 12px;cursor:pointer}
+.fxrow span{font-size:12px;color:var(--soft)}
+.chartbox{background:var(--t-white);border:var(--bw) solid var(--ink);border-radius:var(--r);padding:12px 14px 14px;margin:12px 0}
+.ch-t{font-size:17px;font-weight:400;margin:0 0 8px}
+.ch-seg{display:flex;gap:6px;margin-bottom:8px}
+.ch-seg button{font:inherit;font-size:13px;color:var(--ink);background:var(--t-white);border:2px solid var(--ink);border-radius:999px;padding:0 14px;cursor:pointer}
+.ch-seg button[aria-pressed="true"]{background:var(--t-yellow);box-shadow:0 2px 0 var(--ink);font-weight:700}
+.ch-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ch-donut{width:150px;height:150px;flex:none;margin:0 auto}
+.ch-donut text{font-family:inherit}
+.ch-donut *,.ch-bars *{transform-box:view-box}
+.ch-seg-c{cursor:pointer}
+.ch-leg{list-style:none;margin:0;padding:0;flex:1;min-width:170px}
+.ch-leg button{display:flex;align-items:center;gap:6px;width:100%;font:inherit;font-size:13.5px;color:var(--ink);background:none;border:0;padding:3px 2px;cursor:pointer;text-align:left}
+.ch-leg i{flex:none;width:12px;height:12px;border-radius:4px;border:1.5px solid var(--ink)}
+.ch-leg span{flex:1}
+.ch-leg b{font-weight:400}
+.ch-leg small{width:34px;text-align:right;color:var(--soft);font-size:12px}
+.ch-s{font-size:13.5px;font-weight:400;margin:12px 0 2px}
+.ch-bars{width:100%;height:auto;display:block}
+.ch-bars text{font-family:inherit}
+.ch-bar{cursor:pointer}
+.ch-tip{font-size:13px;min-height:20px;margin:2px 0 0}
+.ch-note,.ch-empty{font-size:12px;color:var(--soft);margin:6px 0 0;line-height:1.6}
+.ch-empty{font-size:13.5px;text-align:center;padding:10px 0}
+.pk>summary::after,.pform>summary::after{content:'▼';font-size:11px;flex:none;margin-left:2px}
+.pk[open]>summary::after,.pform[open]>summary::after{content:'▲'}
+.pform>summary{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.tkrow{margin-top:10px}
+.tkbtn{font:inherit;font-size:14px;color:var(--ink);background:var(--t-pink);border:var(--bw) solid var(--ink);border-radius:999px;padding:3px 18px;box-shadow:inset 0 3px 0 rgba(255,255,255,.65),0 2px 0 var(--ink);cursor:pointer}
+.tkbtn:active{transform:translateY(1px)}
+.tkm{position:fixed;inset:0;z-index:200;background:rgba(62,58,57,.55);overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 12px calc(20px + env(safe-area-inset-bottom))}
+.tkm[hidden]{display:none}
+.tkm-in{max-width:460px;margin:0 auto;background:var(--paper);border:var(--bw) solid var(--ink);border-radius:var(--r);padding:12px 12px 16px}
+.tkm-h{display:flex;align-items:center;justify-content:space-between;font-size:17px}
+.tkm-h b{font-weight:400}
+.tkm-h button{font:inherit;width:34px;height:34px;border-radius:50%;border:2px solid var(--ink);background:var(--t-coral);color:var(--ink);cursor:pointer}
+.tkm-s{font-size:13px;color:var(--soft);margin:4px 0 10px;line-height:1.6}
+.tkm img{display:block;width:100%;height:auto;border:2px solid var(--ink);border-radius:12px;margin-bottom:12px;background:#fff}
+.tkm-b{text-align:center}
+.tkm-b button{font:inherit;font-size:14px;color:var(--ink);background:var(--t-blue);border:2px solid var(--ink);border-radius:999px;padding:3px 18px;cursor:pointer}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -685,6 +756,7 @@ details.bk-more>.bk-in{margin-top:10px}
 <!-- ================= 每日行程 ================= -->
 <section id="days" style="padding-bottom:0">
   <div class="wrap"><h2 class="title c2">🗓️ 每日行程</h2></div>
+  <div class="wrap"><button type="button" class="nowbtn" id="nowBtn" hidden>📍 跳到現在的行程</button></div>
   <div class="tabs"><div class="tabs-in" id="tabs" role="tablist" aria-label="選擇日期"></div></div>
   <div class="wrap"><article class="panel" id="panel" role="tabpanel" tabindex="-1"></article></div>
 </section>
@@ -695,8 +767,10 @@ details.bk-more>.bk-in{margin-top:10px}
     <h2 class="title c3">💰 花費總覽</h2>
     <p class="note-s">行前花費、景點花費與每日「其他花費」都可選歐元或台幣。佳俞、婕瑜分別統計，並同時標示歐元與台幣。資料只存在這台裝置的瀏覽器裡。</p>
     <div class="sumgrid" id="sumGrid"></div>
+    <div class="chartbox" id="chartBox"></div>
     <label class="rate">匯率　1 € = NT$ <input id="rateIn" type="number" inputmode="decimal" min="0" step="0.01" aria-label="歐元兌台幣匯率">
       <small>預設 36.48（2026/10/24 的參考匯率），請依實際刷卡或換匯匯率修改。台幣金額都用這個匯率換算。</small></label>
+    <div class="fxrow"><button type="button" id="fxBtn">🔄 更新即時匯率</button><span id="fxMsg" role="status"></span></div>
     <div id="cardGrid"></div>
     <div class="acts">
       <button type="button" id="copyCost">📋 複製明細</button>
@@ -754,6 +828,7 @@ details.bk-more>.bk-in{margin-top:10px}
     <path class="a-twk " transform="translate(70 12) scale(0.9)" d="M0 -6 L1.8 -1.8 L6 0 L1.8 1.8 L0 6 L-1.8 1.8 L-6 0 L-1.8 -1.8Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.6" stroke-linejoin="round"/><g transform="translate(112 40) scale(0.7)"><path class="a-twk d1" d="M0 -6 L1.8 -1.8 L6 0 L1.8 1.8 L0 6 L-1.8 1.8 L-6 0 L-1.8 -1.8Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.6" stroke-linejoin="round"/></g>
   </svg>
   旅途愉快，平安回家 ♡
+  <p class="offnote" id="offNote">📴 離線使用：第一次在有網路時打開本頁，之後沒有網路也能看。<br>iPhone：Safari「分享」➔「加入主畫面」；Android：Chrome 選單 ➔「安裝應用程式／加到主畫面」。</p>
 </footer>
 
 <script>
@@ -767,7 +842,7 @@ var FLIGHTS = [
   {d:'2/3 (三)', k:'air', no:'土耳其航空 TK 1755', f:['08:25','IST','伊斯坦堡'], t:['10:35','LIS','里斯本 T1'], note:'飛行 5h 10m'},
   {d:'2/6 (六)', k:'train', no:'葡萄牙國鐵 CP｜Alfa Pendular 高鐵', f:['約 12:00','里斯本','Santa Apolónia'], t:['約 15:00','波多','Campanhã'], note:'目標搭乘中午左右 Alfa Pendular（待購票確認班次）', st:'wait', stTxt:'待購票'},
   {d:'2/8 (一)', k:'air', no:'伊比利航空 IB 546', f:['12:25','OPO','波多'], t:['14:45','MAD','馬德里'], note:'已訂妥 (€66)｜西葡時差 +1 小時', st:'ok', stTxt:'已訂妥'},
-  {d:'2/10 (三)', k:'train', no:'西班牙高鐵 Iryo Infinita', f:['11:22','馬德里','Atocha'], t:['14:39','巴塞隆納','Sants'], note:'已訂妥 (€88.08/雙人)｜訂位代號 B80YTZ｜第 2 車廂 座位 11A / 11B', st:'ok', stTxt:'已訂妥'},
+  {d:'2/10 (三)', k:'train', no:'西班牙高鐵 Iryo Infinita', f:['11:22','馬德里','Atocha'], t:['14:39','巴塞隆納','Sants'], note:'已訂妥 (€88.08/雙人)｜第 2 車廂 座位 11A / 11B', st:'ok', stTxt:'已訂妥'},
   {d:'2/14 (日)', k:'air', no:'土耳其航空 TK 1856', f:['18:20','BCN','巴塞隆納 T1'], t:['23:55','IST','伊斯坦堡'], note:'飛行 3h 35m；轉機 2h 00m'},
   {d:'2/15 (一)', k:'air', no:'土耳其航空 TK 24', f:['01:55','IST','伊斯坦堡'], t:['17:40','TPE','台北桃園 T2'], note:'飛行 10h 45m；平安返抵台灣'}
 ];
@@ -965,7 +1040,7 @@ var DAYS = [
    ['09:25–09:45','返回飯店取行李','散步回飯店領取行李。',['步行']],
    ['09:45–10:15','前往 Madrid-Puerta de Atocha 車站','建議搭乘計程車直達阿托查高鐵站。',['計程車']],
    ['10:15–11:00','安檢、確認月台、候車','西班牙高鐵上車前需過行李 X 光安檢，提前確認月台從容候車。',[]],
-   ['11:22–14:39','🚆 搭乘 Iryo 高鐵前往巴塞隆納 (Sants)','已訂妥 (€88.08/雙人)｜訂位代號：B80YTZ｜第 2 車廂 11A / 11B 座位。',['高鐵'],'must,booked'],
+   ['11:22–14:39','🚆 搭乘 Iryo 高鐵前往巴塞隆納 (Sants)','已訂妥 (€88.08/雙人)｜第 2 車廂 11A / 11B 座位。',['高鐵'],'must,booked'],
    ['14:40–15:45','抵達巴塞隆納 Sants ➔ 入住 Hotel Pulitzer','搭乘計程車或地鐵前往位於加泰隆尼亞廣場旁的 Hotel Pulitzer 辦理入住並安頓行李。',['計程車','地鐵']],
    ['16:15–17:00','四貓餐廳 (Els Quatre Gats)','走訪畢卡索年輕時舉辦首次個展與設計菜單的現代主義歷史餐館（可入內喝下午茶或於經典拱門外觀拍照）。',[]],
    ['17:00–18:30','哥德區 (Barri Gòtic) 深度漫步','穿梭中世紀石板巷弄：欣賞巴塞隆納主座堂 (Catedral)、打卡嘆息橋風格的主教橋 (Pont del Bisbe)、靜謐的聖菲利普內里廣場與古羅馬城牆遺址。',['步行'],'must'],
@@ -985,7 +1060,7 @@ var DAYS = [
    ['16:35–17:15','🌇 屋頂酒吧：Bar-Terrassa Sercotel Rosselló','從聖家堂步行 3 分鐘即達。於飯店頂樓露台點杯氣泡酒或調酒，以毫無遮蔽的平視視角近距離欣賞聖家堂高塔與夕陽餘暉。',['步行']],
    ['17:25–18:10','☕ 精品咖啡：Nomad Coffee Lab & Shop','從屋頂酒吧搭計程車約 8 分鐘抵達波恩區私密綠意巷弄（Passatge Sert, 12）。在打烊前品嚐巴塞隆納最頂尖的獨立烘焙手沖或 Flat White。\n若在屋頂酒吧停留較晚超過 18:00，可改去步行 5 分鐘外的分支據點 Nomad Everyday。',['計程車']],
    ['18:15–19:15','🍰 甜點：Jon Cake ＆ 波恩區散步','從 Nomad 步行 4 分鐘即達！外帶或現場品嚐全巴塞隆納最紅、濃郁絲滑的流心巴斯克乳酪蛋糕。',['步行']],
-   ['19:30–21:30','🎶 加泰隆尼亞音樂宮音樂會 (Palau de la Música Catalana)','20:00 音樂會已訂妥！務必於 19:30 提早進場，在大廳與二樓露台拍攝絕美的「倒置水滴狀彩繪玻璃天窗」與馬賽克玫瑰花柱。',[],'must,booked'],
+   ['19:30–21:30','🎶 加泰隆尼亞音樂宮音樂會 (Palau de la Música Catalana)','20:00 音樂會已訂妥！務必於 19:30 提早進場，在大廳與二樓露台拍攝絕美的「倒置水滴狀彩繪玻璃天窗」與馬賽克玫瑰花柱。\n🎫 座位：2 樓（2n pis）18 排，2 號與 4 號，共 2 張。',[],'must,booked'],
    ['21:30–23:00','🍷 晚餐 / 微醺：Can Cisa / Bar Brutal','音樂會結束後步行 7 分鐘深入波恩區，在巴塞隆納最具指標性的自然酒餐酒館品飲精選自然酒配精緻佐酒料理。',['步行']]
   ]},
  {n:10,date:'2/12',wd:'五',city:'barcelona',
@@ -1323,29 +1398,50 @@ function routeMapHTML(d){
 
 (function(){for(var k in BANNERS) BANNERS[k]=BANNERS[k].replace('</svg>',BANNER_DECOR+'</svg>')})();
 var DAYLOC={1:'里斯本',2:'里斯本',3:'辛特拉',4:'里斯本 ➔ 波多',5:'波多',6:'波多 ➔ 馬德里',7:'馬德里',8:'馬德里 ➔ 巴塞隆納',9:'巴塞隆納',10:'蒙特塞拉特',11:'西切斯',12:'巴塞隆納'};
+var TRAVEL={
+1:{0:'搭車 20min',1:'步行 10min',3:'搭車 10min',4:'步行 5min',5:'步行 5min',6:'步行 5min',7:'步行 5min',8:'步行 3min',9:'步行 3min',10:'步行 10min',12:'步行 15min'},
+2:{0:'搭車 20min',2:'步行 15min',3:'步行 3min',4:'步行 10min',6:'搭車 20min',9:'步行 20min',11:'步行 15min'},
+3:{0:'步行 5min',1:'火車 40min',2:'搭車 15min',4:'搭車 10min',6:'步行 10min',7:'步行 10min',8:'步行 10min',9:'火車 40min',10:'搭車 10min',13:'步行 15min'},
+4:{1:'搭車 10min',2:'搭車 10min',4:'搭車 15min',5:'高鐵 3hr → 搭車 15min',6:'步行 10min',8:'步行 5min',9:'步行 8min',10:'步行 10min',11:'步行 10min',12:'搭車 10min',13:'步行 5min'},
+5:{0:'步行 5min',1:'步行 3min',2:'步行 5min',3:'步行 3min',4:'步行 8min',5:'步行 3min',6:'步行 8min',8:'步行 12min',10:'搭車 15min',12:'搭車 10min',13:'步行 5min',14:'步行 5min',16:'搭車 10min',18:'步行 10min',19:'步行 10min'},
+6:{1:'搭車 25min',3:'飛機 1hr20min',4:'搭車 25min',5:'步行 5min',6:'步行 12min',7:'步行 15min',8:'步行 10min',9:'步行 10min'},
+7:{0:'步行 8min',2:'步行 10min',3:'步行 2min',4:'步行 8min',5:'步行 10min',7:'搭車 10min',9:'搭車 15min',11:'搭車 10min',13:'步行 8min'},
+8:{1:'步行 10min',3:'步行 10min',4:'搭車 10min',6:'高鐵 3hr15min → 搭車 15min',7:'步行 8min',8:'步行 3min',9:'步行 8min',10:'步行 10min'},
+9:{0:'搭車 15min',1:'搭車 15min',2:'步行 3min',3:'步行 5min',4:'步行 7min',5:'搭車 15min',6:'步行 5min',7:'步行 8min',8:'步行 8min'},
+10:{0:'地鐵 15min',1:'火車 1hr → 纜車 5min',2:'步行 3min',4:'纜車 5min → 火車 1hr',5:'步行 10min',7:'搭車 10min',8:'搭車 10min'},
+11:{0:'步行 10min → 火車 40min',2:'火車 40min',3:'步行 10min',4:'搭車 10min',6:'步行 10min'},
+12:{0:'地鐵 10min',1:'步行 8min',2:'步行 3min',3:'步行 10min',4:'步行 15min',6:'搭車 25min'}
+};
+function legHTML(d,i){
+  var t=(TRAVEL[d.n]||{})[i]; if(!t) return '';
+  var ic=/^步行/.test(t)?'🚶':/^地鐵/.test(t)?'🚇':/^(火車|高鐵)/.test(t)?'🚆':/^飛機/.test(t)?'✈️':'🚕';
+  return '<li class="leg" aria-label="移動時間 '+t+'"><span>'+ic+' '+t+'</span></li>';
+}
 function panelHTML(d){
   var c=CITY[d.city];
-  var items=d.items.map(function(it){
+  var items=d.items.map(function(it,ii){
     var fl=it[4]||'';
     var must=/(^|,)must(,|$)/.test(fl);
-    var tags=(it[3]||[]).map(transTag).join('')+flagTags(fl);
+    var tags=flagTags(fl);
     return '<li class="tl'+(must?' must':'')+'"><div class="card">'+
       '<div class="card-top"><span class="time">'+esc(it[0])+'</span>'+mapLink(d,it)+'</div>'+
       '<h4>'+esc(it[1])+'</h4>'+
       (it[2]?'<p class="nt">'+rich(it[2])+'</p>':'')+
       (tags?'<div class="tags">'+tags+'</div>':'')+
       costHTML(d,it)+
-    '</div></li>';
+    '</div></li>'+legHTML(d,ii);
   }).join('');
   return '<div class="dayhead" style="--cc:'+c.cc+'">'+
       '<span class="dayno">DAY '+d.n+'｜'+d.date+' ('+d.wd+') '+(DAYLOC[d.n]||'')+'</span>'+
       '<h3>'+esc(d.title)+'</h3>'+
       '<p><b>今日主題</b>'+esc(d.theme)+'</p>'+
       '<p><b>當日動線</b>'+esc(d.route)+'</p>'+
+      '<p class="wx" id="wxBox">'+wxLine(d)+'</p>'+
       (d.tip?'<p class="tip">💡 '+esc(d.tip)+'</p>':'')+
     '</div>'+
     '<div class="banner" style="--bg:'+c.bg+'">'+BANNERS[d.city]+'</div>'+
     routeMapHTML(d)+
+    '<p class="legnote">⏱ 景點間的移動時間為預估值，實際依路況與班次調整</p>'+
     '<ol class="timeline">'+items+'</ol>'+
     '<div class="daycost" id="dayCost">'+dayCostInner(d)+'</div>';
 }
@@ -1363,6 +1459,7 @@ function show(i,opts){
   tabsEl.scrollTo({left:t.offsetLeft-(tabsEl.clientWidth-t.offsetWidth)/2,behavior:opts.init?'auto':smooth()});
   panel.setAttribute('aria-labelledby','tab'+i);
   panel.innerHTML=panelHTML(DAYS[i]);
+  markNow();
   if(!opts.init) retrigger(panel,'pop');
   if(!opts.init){
     var bar=tabsEl.parentElement.getBoundingClientRect().height;
@@ -1391,12 +1488,77 @@ tabsEl.addEventListener('keydown',function(e){
   },{passive:true});
 })();
 
+/* ============================================================
+   現在時間定位／天氣資料（需在初始化前定義）
+   ============================================================ */
+var chartP='all';
+var CATCOL={'餐飲':'#F2A497','交通':'#A8D3E6','景點門票':'#F6D27A','購物':'#D6CAF2','住宿':'#B9DAA5','機票':'#F7C4D4','其他':'#D9D2C7'};
+var NOWQ=(location.search.match(/[?&]now=([^&]+)/)||[])[1];
+function nowDate(){
+  if(NOWQ){var d=new Date(decodeURIComponent(NOWQ)); if(!isNaN(d.getTime())) return d}
+  return new Date();
+}
+function tripDayIdx(){
+  var n=nowDate(); if(n.getFullYear()!==2027) return -1;
+  var md=(n.getMonth()+1)+'/'+n.getDate();
+  for(var i=0;i<DAYS.length;i++) if(DAYS[i].date===md) return i;
+  return -1;
+}
+function tmin(s){var m=/(\d{1,2}):(\d{2})/.exec(s||'');return m?(+m[1])*60+(+m[2]):null}
+function curItemIdx(d){
+  var n=nowDate(), nm=n.getHours()*60+n.getMinutes(), k=-1;
+  d.items.forEach(function(it,i){var s=tmin(it[0]);if(s!==null&&!/同時段/.test(it[0])&&s<=nm)k=i});
+  return k<0?0:k;
+}
+function markNow(){
+  if(!panel) return;
+  [].forEach.call(panel.querySelectorAll('li.tl.now'),function(x){x.classList.remove('now')});
+  var i=tripDayIdx(); if(i<0||i!==cur) return;
+  var li=panel.querySelectorAll('li.tl')[curItemIdx(DAYS[i])];
+  if(li) li.classList.add('now');
+}
+function goNow(){
+  var i=tripDayIdx(); if(i<0) return false;
+  if(cur!==i) show(i,{init:true});
+  markNow();
+  var li=panel.querySelector('li.tl.now'); if(!li) return true;
+  var navH=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav'))||56;
+  var bar=tabsEl.parentElement.getBoundingClientRect().height;
+  window.scrollTo({top:li.getBoundingClientRect().top+window.scrollY-navH-bar-18,behavior:'auto'});
+  return true;
+}
+
+var WX_DAY={1:'lisbon',2:'lisbon',3:'sintra',4:'porto',5:'porto',6:'madrid',7:'madrid',8:'barcelona',9:'barcelona',10:'montserrat',11:'sitges',12:'barcelona'};
+var WX_LOC={lisbon:[38.72,-9.14],sintra:[38.80,-9.38],porto:[41.15,-8.61],madrid:[40.42,-3.70],barcelona:[41.39,2.17],montserrat:[41.59,1.81],sitges:[41.24,1.81]};
+var WXN={lisbon:'里斯本',sintra:'辛特拉',porto:'波多',madrid:'馬德里',barcelona:'巴塞隆納',montserrat:'蒙特塞拉特',sitges:'錫切斯'};
+var WXKEY='esp-pt-wx-v1';
+function wxCache(){try{return JSON.parse(localStorage.getItem(WXKEY)||'null')}catch(e){return null}}
+function wxIcon(c){
+  if(c===0) return '☀️'; if(c<=2) return '🌤'; if(c===3) return '☁️';
+  if(c===45||c===48) return '🌫'; if(c>=51&&c<=67) return '🌧'; if(c>=71&&c<=77) return '❄️';
+  if(c>=80&&c<=82) return '🌦'; if(c>=95) return '⛈'; return '🌥';
+}
+function wxIso(dt){var m=/^(\d+)\/(\d+)$/.exec(dt);return m?'2027-'+('0'+m[1]).slice(-2)+'-'+('0'+m[2]).slice(-2):''}
+function wxLine(d){
+  var k=WX_DAY[d.n], ca=wxCache(), f=ca&&ca.d&&ca.d[k]&&ca.d[k][wxIso(d.date)], c=ca&&ca.cur&&ca.cur[k], h='<b>天氣</b>';
+  function hm(ts){var t=new Date(ts);return ('0'+t.getHours()).slice(-2)+':'+('0'+t.getMinutes()).slice(-2)}
+  function rng(x){return Math.round(x.lo)+'–'+Math.round(x.hi)+'°C｜降雨機率 '+x.pp+'%'}
+  if(tripDayIdx()===d.n-1&&c){
+    h+=wxIcon(c.c)+' 現在 '+Math.round(c.t)+'°C（體感 '+Math.round(c.a)+'°C）'+(f?'｜今日 '+rng(f):'')+' <span class="wxs">（'+WXN[k]+'・'+hm(ca.ts)+' 更新）</span>';
+  }else if(f){
+    var t=new Date(ca.ts);
+    h+=wxIcon(f.c)+' 預報 '+rng(f)+' <span class="wxs">（'+WXN[k]+'・'+(t.getMonth()+1)+'/'+t.getDate()+' '+hm(ca.ts)+' 更新）</span>';
+  }else{
+    var far=nowDate().getTime()+16*86400000<new Date('2027-02-03T00:00:00+01:00').getTime();
+    h+='<span class="wxs">'+(far?'出發前約 2 週起，這裡會顯示當地的即時天氣預報':(navigator.onLine===false?'目前沒有網路，連線後會顯示當地天氣':'讀取當地天氣中…'))+'</span>';
+  }
+  return h;
+}
+
 /* 旅程期間自動停在當天，否則 Day 1 */
 (function(){
-  var start=cur=-1, now=new Date(), idx=0;
-  var base=new Date('2027-02-03T00:00:00+01:00').getTime();
-  var diff=Math.floor((now.getTime()-base)/86400000);
-  if(diff>=0&&diff<DAYS.length) idx=diff;
+  var start=cur=-1, idx=tripDayIdx();
+  if(idx<0) idx=0;
   show(idx,{init:true});
 })();
 
@@ -1568,6 +1730,7 @@ function renderCostSummary(){
   $('#sumGrid').innerHTML=
     '<button type="button" class="s1" data-to="p1"><small>佳俞 總花費</small><b>'+eur(t.a)+'</b><b>'+twd(t.a*rate)+'</b></button>'+
     '<button type="button" class="s2" data-to="p2"><small>婕瑜 總花費</small><b>'+eur(t.b)+'</b><b>'+twd(t.b*rate)+'</b></button>';
+  renderCharts();
 }
 $('#sumGrid').addEventListener('click',function(e){
   var b=e.target.closest('button[data-to]'); if(!b) return;
@@ -1810,7 +1973,7 @@ function pkRender(){
   var h='';
   PACK.forEach(function(c,ci){
     var n=pkCount(ci), t=c[2].length;
-    h+='<details class="pk'+(n===t&&t>0?' done':'')+'" data-c="'+ci+'"'+(packOpen[ci]===false?'':' open')+' style="--bgc:'+c[1]+'"><summary><span>'+esc(c[0])+'</span><span class="cnt">'+n+' / '+t+'</span></summary><ul>';
+    h+='<details class="pk'+(n===t&&t>0?' done':'')+'" data-c="'+ci+'"'+(packOpen[ci]===true?' open':'')+' style="--bgc:'+c[1]+'"><summary><span>'+esc(c[0])+'</span><span class="cnt">'+n+' / '+t+'</span></summary><ul>';
     c[2].forEach(function(name,ii){
       var k=pkKey(ci,ii), ck=!!packed[k];
       if(pkEdit) h+='<li class="ed"><div class="pk-ed"><span>'+esc(name)+'</span><button type="button" class="eb dl pk-del" data-c="'+ci+'" data-i="'+ii+'" aria-label="刪除 '+esc(name)+'">✕</button></div></li>';
@@ -1876,7 +2039,7 @@ pkRender();
 /* ============================================================
    待訂：依日期排列、訂好打勾、直達訂位網站
    ============================================================ */
-var BOOK=[{"name":"波多飛馬德里機票","level":"已完成","status":"已訂妥","trip":"2027-02-08","city":"馬德里","det":"Iberia IB 546，12:25 起飛 ➔ 14:45 抵達馬德里（時差+1），€66","url":"","book":"","btime":"","cat":"交通","note":"","dep":"","card":false,"mail":"","tel":[],"id":0},{"name":"馬德里到巴塞隆納高鐵","level":"已完成","status":"已訂妥","trip":"2027-02-10","city":"巴塞隆納","det":"11:22-14:39，雙人 €88.08，代號 B80YTZ，第 2 車廂 11A/11B","url":"","book":"","btime":"","cat":"交通","note":"","dep":"","card":false,"mail":"","tel":[],"id":1},{"name":"加泰隆尼亞音樂宮音樂會","level":"已完成","status":"已訂妥","trip":"2027-02-11","city":"巴塞隆納","det":"20:00–21:30，保存電子票券 QR Code","url":"","book":"","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":2},{"name":"Bar Cañete 晚餐","level":"已完成","status":"已訂妥","trip":"2027-02-10","city":"巴塞隆納","det":"19:30–21:30，建議入座吧台區","url":"","book":"","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":3},{"name":"Can Cisa / Bar Brutal 自然酒吧","level":"👍 建議預約","status":"待訂","trip":"2027-02-11","city":"巴塞隆納","det":"用餐：2/11 21:30–23:00（音樂會後步行 7 分鐘）；後方用餐區可訂位、吧台現場；不急，1/22 提醒預約","url":"https://barbrutal.com","book":"2027-01-22","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":4},{"name":"Cervejaria Ramiro 晚餐","level":"🔥 極搶・開放就訂","status":"待訂","trip":"2027-02-04","city":"里斯本","det":"用餐：2/4 19:15–20:45（山上聖母觀景台夕陽後步行 10–12 分鐘）；TheFork 線上訂位，每人預付 €25 訂金可折抵帳單，24 小時前取消全額退，每桌最多 6 人；開放天數官方未公告","url":"https://www.thefork.com/restaurant/cervejaria-ramiro-r730931","book":"2026-11-05","btime":"","cat":"餐廳","note":"","dep":"每人預付 €25 訂金，可折抵帳單；24 小時前取消全額退","card":false,"mail":"","tel":[],"id":5},{"name":"米其林推薦 Gresca 晚餐","level":"🔥 極搶・開放就訂","status":"待訂","trip":"2027-02-13","city":"巴塞隆納","det":"用餐：2/13（週六）20:00–21:45；用餐日前 3 個月開放訂位，官網或電話 +34 934 516 193；台灣時間 11/13 07:00（以當地 00:00 開放推估）","url":"https://gresca.rest","book":"2026-11-13","btime":"07:00","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":["+34 934 516 193"],"id":6},{"name":"葡萄牙到波多CP高鐵早鳥票","level":"🔥 極搶・開放就訂","status":"待訂","trip":"2027-02-06","city":"波多","det":"搭乘：2/6 Alfa Pendular，里斯本 Santa Apolónia 約 12:00 ➔ 波多 Campanhã 約 15:00（搶 4～6 折 Promo 票）；CP 約出發前 60 天開賣，Promo 票需至少提前 5 天購買；實名制需護照號碼","url":"https://www.cp.pt","book":"2026-12-08","btime":"","cat":"交通","note":"","dep":"","card":false,"mail":"","tel":[],"id":7},{"name":"聖家堂 Sagrada Família 門票","level":"🔥 極搶・開放就訂","status":"待訂","trip":"2027-02-11","city":"巴塞隆納","det":"參觀：2/11，鎖定 15:00 斜陽穿透彩繪玻璃場次；官網約提前 2 個月釋票，現場沒有售票口","url":"https://sagradafamilia.org","book":"2026-12-11","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":8},{"name":"世界第一調酒Sips 酒吧","level":"🔥 極搶・開放就訂","status":"待訂","trip":"2027-02-13","city":"巴塞隆納","det":"前往：2/13 22:00–23:30（Gresca 後步行 6 分鐘）；前 2 個月於官網訂位，需綁信用卡擔保；台灣時間 12/13 07:00（以當地 00:00 開放推估）","url":"https://sips.barcelona","book":"2026-12-13","btime":"07:00","cat":"酒吧","note":"","dep":"","card":true,"mail":"","tel":[],"id":9},{"name":"熱羅尼莫斯修道院門票","level":"👍 建議預約","status":"待訂","trip":"2027-02-04","city":"里斯本","det":"參觀：2/4 09:50–11:20（預留 90 分鐘）；貝倫塔只看外觀不需買票；不急，1/15 提醒預約","url":"https://www.museusemonumentos.pt","book":"2027-01-15","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":10},{"name":"A Tasca do Chico 法朵 (Fado Vadio)","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-03","city":"里斯本","det":"2/3 晚餐後約 20:40 抵達 Bairro Alto，不接受預約，現場視座位候位","url":"","book":"","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":11},{"name":"辛特拉佩納宮門票","level":"👍 建議預約","status":"待訂","trip":"2027-02-05","city":"里斯本","det":"參觀：2/5 10:00 入宮時段（10:00–11:45）；時段延誤不得入場；不急，1/16 提醒預約","url":"https://www.parquesdesintra.pt/en/parks-monuments/park-and-national-palace-of-pena/","book":"2027-01-16","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":12},{"name":"波多萊羅書店門票","level":"👍 建議預約","status":"待訂","trip":"2027-02-07","city":"波多","det":"參觀：2/7 11:00 指定時段（預留 45–50 分鐘），門票可折抵購書；不急，1/18 提醒預約","url":"https://www.livrarialello.pt","book":"2027-01-18","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":13},{"name":"馬德里王宮門票","level":"❗ 必須預約","status":"待訂","trip":"2027-02-09","city":"馬德里","det":"參觀：2/9 10:30 入場（10:30–12:00）；前 2.5 個月開放購票；台灣時間 11/24 07:00（以當地 00:00 開放推估）","url":"https://tickets.patrimonionacional.es/en-GB/venta-de-entradas","book":"2026-11-24","btime":"07:00","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":14},{"name":"Graham's 波特酒莊導覽與品飲","level":"👍 建議預約","status":"待訂","trip":"2027-02-07","city":"波多","det":"參觀：2/7 15:30 場次，酒窖導覽＋品飲 15:30–17:00；不急，1/18 提醒預約","url":"https://www.grahams-port.com/1890-lodge","book":"2027-01-18","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":15},{"name":"奎爾公園門票","level":"❗ 必須預約","status":"待訂","trip":"2027-02-11","city":"巴塞隆納","det":"參觀：2/11 09:30（09:30–11:30）；前 3 個月開放購票，實名制，每筆最多 7 張；台灣時間 11/11 07:00（以當地 00:00 開放推估）","url":"https://parkguell.barcelona","book":"2026-11-11","btime":"07:00","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":16},{"name":"四貓餐廳 (Els Quatre Gats)","level":"❗ 必須預約","status":"待訂","trip":"2027-02-10","city":"巴塞隆納","det":"2/10 16:15–17:00 下午茶；前 3 個月開放訂位；台灣時間 11/10 07:00（以當地 00:00 開放推估）","url":"https://www.google.com/maps/search/?api=1&query=Els+Quatre+Gats+Barcelona","book":"2026-11-10","btime":"07:00","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":17},{"name":"蒙特塞拉特修道院黑面聖母參拜","level":"👍 建議預約","status":"待訂","trip":"2027-02-12","city":"巴塞隆納","det":"參觀：2/12；參拜需預約時段（08:00–10:30、12:00–18:25），買 Trans Montserrat 時確認是否已含；不急，1/23 提醒預約","url":"https://www.montserratvisita.com","book":"2027-01-23","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":18},{"name":"Prado de Flores 晚餐","level":"👍 建議預約","status":"待訂","trip":"2027-02-12","city":"巴塞隆納","det":"用餐：2/12 19:00–21:15，Hotel Pulitzer 步行約 6 分鐘；不急，1/23 提醒預約","url":"https://www.google.com/maps/search/?api=1&query=Prado+de+Flores+Restaurant+Barcelona","book":"2027-01-23","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":19},{"name":"巴特婁之家門票","level":"❗ 必須預約","status":"待訂","trip":"2027-02-14","city":"巴塞隆納","det":"參觀：2/14 10:00；前 2 個月開放購票，動態票價越早買越便宜，上屋頂需選 Silver 以上；台灣時間 12/14 07:00（以當地 00:00 開放推估）","url":"https://www.casabatllo.es/en/online-tickets/","book":"2026-12-14","btime":"07:00","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":20},{"name":"La Flauta 告別午餐","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-14","city":"巴塞隆納","det":"用餐：2/14 12:30–14:00，Rambla de Catalunya 分店；免預約，直接走進去","url":"https://www.google.com/maps/search/?api=1&query=La+Flauta+Rambla+de+Catalunya+Barcelona","book":"","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":21},{"name":"Sercotel Rosselló 聖家堂屋頂酒吧","level":"❗ 必須預約","status":"待訂","trip":"2027-02-11","city":"巴塞隆納","det":"前往：2/11 16:35–17:15，屋頂平視聖家堂；前 2 週開放訂位；台灣時間 1/28 07:00（以當地 00:00 開放推估）","url":"https://www.google.com/maps/search/?api=1&query=Sercotel+Rossell%C3%B3+Barcelona","book":"2027-01-28","btime":"07:00","cat":"酒吧","note":"","dep":"","card":false,"mail":"","tel":[],"id":22},{"name":"Forno d'Oro 午餐","level":"👍 建議預約","status":"待訂","trip":"2027-02-03","city":"里斯本","det":"用餐：2/3 13:00–14:10，拿坡里披薩；不急，1/14 提醒預約 13:00","url":"https://www.google.com/maps/search/?api=1&query=Forno+d%27Oro+Rua+Artilharia+1+Lisboa","book":"2027-01-14","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":23},{"name":"Paradiso 冰箱門酒吧","level":"🔥 極搶・開放就訂","status":"待訂","trip":"2027-02-12","city":"巴塞隆納","det":"前往：2/12 21:30–23:15；前 2 個月於官網購買；台灣時間 12/12 07:00（以當地 00:00 開放推估）","url":"https://paradiso.cat/en/contact/","book":"2026-12-12","btime":"07:00","cat":"酒吧","note":"","dep":"官網預付 €30／人訂金（可全額折抵當晚酒水與小點消費）","card":false,"mail":"","tel":[],"id":24},{"name":"證券交易所宮英文導覽","level":"👍 建議預約","status":"待訂","trip":"2027-02-07","city":"波多","det":"參觀：2/7 14:00 左右英文導覽（重點阿拉伯廳，約 30 分鐘）；只能跟團入內；不急，1/18 提醒預約","url":"https://booking.visitportoandnorth.travel/en/experiences/palacio-da-bolsa/guided-tour-of-the-palacio-da-bolsa/","book":"2027-01-18","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":25},{"name":"Torel 1884 Suites & Apartments","level":"已完成","status":"已訂妥","trip":"2027-02-06","city":"波多","det":"2 晚，2/6 入住 ➔ 2/8 退房；歷史城區","url":"","book":"","btime":"","cat":"住宿","note":"婕瑜訂・Booking","dep":"","card":false,"mail":"","tel":[],"id":26},{"name":"Room Mate Collection Alba","level":"已完成","status":"已訂妥","trip":"2027-02-08","city":"馬德里","det":"2 晚，2/8 入住 ➔ 2/10 退房；文學區","url":"","book":"","btime":"","cat":"住宿","note":"婕瑜訂・Booking","dep":"","card":false,"mail":"","tel":[],"id":27},{"name":"Hotel Pulitzer Barcelona","level":"已完成","status":"已訂妥","trip":"2027-02-10","city":"巴塞隆納","det":"4 晚，2/10 入住 ➔ 2/14 退房；加泰隆尼亞廣場旁","url":"","book":"","btime":"","cat":"住宿","note":"婕瑜訂・Booking","dep":"","card":false,"mail":"","tel":[],"id":28},{"name":"Wilde Aparthotels Liberdade","level":"已完成","status":"已訂妥","trip":"2027-02-03","city":"里斯本","det":"3 晚，2/3 入住 ➔ 2/6 退房；自由大道旁","url":"","book":"","btime":"","cat":"住宿","note":"佳俞訂・Agoda","dep":"","card":false,"mail":"","tel":[],"id":29},{"name":"Capela Incomum 葡萄酒吧","level":"👍 建議預約","status":"待訂","trip":"2027-02-07","city":"波多","det":"前往：2/7 20:50–22:00，舊教堂葡萄酒吧；不急，1/18 提醒預約","url":"https://www.google.com/maps/search/?api=1&query=Capela+Incomum+Porto","book":"2027-01-18","btime":"","cat":"酒吧","note":"","dep":"","card":false,"mail":"","tel":[],"id":30},{"name":"El Puertito Oyster Bar","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-09","city":"馬德里","det":"前往：2/9 19:15–20:00，生蠔配白酒；免預約，直接走進去","url":"https://www.google.com/maps/search/?api=1&query=El+Puertito+Oyster+Bar+Madrid","book":"","btime":"","cat":"酒吧","note":"","dep":"","card":false,"mail":"","tel":[],"id":31},{"name":"Salmon Guru 酒吧（可選）","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-08","city":"馬德里","det":"前往：2/8 21:30 後，飯店步行 3 分鐘，視體力決定；免預約，直接走進去","url":"https://www.google.com/maps/search/?api=1&query=Salmon+Guru+Madrid","book":"","btime":"","cat":"酒吧","note":"","dep":"","card":false,"mail":"","tel":[],"id":32},{"name":"Brasão Aliados 午餐","level":"👍 建議預約","status":"待訂","trip":"2027-02-07","city":"波多","det":"用餐：2/7 12:15–13:15，Francesinha；不急，1/18 提醒預約","url":"https://www.google.com/maps/search/?api=1&query=Bras%C3%A3o+Aliados+Porto","book":"2027-01-18","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":33},{"name":"Uma Marisqueira 晚餐","level":"❗ 必須預約","status":"待訂","trip":"2027-02-03","city":"里斯本","det":"用餐：2/3 19:00–20:15，招牌海鮮飯 Arroz de Marisco；週日公休，電話 +351 962 379 399；前 1 個月開放訂位；台灣時間 1/3 08:00（以當地 00:00 開放推估）","url":"https://www.google.com/maps/search/?api=1&query=Uma+Marisqueira+Rua+dos+Sapateiros+177+Lisboa","book":"2027-01-03","btime":"08:00","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":["+351 962 379 399"],"id":34},{"name":"Vinitus Gran Vía 晚餐","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-09","city":"馬德里","det":"用餐：2/9 20:30–21:45，海鮮與 Tapas；免預約，直接走進去","url":"https://www.google.com/maps/search/?api=1&query=Vinitus+Gran+Via+Madrid","book":"","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":35},{"name":"Toca da Raposa 酒吧","level":"👍 建議預約","status":"待訂","trip":"2027-02-05","city":"里斯本","det":"前往：2/5 21:15–22:30，Rua da Condessa 45；備選 Onda Cocktail Room；可 email 訂位；不急，1/16 提醒預約","url":"https://www.google.com/maps/search/?api=1&query=Toca+da+Raposa+Rua+da+Condessa+45+Lisboa","book":"2027-01-16","btime":"","cat":"酒吧","note":"","dep":"","card":false,"mail":"ola@tocaraposa.com","tel":[],"id":36},{"name":"The Royal Cocktail Club","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-06","city":"波多","det":"前往：2/6 22:00–23:30，先點 Gin Martini；免預約，直接走進去","url":"https://www.google.com/maps/search/?api=1&query=The+Royal+Cocktail+Club+Porto","book":"","btime":"","cat":"酒吧","note":"","dep":"","card":false,"mail":"","tel":[],"id":37},{"name":"La Taberna de Peñalver 午餐","level":"❗ 必須預約","status":"待訂","trip":"2027-02-09","city":"馬德里","det":"用餐：2/9 13:00–14:30，La Latina 海鮮飯；前 1 個月開放訂位；台灣時間 1/9 07:00（以當地 00:00 開放推估）","url":"https://www.google.com/maps/search/?api=1&query=La+Taberna+de+Pe%C3%B1alver+La+Latina+Madrid","book":"2027-01-09","btime":"07:00","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":38},{"name":"O Frade 午餐","level":"❗ 必須預約","status":"待訂","trip":"2027-02-04","city":"里斯本","det":"用餐：2/4 12:15–13:45，鴨肉飯；備選 Taberna dos Ferreiros、Miolo；前 3 個月在 Google 地圖頁面訂位；週日、週一公休；台灣時間 11/4 08:00（以當地 00:00 開放推估）","url":"https://www.google.com/maps/search/?api=1&query=Restaurante+O+Frade+Cal%C3%A7ada+da+Ajuda+14+Lisboa","book":"2026-11-04","btime":"08:00","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":39},{"name":"Tascantiga 午餐（辛特拉）","level":"❗ 必須預約","status":"待訂","trip":"2027-02-05","city":"里斯本","det":"用餐：2/5 12:30–13:45，辛特拉老城小盤料理；候位超過 20 分鐘改備選 Cantinho Gourmet；前 1 個月開放訂位；台灣時間 1/5 08:00（以當地 00:00 開放推估）","url":"https://www.google.com/maps/search/?api=1&query=Tascantiga+Sintra","book":"2027-01-05","btime":"08:00","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":40},{"name":"Meia-Nau Porto 晚餐","level":"❗ 必須預約","status":"待訂","trip":"2027-02-07","city":"波多","det":"用餐：2/7 19:00–20:30，葡萄牙海鮮料理；前 3 個月開放訂位；台灣時間 11/7 08:00（以當地 00:00 開放推估）","url":"https://www.google.com/maps/search/?api=1&query=Meia-Nau+Porto","book":"2026-11-07","btime":"08:00","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":41},{"name":"Taberna dos Carris 晚餐","level":"❗ 必須預約","status":"待訂","trip":"2027-02-06","city":"波多","det":"用餐：2/6 19:15–20:45，橄欖油烤章魚、鱈魚料理；前 3 個月開放訂位；台灣時間 11/6 08:00（以當地 00:00 開放推估）","url":"https://www.google.com/maps/search/?api=1&query=Taberna+dos+Carris+Porto","book":"2026-11-06","btime":"08:00","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":42},{"name":"SAU Taberna entre aguas 晚餐","level":"❗ 必須預約","status":"待訂","trip":"2027-02-08","city":"馬德里","det":"用餐：2/8 20:00–21:30；前 3 個月開放訂位；台灣時間 11/8 07:00（以當地 00:00 開放推估）","url":"https://www.google.com/maps/search/?api=1&query=SAU+Taberna+entre+aguas+Madrid","book":"2026-11-08","btime":"07:00","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":43},{"name":"西切斯海濱午餐（El Vivero 或 La Zorra）","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-13","city":"巴塞隆納","det":"用餐：2/13 12:30–14:15，烤蔥或海鮮飯配白酒；方案 B 改去 Blanes 則改在漁港吃；待查是否需預約","url":"https://www.google.com/maps/search/?api=1&query=El+Vivero+Sitges","book":"","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":44},{"name":"索菲亞王后藝術中心","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-08","city":"馬德里","det":"參觀：2/8 17:40–19:15，2 樓 206 展廳《格爾尼卡》；週二休館；免預約，現場購票","url":"https://www.museoreinasofia.es","book":"","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":45},{"name":"Majestic Café","level":"👍 建議預約","status":"待訂","trip":"2027-02-06","city":"波多","det":"前往：2/6 21:00–21:45，飯後咖啡與甜點；不急，1/17 提醒預約","url":"https://www.google.com/maps/search/?api=1&query=Majestic+Cafe+Porto","book":"2027-01-17","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":46},{"name":"普拉多美術館門票","level":"👍 建議預約","status":"待訂","trip":"2027-02-09","city":"馬德里","det":"參觀：2/9 15:00–17:00，鎖定《侍女》、哥雅、艾爾·葛雷柯；不急，1/20 提醒預約","url":"https://entradas.museodelprado.es/","book":"2027-01-20","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":47},{"name":"A Cevicheria 晚餐","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-05","city":"里斯本","det":"2/5 18:40 開始現場排隊，約 19:30–20:45 用餐；不接受預約，Rua Dom Pedro V 129；辛特拉提早結束可更早來排","url":"https://www.google.com/maps/search/?api=1&query=A+Cevicheria+Rua+Dom+Pedro+V+129+Lisboa","book":"","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":48},{"name":"蓋亞纜車 (Teleférico de Gaia)","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-07","city":"波多","det":"2/7 17:20–17:35，河岸站現場買票上行至 Serra do Pilar；冬季末班車時間待確認","url":"https://www.google.com/maps/search/?api=1&query=Telef%C3%A9rico+de+Gaia","book":"","btime":"","cat":"交通","note":"","dep":"","card":false,"mail":"","tel":[],"id":49},{"name":"聖保羅醫院門票","level":"👍 建議預約","status":"待訂","trip":"2027-02-11","city":"巴塞隆納","det":"參觀：2/11 11:45–13:15（奎爾公園之後）；不急，1/22 提醒預約","url":"https://santpaubarcelona.org","book":"2027-01-22","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":50},{"name":"雷加萊拉莊園門票","level":"👍 建議預約","status":"待訂","trip":"2027-02-05","city":"里斯本","det":"參觀：2/5 14:30–16:00（啟蒙井、地下迷宮）；票指定日期時段、不可退不可改；不急，1/16 提醒預約","url":"https://regaleira.byblueticket.pt","book":"2027-01-16","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":51},{"name":"Trans Montserrat 套票","level":"👍 建議預約","status":"待訂","trip":"2027-02-12","city":"巴塞隆納","det":"2/12 蒙特塞拉特一日遊用；含來回地鐵、FGC R5 火車、齒軌火車或 Aeri 纜車、聖胡安纜索鐵道不限次數；價格約 €22–25.80，以官網為準；購買時確認是否已含黑面聖母參拜；不急，1/23 提醒購買","url":"https://thisisbarcelona.com/tickets/trans-montserrat","book":"2027-01-23","btime":"","cat":"交通","note":"","dep":"","card":false,"mail":"","tel":[],"id":52}];
+var BOOK=[{"name":"波多飛馬德里機票","level":"已完成","status":"已訂妥","trip":"2027-02-08","city":"馬德里","det":"Iberia IB 546，12:25 起飛 ➔ 14:45 抵達馬德里（時差+1），€66","url":"","book":"","btime":"","cat":"交通","note":"","dep":"","card":false,"mail":"","tel":[],"id":0},{"name":"馬德里到巴塞隆納高鐵","level":"已完成","status":"已訂妥","trip":"2027-02-10","city":"巴塞隆納","det":"11:22-14:39，雙人 €88.08，第 2 車廂 11A/11B","url":"","book":"","btime":"","cat":"交通","note":"","dep":"","card":false,"mail":"","tel":[],"id":1},{"name":"加泰隆尼亞音樂宮音樂會","level":"已完成","status":"已訂妥","trip":"2027-02-11","city":"巴塞隆納","det":"20:00–21:30，保存電子票券 QR Code","url":"","book":"","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":2},{"name":"Bar Cañete 晚餐","level":"已完成","status":"已訂妥","trip":"2027-02-10","city":"巴塞隆納","det":"19:30–21:30，建議入座吧台區","url":"","book":"","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":3},{"name":"Can Cisa / Bar Brutal 自然酒吧","level":"👍 建議預約","status":"待訂","trip":"2027-02-11","city":"巴塞隆納","det":"用餐：2/11 21:30–23:00（音樂會後步行 7 分鐘）；後方用餐區可訂位、吧台現場；不急，1/22 提醒預約","url":"https://barbrutal.com","book":"2027-01-22","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":4},{"name":"Cervejaria Ramiro 晚餐","level":"🔥 極搶・開放就訂","status":"待訂","trip":"2027-02-04","city":"里斯本","det":"用餐：2/4 19:15–20:45（山上聖母觀景台夕陽後步行 10–12 分鐘）；TheFork 線上訂位，每人預付 €25 訂金可折抵帳單，24 小時前取消全額退，每桌最多 6 人；開放天數官方未公告","url":"https://www.thefork.com/restaurant/cervejaria-ramiro-r730931","book":"2026-11-05","btime":"","cat":"餐廳","note":"","dep":"每人預付 €25 訂金，可折抵帳單；24 小時前取消全額退","card":false,"mail":"","tel":[],"id":5},{"name":"米其林推薦 Gresca 晚餐","level":"🔥 極搶・開放就訂","status":"待訂","trip":"2027-02-13","city":"巴塞隆納","det":"用餐：2/13（週六）20:00–21:45；用餐日前 3 個月開放訂位，官網或電話 +34 934 516 193；台灣時間 11/13 07:00（以當地 00:00 開放推估）","url":"https://gresca.rest","book":"2026-11-13","btime":"07:00","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":["+34 934 516 193"],"id":6},{"name":"葡萄牙到波多CP高鐵早鳥票","level":"🔥 極搶・開放就訂","status":"待訂","trip":"2027-02-06","city":"波多","det":"搭乘：2/6 Alfa Pendular，里斯本 Santa Apolónia 約 12:00 ➔ 波多 Campanhã 約 15:00（搶 4～6 折 Promo 票）；CP 約出發前 60 天開賣，Promo 票需至少提前 5 天購買；實名制需護照號碼","url":"https://www.cp.pt","book":"2026-12-08","btime":"","cat":"交通","note":"","dep":"","card":false,"mail":"","tel":[],"id":7},{"name":"聖家堂 Sagrada Família 門票","level":"🔥 極搶・開放就訂","status":"待訂","trip":"2027-02-11","city":"巴塞隆納","det":"參觀：2/11，鎖定 15:00 斜陽穿透彩繪玻璃場次；官網約提前 2 個月釋票，現場沒有售票口","url":"https://sagradafamilia.org","book":"2026-12-11","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":8},{"name":"世界第一調酒Sips 酒吧","level":"🔥 極搶・開放就訂","status":"待訂","trip":"2027-02-13","city":"巴塞隆納","det":"前往：2/13 22:00–23:30（Gresca 後步行 6 分鐘）；前 2 個月於官網訂位，需綁信用卡擔保；台灣時間 12/13 07:00（以當地 00:00 開放推估）","url":"https://sips.barcelona","book":"2026-12-13","btime":"07:00","cat":"酒吧","note":"","dep":"","card":true,"mail":"","tel":[],"id":9},{"name":"熱羅尼莫斯修道院門票","level":"👍 建議預約","status":"待訂","trip":"2027-02-04","city":"里斯本","det":"參觀：2/4 09:50–11:20（預留 90 分鐘）；貝倫塔只看外觀不需買票；不急，1/15 提醒預約","url":"https://www.museusemonumentos.pt","book":"2027-01-15","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":10},{"name":"A Tasca do Chico 法朵 (Fado Vadio)","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-03","city":"里斯本","det":"2/3 晚餐後約 20:40 抵達 Bairro Alto，不接受預約，現場視座位候位","url":"","book":"","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":11},{"name":"辛特拉佩納宮門票","level":"👍 建議預約","status":"待訂","trip":"2027-02-05","city":"里斯本","det":"參觀：2/5 10:00 入宮時段（10:00–11:45）；時段延誤不得入場；不急，1/16 提醒預約","url":"https://www.parquesdesintra.pt/en/parks-monuments/park-and-national-palace-of-pena/","book":"2027-01-16","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":12},{"name":"波多萊羅書店門票","level":"👍 建議預約","status":"待訂","trip":"2027-02-07","city":"波多","det":"參觀：2/7 11:00 指定時段（預留 45–50 分鐘），門票可折抵購書；不急，1/18 提醒預約","url":"https://www.livrarialello.pt","book":"2027-01-18","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":13},{"name":"馬德里王宮門票","level":"❗ 必須預約","status":"待訂","trip":"2027-02-09","city":"馬德里","det":"參觀：2/9 10:30 入場（10:30–12:00）；前 2.5 個月開放購票；台灣時間 11/24 07:00（以當地 00:00 開放推估）","url":"https://tickets.patrimonionacional.es/en-GB/venta-de-entradas","book":"2026-11-24","btime":"07:00","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":14},{"name":"Graham's 波特酒莊導覽與品飲","level":"👍 建議預約","status":"待訂","trip":"2027-02-07","city":"波多","det":"參觀：2/7 15:30 場次，酒窖導覽＋品飲 15:30–17:00；不急，1/18 提醒預約","url":"https://www.grahams-port.com/1890-lodge","book":"2027-01-18","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":15},{"name":"奎爾公園門票","level":"❗ 必須預約","status":"待訂","trip":"2027-02-11","city":"巴塞隆納","det":"參觀：2/11 09:30（09:30–11:30）；前 3 個月開放購票，實名制，每筆最多 7 張；台灣時間 11/11 07:00（以當地 00:00 開放推估）","url":"https://parkguell.barcelona","book":"2026-11-11","btime":"07:00","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":16},{"name":"四貓餐廳 (Els Quatre Gats)","level":"❗ 必須預約","status":"待訂","trip":"2027-02-10","city":"巴塞隆納","det":"2/10 16:15–17:00 下午茶；前 3 個月開放訂位；台灣時間 11/10 07:00（以當地 00:00 開放推估）","url":"https://www.google.com/maps/search/?api=1&query=Els+Quatre+Gats+Barcelona","book":"2026-11-10","btime":"07:00","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":17},{"name":"蒙特塞拉特修道院黑面聖母參拜","level":"👍 建議預約","status":"待訂","trip":"2027-02-12","city":"巴塞隆納","det":"參觀：2/12；參拜需預約時段（08:00–10:30、12:00–18:25），買 Trans Montserrat 時確認是否已含；不急，1/23 提醒預約","url":"https://www.montserratvisita.com","book":"2027-01-23","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":18},{"name":"Prado de Flores 晚餐","level":"👍 建議預約","status":"待訂","trip":"2027-02-12","city":"巴塞隆納","det":"用餐：2/12 19:00–21:15，Hotel Pulitzer 步行約 6 分鐘；不急，1/23 提醒預約","url":"https://www.google.com/maps/search/?api=1&query=Prado+de+Flores+Restaurant+Barcelona","book":"2027-01-23","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":19},{"name":"巴特婁之家門票","level":"❗ 必須預約","status":"待訂","trip":"2027-02-14","city":"巴塞隆納","det":"參觀：2/14 10:00；前 2 個月開放購票，動態票價越早買越便宜，上屋頂需選 Silver 以上；台灣時間 12/14 07:00（以當地 00:00 開放推估）","url":"https://www.casabatllo.es/en/online-tickets/","book":"2026-12-14","btime":"07:00","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":20},{"name":"La Flauta 告別午餐","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-14","city":"巴塞隆納","det":"用餐：2/14 12:30–14:00，Rambla de Catalunya 分店；免預約，直接走進去","url":"https://www.google.com/maps/search/?api=1&query=La+Flauta+Rambla+de+Catalunya+Barcelona","book":"","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":21},{"name":"Sercotel Rosselló 聖家堂屋頂酒吧","level":"❗ 必須預約","status":"待訂","trip":"2027-02-11","city":"巴塞隆納","det":"前往：2/11 16:35–17:15，屋頂平視聖家堂；前 2 週開放訂位；台灣時間 1/28 07:00（以當地 00:00 開放推估）","url":"https://www.google.com/maps/search/?api=1&query=Sercotel+Rossell%C3%B3+Barcelona","book":"2027-01-28","btime":"07:00","cat":"酒吧","note":"","dep":"","card":false,"mail":"","tel":[],"id":22},{"name":"Forno d'Oro 午餐","level":"👍 建議預約","status":"待訂","trip":"2027-02-03","city":"里斯本","det":"用餐：2/3 13:00–14:10，拿坡里披薩；不急，1/14 提醒預約 13:00","url":"https://www.google.com/maps/search/?api=1&query=Forno+d%27Oro+Rua+Artilharia+1+Lisboa","book":"2027-01-14","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":23},{"name":"Paradiso 冰箱門酒吧","level":"🔥 極搶・開放就訂","status":"待訂","trip":"2027-02-12","city":"巴塞隆納","det":"前往：2/12 21:30–23:15；前 2 個月於官網購買；台灣時間 12/12 07:00（以當地 00:00 開放推估）","url":"https://paradiso.cat/en/contact/","book":"2026-12-12","btime":"07:00","cat":"酒吧","note":"","dep":"官網預付 €30／人訂金（可全額折抵當晚酒水與小點消費）","card":false,"mail":"","tel":[],"id":24},{"name":"證券交易所宮英文導覽","level":"👍 建議預約","status":"待訂","trip":"2027-02-07","city":"波多","det":"參觀：2/7 14:00 左右英文導覽（重點阿拉伯廳，約 30 分鐘）；只能跟團入內；不急，1/18 提醒預約","url":"https://booking.visitportoandnorth.travel/en/experiences/palacio-da-bolsa/guided-tour-of-the-palacio-da-bolsa/","book":"2027-01-18","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":25},{"name":"Torel 1884 Suites & Apartments","level":"已完成","status":"已訂妥","trip":"2027-02-06","city":"波多","det":"2 晚，2/6 入住 ➔ 2/8 退房；歷史城區","url":"","book":"","btime":"","cat":"住宿","note":"婕瑜訂・Booking","dep":"","card":false,"mail":"","tel":[],"id":26},{"name":"Room Mate Collection Alba","level":"已完成","status":"已訂妥","trip":"2027-02-08","city":"馬德里","det":"2 晚，2/8 入住 ➔ 2/10 退房；文學區","url":"","book":"","btime":"","cat":"住宿","note":"婕瑜訂・Booking","dep":"","card":false,"mail":"","tel":[],"id":27},{"name":"Hotel Pulitzer Barcelona","level":"已完成","status":"已訂妥","trip":"2027-02-10","city":"巴塞隆納","det":"4 晚，2/10 入住 ➔ 2/14 退房；加泰隆尼亞廣場旁","url":"","book":"","btime":"","cat":"住宿","note":"婕瑜訂・Booking","dep":"","card":false,"mail":"","tel":[],"id":28},{"name":"Wilde Aparthotels Liberdade","level":"已完成","status":"已訂妥","trip":"2027-02-03","city":"里斯本","det":"3 晚，2/3 入住 ➔ 2/6 退房；自由大道旁","url":"","book":"","btime":"","cat":"住宿","note":"佳俞訂・Agoda","dep":"","card":false,"mail":"","tel":[],"id":29},{"name":"Capela Incomum 葡萄酒吧","level":"👍 建議預約","status":"待訂","trip":"2027-02-07","city":"波多","det":"前往：2/7 20:50–22:00，舊教堂葡萄酒吧；不急，1/18 提醒預約","url":"https://www.google.com/maps/search/?api=1&query=Capela+Incomum+Porto","book":"2027-01-18","btime":"","cat":"酒吧","note":"","dep":"","card":false,"mail":"","tel":[],"id":30},{"name":"El Puertito Oyster Bar","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-09","city":"馬德里","det":"前往：2/9 19:15–20:00，生蠔配白酒；免預約，直接走進去","url":"https://www.google.com/maps/search/?api=1&query=El+Puertito+Oyster+Bar+Madrid","book":"","btime":"","cat":"酒吧","note":"","dep":"","card":false,"mail":"","tel":[],"id":31},{"name":"Salmon Guru 酒吧（可選）","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-08","city":"馬德里","det":"前往：2/8 21:30 後，飯店步行 3 分鐘，視體力決定；免預約，直接走進去","url":"https://www.google.com/maps/search/?api=1&query=Salmon+Guru+Madrid","book":"","btime":"","cat":"酒吧","note":"","dep":"","card":false,"mail":"","tel":[],"id":32},{"name":"Brasão Aliados 午餐","level":"👍 建議預約","status":"待訂","trip":"2027-02-07","city":"波多","det":"用餐：2/7 12:15–13:15，Francesinha；不急，1/18 提醒預約","url":"https://www.google.com/maps/search/?api=1&query=Bras%C3%A3o+Aliados+Porto","book":"2027-01-18","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":33},{"name":"Uma Marisqueira 晚餐","level":"❗ 必須預約","status":"待訂","trip":"2027-02-03","city":"里斯本","det":"用餐：2/3 19:00–20:15，招牌海鮮飯 Arroz de Marisco；週日公休，電話 +351 962 379 399；前 1 個月開放訂位；台灣時間 1/3 08:00（以當地 00:00 開放推估）","url":"https://www.google.com/maps/search/?api=1&query=Uma+Marisqueira+Rua+dos+Sapateiros+177+Lisboa","book":"2027-01-03","btime":"08:00","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":["+351 962 379 399"],"id":34},{"name":"Vinitus Gran Vía 晚餐","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-09","city":"馬德里","det":"用餐：2/9 20:30–21:45，海鮮與 Tapas；免預約，直接走進去","url":"https://www.google.com/maps/search/?api=1&query=Vinitus+Gran+Via+Madrid","book":"","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":35},{"name":"Toca da Raposa 酒吧","level":"👍 建議預約","status":"待訂","trip":"2027-02-05","city":"里斯本","det":"前往：2/5 21:15–22:30，Rua da Condessa 45；備選 Onda Cocktail Room；可 email 訂位；不急，1/16 提醒預約","url":"https://www.google.com/maps/search/?api=1&query=Toca+da+Raposa+Rua+da+Condessa+45+Lisboa","book":"2027-01-16","btime":"","cat":"酒吧","note":"","dep":"","card":false,"mail":"ola@tocaraposa.com","tel":[],"id":36},{"name":"The Royal Cocktail Club","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-06","city":"波多","det":"前往：2/6 22:00–23:30，先點 Gin Martini；免預約，直接走進去","url":"https://www.google.com/maps/search/?api=1&query=The+Royal+Cocktail+Club+Porto","book":"","btime":"","cat":"酒吧","note":"","dep":"","card":false,"mail":"","tel":[],"id":37},{"name":"La Taberna de Peñalver 午餐","level":"❗ 必須預約","status":"待訂","trip":"2027-02-09","city":"馬德里","det":"用餐：2/9 13:00–14:30，La Latina 海鮮飯；前 1 個月開放訂位；台灣時間 1/9 07:00（以當地 00:00 開放推估）","url":"https://www.google.com/maps/search/?api=1&query=La+Taberna+de+Pe%C3%B1alver+La+Latina+Madrid","book":"2027-01-09","btime":"07:00","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":38},{"name":"O Frade 午餐","level":"❗ 必須預約","status":"待訂","trip":"2027-02-04","city":"里斯本","det":"用餐：2/4 12:15–13:45，鴨肉飯；備選 Taberna dos Ferreiros、Miolo；前 3 個月在 Google 地圖頁面訂位；週日、週一公休；台灣時間 11/4 08:00（以當地 00:00 開放推估）","url":"https://www.google.com/maps/search/?api=1&query=Restaurante+O+Frade+Cal%C3%A7ada+da+Ajuda+14+Lisboa","book":"2026-11-04","btime":"08:00","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":39},{"name":"Tascantiga 午餐（辛特拉）","level":"❗ 必須預約","status":"待訂","trip":"2027-02-05","city":"里斯本","det":"用餐：2/5 12:30–13:45，辛特拉老城小盤料理；候位超過 20 分鐘改備選 Cantinho Gourmet；前 1 個月開放訂位；台灣時間 1/5 08:00（以當地 00:00 開放推估）","url":"https://www.google.com/maps/search/?api=1&query=Tascantiga+Sintra","book":"2027-01-05","btime":"08:00","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":40},{"name":"Meia-Nau Porto 晚餐","level":"❗ 必須預約","status":"待訂","trip":"2027-02-07","city":"波多","det":"用餐：2/7 19:00–20:30，葡萄牙海鮮料理；前 3 個月開放訂位；台灣時間 11/7 08:00（以當地 00:00 開放推估）","url":"https://www.google.com/maps/search/?api=1&query=Meia-Nau+Porto","book":"2026-11-07","btime":"08:00","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":41},{"name":"Taberna dos Carris 晚餐","level":"❗ 必須預約","status":"待訂","trip":"2027-02-06","city":"波多","det":"用餐：2/6 19:15–20:45，橄欖油烤章魚、鱈魚料理；前 3 個月開放訂位；台灣時間 11/6 08:00（以當地 00:00 開放推估）","url":"https://www.google.com/maps/search/?api=1&query=Taberna+dos+Carris+Porto","book":"2026-11-06","btime":"08:00","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":42},{"name":"SAU Taberna entre aguas 晚餐","level":"❗ 必須預約","status":"待訂","trip":"2027-02-08","city":"馬德里","det":"用餐：2/8 20:00–21:30；前 3 個月開放訂位；台灣時間 11/8 07:00（以當地 00:00 開放推估）","url":"https://www.google.com/maps/search/?api=1&query=SAU+Taberna+entre+aguas+Madrid","book":"2026-11-08","btime":"07:00","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":43},{"name":"西切斯海濱午餐（El Vivero 或 La Zorra）","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-13","city":"巴塞隆納","det":"用餐：2/13 12:30–14:15，烤蔥或海鮮飯配白酒；方案 B 改去 Blanes 則改在漁港吃；待查是否需預約","url":"https://www.google.com/maps/search/?api=1&query=El+Vivero+Sitges","book":"","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":44},{"name":"索菲亞王后藝術中心","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-08","city":"馬德里","det":"參觀：2/8 17:40–19:15，2 樓 206 展廳《格爾尼卡》；週二休館；免預約，現場購票","url":"https://www.museoreinasofia.es","book":"","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":45},{"name":"Majestic Café","level":"👍 建議預約","status":"待訂","trip":"2027-02-06","city":"波多","det":"前往：2/6 21:00–21:45，飯後咖啡與甜點；不急，1/17 提醒預約","url":"https://www.google.com/maps/search/?api=1&query=Majestic+Cafe+Porto","book":"2027-01-17","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":46},{"name":"普拉多美術館門票","level":"👍 建議預約","status":"待訂","trip":"2027-02-09","city":"馬德里","det":"參觀：2/9 15:00–17:00，鎖定《侍女》、哥雅、艾爾·葛雷柯；不急，1/20 提醒預約","url":"https://entradas.museodelprado.es/","book":"2027-01-20","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":47},{"name":"A Cevicheria 晚餐","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-05","city":"里斯本","det":"2/5 18:40 開始現場排隊，約 19:30–20:45 用餐；不接受預約，Rua Dom Pedro V 129；辛特拉提早結束可更早來排","url":"https://www.google.com/maps/search/?api=1&query=A+Cevicheria+Rua+Dom+Pedro+V+129+Lisboa","book":"","btime":"","cat":"餐廳","note":"","dep":"","card":false,"mail":"","tel":[],"id":48},{"name":"蓋亞纜車 (Teleférico de Gaia)","level":"🚶 現場免預約","status":"現場候位","trip":"2027-02-07","city":"波多","det":"2/7 17:20–17:35，河岸站現場買票上行至 Serra do Pilar；冬季末班車時間待確認","url":"https://www.google.com/maps/search/?api=1&query=Telef%C3%A9rico+de+Gaia","book":"","btime":"","cat":"交通","note":"","dep":"","card":false,"mail":"","tel":[],"id":49},{"name":"聖保羅醫院門票","level":"👍 建議預約","status":"待訂","trip":"2027-02-11","city":"巴塞隆納","det":"參觀：2/11 11:45–13:15（奎爾公園之後）；不急，1/22 提醒預約","url":"https://santpaubarcelona.org","book":"2027-01-22","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":50},{"name":"雷加萊拉莊園門票","level":"👍 建議預約","status":"待訂","trip":"2027-02-05","city":"里斯本","det":"參觀：2/5 14:30–16:00（啟蒙井、地下迷宮）；票指定日期時段、不可退不可改；不急，1/16 提醒預約","url":"https://regaleira.byblueticket.pt","book":"2027-01-16","btime":"","cat":"景點/藝文","note":"","dep":"","card":false,"mail":"","tel":[],"id":51},{"name":"Trans Montserrat 套票","level":"👍 建議預約","status":"待訂","trip":"2027-02-12","city":"巴塞隆納","det":"2/12 蒙特塞拉特一日遊用；含來回地鐵、FGC R5 火車、齒軌火車或 Aeri 纜車、聖胡安纜索鐵道不限次數；價格約 €22–25.80，以官網為準；購買時確認是否已含黑面聖母參拜；不急，1/23 提醒購買","url":"https://thisisbarcelona.com/tickets/trans-montserrat","book":"2027-01-23","btime":"","cat":"交通","note":"","dep":"","card":false,"mail":"","tel":[],"id":52}];
 var BIKEY='esp-pt-bookinfo-v1', bkInfo={};
 try{bkInfo=JSON.parse(localStorage.getItem(BIKEY)||'{}')||{}}catch(e){bkInfo={}}
 BOOK=BOOK.filter(function(b){return b.status==='待訂'||(b.status==='已訂妥'&&(b.cat==='交通'||/晚餐/.test(b.name)))});
@@ -1986,6 +2149,175 @@ bkRender();
   }
   window.addEventListener('scroll',on,{passive:true});window.addEventListener('resize',on);on();
 })();
+
+/* ============================================================
+   離線（Service Worker）、現在行程、天氣預報、即時匯率、花費圖表
+   ============================================================ */
+(function(){
+  /* 離線 */
+  var offNote=$('#offNote');
+  if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
+    navigator.serviceWorker.register('sw.js').then(function(){
+      return navigator.serviceWorker.ready;
+    }).then(function(){
+      if(offNote) offNote.innerHTML='✅ 已可離線使用：沒有網路也能看行程、記花費、勾清單。<br>iPhone：Safari「分享」➔「加入主畫面」；Android：Chrome 選單 ➔「安裝應用程式／加到主畫面」。';
+    }).catch(function(){});
+  }
+  var ob=document.createElement('div'); ob.className='offbar'; ob.hidden=true; ob.textContent='📴 目前離線，顯示的是已儲存的內容';
+  document.body.appendChild(ob);
+  function net(){ob.hidden=navigator.onLine!==false}
+  window.addEventListener('online',function(){net();wxFetch();fxAuto()});window.addEventListener('offline',net);net();
+
+  /* 現在行程 */
+  var nb=$('#nowBtn');
+  function nowUi(){nb.hidden=tripDayIdx()<0}
+  nowUi();
+  nb.addEventListener('click',goNow);
+  var dl=document.querySelector('.nav a[data-s="days"]');
+  if(dl) dl.addEventListener('click',function(e){if(tripDayIdx()>=0){e.preventDefault();goNow()}});
+  setInterval(function(){markNow();nowUi()},60000);
+  if(tripDayIdx()>=0&&!location.hash) setTimeout(goNow,350);
+
+  /* 天氣預報（Open-Meteo，出發前 15 天起） */
+  function wxFetch(){
+    if(navigator.onLine===false||!window.fetch) return;
+    var n=nowDate().getTime(), s=new Date('2027-02-03T00:00:00+01:00').getTime(), e=new Date('2027-02-15T00:00:00+01:00').getTime();
+    if(n+15*86400000<s||n>e) return;
+    var ti=tripDayIdx(), ca=wxCache(), ttl=ti>=0?20*60000:3*3600000;
+    if(ca&&Date.now()-ca.ts<ttl) return;
+    var keys=ti>=0?[WX_DAY[ti+1]].concat(ti+2<=DAYS.length?[WX_DAY[ti+2]]:[]):Object.keys(WX_LOC);
+    keys=keys.filter(function(k,i){return k&&keys.indexOf(k)===i});
+    var out={ts:Date.now(),d:(ca&&ca.d)||{},cur:(ca&&ca.cur)||{}}, left=keys.length, got=0;
+    keys.forEach(function(k){
+      var u='https://api.open-meteo.com/v1/forecast?latitude='+WX_LOC[k][0]+'&longitude='+WX_LOC[k][1]+'&current=temperature_2m,apparent_temperature,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=auto&forecast_days=16';
+      fetch(u).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){
+        var D=j.daily||{}, m={};
+        (D.time||[]).forEach(function(t,i){m[t]={hi:D.temperature_2m_max[i],lo:D.temperature_2m_min[i],pp:D.precipitation_probability_max[i]==null?0:D.precipitation_probability_max[i],c:D.weathercode[i]}});
+        out.d[k]=m;
+        if(j.current) out.cur[k]={t:j.current.temperature_2m,a:j.current.apparent_temperature,c:j.current.weathercode};
+        got++;
+      }).catch(function(){}).then(function(){
+        if(--left===0&&got){try{localStorage.setItem(WXKEY,JSON.stringify(out))}catch(x){}
+          var b=$('#wxBox'); if(b&&cur>=0) b.innerHTML=wxLine(DAYS[cur]);}
+      });
+    });
+  }
+  setInterval(wxFetch,10*60000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)wxFetch()});
+  wxFetch();
+
+  /* 即時匯率（open.er-api.com） */
+  var FXKEY='esp-pt-fx-v1', MKEY='esp-pt-ratemanual-v1';
+  function fxApply(r,when,manualClick){
+    rate=Math.round(r*100)/100; saveRate(); $('#rateIn').value=rate; refreshTotals();
+    try{localStorage.setItem(FXKEY,JSON.stringify({r:rate,ts:Date.now(),when:when||''}))}catch(e){}
+    $('#fxMsg').textContent='已更新：1 € = NT$ '+nf(rate,2)+(when?'（資料時間 '+when+'）':'')+'。';
+  }
+  function fxGet(btn){
+    if(navigator.onLine===false||!window.fetch){$('#fxMsg').textContent='目前沒有網路，沿用 1 € = NT$ '+nf(rate,2)+'。';return Promise.resolve()}
+    return fetch('https://open.er-api.com/v6/latest/EUR').then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){
+      var r=j&&j.rates&&j.rates.TWD; if(!(r>0)) throw 0;
+      var w=''; try{var t=new Date(j.time_last_update_utc);w=(t.getMonth()+1)+'/'+t.getDate()+' '+('0'+t.getHours()).slice(-2)+':'+('0'+t.getMinutes()).slice(-2)}catch(e){}
+      fxApply(r,w);
+      try{localStorage.removeItem(MKEY)}catch(e){}
+    }).catch(function(){$('#fxMsg').textContent='暫時抓不到即時匯率，沿用 1 € = NT$ '+nf(rate,2)+'。'});
+  }
+  function fxAuto(){
+    var manual=false,last=null;
+    try{manual=localStorage.getItem(MKEY)==='1';last=JSON.parse(localStorage.getItem(FXKEY)||'null')}catch(e){}
+    if(manual) return;
+    if(last&&Date.now()-last.ts<6*3600000){$('#fxMsg').textContent='即時匯率（'+(last.when||'已儲存')+'）：1 € = NT$ '+nf(last.r,2)+'。';return}
+    fxGet();
+  }
+  $('#fxBtn').addEventListener('click',function(){$('#fxMsg').textContent='更新中…';fxGet()});
+  $('#rateIn').addEventListener('input',function(){try{localStorage.setItem(MKEY,'1')}catch(e){}});
+  window.fxAuto=fxAuto; fxAuto();
+
+  renderCharts();
+})();
+
+/* ---- 花費圖表 ---- */
+function catOf(text,src){
+  var t=String(text||'');
+  if(/住宿|飯店|旅館|旅宿|hotel|booking|airbnb|check-?in|入住/i.test(t)) return '住宿';
+  if(/機票|航班|航空|flight|登機/i.test(t)) return '機票';
+  if(/搭乘|搭車|前往|車站|機場|高鐵|火車|電車|纜車|計程|uber|bolt|taxi|地鐵|巴士|車票|交通|renfe|iryo|fgc|cabify|metro|租車|停車/i.test(t)) return '交通';
+  if(/購物|伴手禮|紀念品|書店|選物|買|退稅|商店|超市|藥妝|shop|souvenir/i.test(t)) return '購物';
+  if(/[🍕🍴🍲🥘🥧☕🍰🥐🦪🐙🍽🥪🦐🍷🍸🥂🍺🍔]|餐|咖啡|coffee|café|cafe|甜點|蛋糕|麵包|酒吧|\bbar\b|pub|飲|酒|蛋塔|pastéis|restaurant|taberna|cervejaria|marisqueira|bistro|吃|小吃|點心|海鮮|披薩|生蠔|oyster|ostras|mercado|市場/iu.test(t)) return '餐飲';
+  if(/門票|票券|博物館|museo|palacio|宮|教堂|修道院|音樂會|導覽|tour|入場|展|預約/i.test(t)) return '景點門票';
+  return src==='spot'?'景點門票':'其他';
+}
+function collectExp(){
+  var L=[];
+  pre.forEach(function(e){var v=amt(e.amt);if(v>0)L.push({p:e.p==='b'?'b':'a',eur:toEur(v,e.cur),cat:catOf(e.note,'pre'),day:0})});
+  DAYS.forEach(function(d){
+    d.items.forEach(function(it){var c=costs[cKey(d,it)]||{};
+      ['a','b'].forEach(function(p){var v=amt(c[p]);if(v>0)L.push({p:p,eur:toEur(v,c['c'+p]),cat:catOf(it[1],'spot'),day:d.n})})});
+    (extras[d.n]||[]).forEach(function(e){var v=amt(e.amt);if(v>0)L.push({p:e.p==='b'?'b':'a',eur:toEur(v,e.cur),cat:catOf(e.note,'x'),day:d.n})});
+  });
+  return L;
+}
+function renderCharts(){
+  var box=document.getElementById('chartBox'); if(!box) return;
+  var all=collectExp(), L=all.filter(function(x){return chartP==='all'||x.p===chartP});
+  var seg='<div class="ch-seg" role="group" aria-label="統計對象">'+[['all','合計'],['a','佳俞'],['b','婕瑜']].map(function(s){
+    return '<button type="button" data-cp="'+s[0]+'" aria-pressed="'+(chartP===s[0])+'">'+s[1]+'</button>'}).join('')+'</div>';
+  var head='<h3 class="ch-t">📊 花費圖表</h3>'+seg;
+  var total=0; L.forEach(function(x){total+=x.eur});
+  if(!(total>0)){box.innerHTML=head+'<p class="ch-empty">還沒有花費紀錄，記下之後這裡就會出現圖表 🍡</p>';return}
+  var cats={}; L.forEach(function(x){cats[x.cat]=(cats[x.cat]||0)+x.eur});
+  var rows=Object.keys(cats).map(function(k){return {k:k,v:cats[k]}}).sort(function(a,b){return b.v-a.v});
+  var R=62, C=2*Math.PI*R, off=0, ring='';
+  rows.forEach(function(r,i){
+    var len=r.v/total*C, gap=rows.length>1?2.5:0;
+    ring+='<circle class="ch-seg-c" data-i="'+i+'" r="'+R+'" cx="100" cy="100" fill="none" stroke="'+CATCOL[r.k]+'" stroke-width="32" stroke-dasharray="'+Math.max(len-gap,0.5)+' '+(C-Math.max(len-gap,0.5))+'" stroke-dashoffset="'+(-off)+'" transform="rotate(-90 100 100)"><title>'+r.k+' '+twd(r.v*rate)+'</title></circle>';
+    off+=len;
+  });
+  var donut='<svg class="ch-donut" viewBox="0 0 200 200" role="img" aria-label="花費類別比例，總計 '+twd(total*rate)+'">'+
+    '<circle r="'+R+'" cx="100" cy="100" fill="none" stroke="rgba(62,58,57,.12)" stroke-width="36"/>'+ring+
+    '<circle r="'+(R+17)+'" cx="100" cy="100" fill="none" stroke="#3E3A39" stroke-width="2.5"/><circle r="'+(R-17)+'" cx="100" cy="100" fill="none" stroke="#3E3A39" stroke-width="2.5"/>'+
+    '<text id="chC1" x="100" y="94" text-anchor="middle" font-size="12" fill="#6F6865">總花費</text>'+
+    '<text id="chC2" x="100" y="114" text-anchor="middle" font-size="16" fill="#3E3A39">'+twd(total*rate)+'</text></svg>';
+  var leg='<ul class="ch-leg">'+rows.map(function(r,i){
+    return '<li><button type="button" data-i="'+i+'"><i style="background:'+CATCOL[r.k]+'"></i><span>'+r.k+'</span><b>'+twd(r.v*rate)+'</b><small>'+Math.round(r.v/total*100)+'%</small></button></li>'}).join('')+'</ul>';
+  /* 每日長條 */
+  var days=[], mx=0, i;
+  for(i=0;i<=DAYS.length;i++) days.push(0);
+  L.forEach(function(x){days[x.day]+=x.eur});
+  var preV=days[0]; days.forEach(function(v,i){if(i>0&&v>mx)mx=v});
+  var W=340,H=150,bw=18,gx=(W-16)/DAYS.length,bars='',lab='';
+  days.forEach(function(v,j){ if(j===0) return; var i=j-1;
+    var x=8+i*gx+(gx-bw)/2, hh=v>0?Math.max(v/mx*100,3):0, y=124-hh;
+    if(v>0){
+      bars+='<path class="ch-bar" data-d="'+j+'" tabindex="0" role="button" aria-label="DAY '+j+' '+twd(v*rate)+'" d="M'+x+' 124 V'+(y+4)+' Q'+x+' '+y+' '+(x+4)+' '+y+' H'+(x+bw-4)+' Q'+(x+bw)+' '+y+' '+(x+bw)+' '+(y+4)+' V124Z" fill="'+(chartP==='a'?'#F2A497':chartP==='b'?'#B9DAA5':'#F6D27A')+'" stroke="#3E3A39" stroke-width="2"/>'+
+        '<text x="'+(x+bw/2)+'" y="'+(y-4)+'" text-anchor="middle" font-size="9" fill="#3E3A39">'+(v*rate>=1000?(Math.round(v*rate/100)/10)+'k':Math.round(v*rate))+'</text>';
+    }
+    lab+='<text x="'+(x+bw/2)+'" y="140" text-anchor="middle" font-size="10" fill="#6F6865">'+j+'</text>';
+  });
+  var bar='<svg class="ch-bars" viewBox="0 0 '+W+' '+H+'" role="group" aria-label="每日花費（台幣）"><path d="M6 124.5 H'+(W-6)+'" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/>'+bars+lab+'</svg>';
+  box.innerHTML=head+'<div class="ch-top">'+donut+leg+'</div><h4 class="ch-s">每日花費（NT$，點長條看明細）</h4>'+bar+'<p class="ch-tip" id="chTip" role="status"></p>'+(preV>0?'<p class="ch-note">行前花費 '+twd(preV*rate)+' 不列入每日長條。</p>':'')+'<p class="ch-note">類別依項目名稱自動判斷（例如含「餐、咖啡」算餐飲，「搭車、高鐵」算交通）。</p>';
+  box._rows=rows; box._total=total; box._days=days;
+}
+(function(){
+  var box=document.getElementById('chartBox');
+  function pick(i){
+    var r=box._rows&&box._rows[i]; if(!r) return;
+    var a=document.getElementById('chC1'),b=document.getElementById('chC2');
+    if(a&&b){a.textContent=r.k+' '+Math.round(r.v/box._total*100)+'%';b.textContent=twd(r.v*rate)}
+  }
+  box.addEventListener('click',function(e){
+    var s=e.target.closest('[data-cp]');
+    if(s){chartP=s.dataset.cp;renderCharts();return}
+    var c=e.target.closest('[data-i]'); if(c){pick(+c.dataset.i);return}
+    var d=e.target.closest('[data-d]');
+    if(d){var n=+d.dataset.d,v=box._days[n];document.getElementById('chTip').textContent=(n?'DAY '+n:'行前花費')+'：'+twd(v*rate)+'（'+eur(v)+'）'}
+  });
+  box.addEventListener('keydown',function(e){
+    if(e.key!=='Enter'&&e.key!==' ') return;
+    var d=e.target.closest&&e.target.closest('[data-d]'); if(d){e.preventDefault();d.dispatchEvent(new MouseEvent('click',{bubbles:true}))}
+  });
+})();
+
 </script>
 </body>
 </html>
