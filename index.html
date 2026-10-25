@@ -592,6 +592,7 @@ details.bk-more>.bk-in{margin-top:10px}
 .tkm img{display:block;width:100%;height:auto;border:2px solid var(--ink);border-radius:12px;margin-bottom:12px;background:#fff}
 .tkm-b{text-align:center}
 .tkm-b button{font:inherit;font-size:14px;color:var(--ink);background:var(--t-blue);border:2px solid var(--ink);border-radius:999px;padding:3px 18px;cursor:pointer}
+@media (max-width:340px){.nav a[data-s]{font-size:11px;white-space:nowrap;padding:8px 0}.nav .brand small{display:none}.nav nav{gap:3px;padding:0 6px}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -2327,16 +2328,14 @@ function renderCharts(){
 })();
 
 
-/* ---- 台灣時間（左上角） ---- */
+/* ---- 台灣時間（置頂細條） ---- */
 (function(){
   var el=document.getElementById('twClock'); if(!el||!window.Intl) return;
-  var tf=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Taipei',hour:'2-digit',minute:'2-digit',hour12:false});
-  var df=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'});
+  var f=new Intl.DateTimeFormat('zh-TW',{timeZone:'Asia/Taipei',month:'numeric',day:'numeric',weekday:'narrow',hour:'2-digit',minute:'2-digit',hour12:false});
   function tick(){
-    var n=new Date(), t=tf.format(n).replace('24:','00:'), tw=df.format(n);
-    var loc=n.getFullYear()+'-'+('0'+(n.getMonth()+1)).slice(-2)+'-'+('0'+n.getDate()).slice(-2);
-    var tag=tw>loc?'（隔天）':tw<loc?'（前一天）':'';
-    el.lastChild.textContent='時間 '+t+tag; el.setAttribute('aria-label','台灣時間 '+t+tag);
+    var o={}; f.formatToParts(new Date()).forEach(function(p){o[p.type]=p.value});
+    var hh=o.hour==='24'?'00':o.hour, s=o.month+'/'+o.day+'（'+o.weekday+'）'+hh+':'+o.minute;
+    el.lastChild.textContent='時間 '+s; el.setAttribute('aria-label','台灣時間 '+s);
   }
   tick(); setInterval(tick,15000);
   document.addEventListener('visibilitychange',function(){if(!document.hidden)tick()});
