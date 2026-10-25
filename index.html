@@ -595,10 +595,11 @@ details.bk-more>.bk-in{margin-top:10px}
 @media (max-width:340px){.nav a[data-s]{font-size:11px;white-space:nowrap;padding:8px 0}.nav .brand small{display:none}.nav nav{gap:3px;padding:0 6px}}
 h2.title.c4{background:var(--t-pink)}
 .nav a:nth-child(7){--c:var(--t-coral)} .nav a:nth-child(8){--c:var(--t-yellow)} .nav a:nth-child(9){--c:var(--t-green)}
-.nav a[data-s]{font-size:11.5px;border-width:2px}
+.nav a[data-s]{font-size:12.5px;border-width:2px}
+.nav a[data-s=flights]{--c:var(--t-blue)}.nav a[data-s=stay]{--c:var(--t-pink)}.nav a[data-s=days]{--c:var(--t-green)}.nav a[data-s=cost]{--c:var(--t-lav)}.nav a[data-s=pack]{--c:var(--t-coral)}.nav a[data-s=shop]{--c:var(--t-yellow)}.nav a[data-s=book]{--c:var(--t-green)}
 .nav nav{gap:3px}
 @media (max-width:359px){.nav .brand span{display:none}}
-.sh-new{display:block;margin:0 0 12px;font:inherit;font-size:16px;color:var(--ink);background:var(--t-yellow);border:var(--bw) solid var(--ink);border-radius:999px;padding:4px 22px;cursor:pointer;box-shadow:0 3px 0 var(--ink)}
+.sh-new{display:inline-block;margin:0 0 10px;font:inherit;font-size:13px;color:var(--ink);background:var(--t-yellow);border:2px solid var(--ink);border-radius:999px;padding:0 14px;line-height:1.7;cursor:pointer;box-shadow:0 2px 0 var(--ink)}
 .shfile{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:42px;border:var(--bw) solid var(--ink);border-radius:999px;background:var(--t-blue);font-size:15px;cursor:pointer}
 .shfile input{display:none}
 .shthumbs{display:flex;gap:8px;flex-wrap:wrap}
@@ -620,10 +621,11 @@ h2.title.c4{background:var(--t-pink)}
 .sr .tx{flex:1;min-width:0;font-size:15px;line-height:1.4}
 .sr small{display:block;font-size:11.5px;color:var(--soft)}
 .sr.dn .tx b{font-weight:400;text-decoration:line-through;color:var(--soft)}
-.sr .sh-th{flex:none;width:38px;height:38px;object-fit:cover;border-radius:7px;cursor:pointer}
+.sr .sh-th{flex:none;width:40px;height:40px;object-fit:cover;border-radius:7px;cursor:pointer}
 .sr .x{flex:none;background:none;border:0;font:inherit;font-size:11px;color:var(--soft);cursor:pointer;padding:4px}
 .shlb{position:fixed;inset:0;z-index:210;background:rgba(62,58,57,.8);display:grid;place-items:center;padding:16px}
 .shlb[hidden]{display:none}
+.shlb-x{position:absolute;top:14px;right:14px;font:inherit;font-size:14px;color:#3E3A39;border:2px solid #3E3A39;border-radius:999px;padding:2px 14px;cursor:pointer;background:#F6D27A}
 .shlb img{max-width:100%;max-height:92vh;border:var(--bw) solid var(--ink);border-radius:14px;background:#fff}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -666,11 +668,10 @@ h2.title.c4{background:var(--t-pink)}
       </g></svg>
       <span><small>2027</small><b>西葡之旅</b></span>
     </a>
-    <a href="#home" data-s="home">首頁</a>
     <a href="#flights" data-s="flights">交通</a>
     <a href="#stay" data-s="stay">住宿</a>
     <a href="#days" data-s="days">行程</a>
-    <a href="#cost" data-s="cost">花費</a>
+    <a href="#cost" data-s="cost">開銷</a>
     <a href="#pack" data-s="pack">行李</a>
     <a href="#shop" data-s="shop">購物</a>
     <a href="#book" data-s="book">待訂</a>
@@ -841,8 +842,8 @@ h2.title.c4{background:var(--t-pink)}
     <form class="eform" id="shForm" autocomplete="off" hidden>
       <label class="shfile"><input id="shFile" type="file" accept="image/*" multiple>📷 上傳照片</label>
       <div class="shthumbs" id="shImgs"></div>
-      <input id="shName" type="text" maxlength="40" required placeholder="名稱" aria-label="名稱">
-      <input id="shStore" type="text" maxlength="50" placeholder="購買地點（會連到 Google 地圖）" aria-label="購買地點">
+      <input id="shName" type="text" maxlength="40" placeholder="商品名稱（可不填）" aria-label="名稱">
+      <input id="shStore" type="text" maxlength="50" list="shStores" placeholder="購買地點（會連到 Google 地圖）" aria-label="購買地點"><datalist id="shStores"></datalist>
       <input id="shNote" type="text" maxlength="60" placeholder="備註" aria-label="備註">
       <div class="ebtns"><button type="submit" class="fb-ok">發送</button><button type="button" class="f-cancel" id="shCancel">取消</button></div>
       <p class="sh-msg" id="shMsg" role="status"></p>
@@ -2203,7 +2204,7 @@ bkRender();
   var links=document.querySelectorAll('.nav a[data-s]'), secs=[].map.call(links,function(a){return document.getElementById(a.dataset.s)});
   function on(){
     var y=window.scrollY+112, k=0;
-    secs.forEach(function(s,i){if(s.offsetTop<=y)k=i});
+    k=-1;secs.forEach(function(s,i){if(s.offsetTop<=y)k=i});
     if(window.innerHeight+window.scrollY>=document.body.scrollHeight-4) k=secs.length-1;
     links.forEach(function(a,i){a.classList.toggle('on',i===k)});
   }
@@ -2407,7 +2408,9 @@ function renderCharts(){
   function dbGet(id){return new Promise(function(res){if(!db)return res(null);try{var r=db.transaction('img').objectStore('img').get(id);r.onsuccess=function(){res(r.result||null)};r.onerror=function(){res(null)}}catch(e){res(null)}})}
   function shrink(file){return new Promise(function(res){var fr=new FileReader();fr.onload=function(){var im=new Image();im.onload=function(){var m=1000,s=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);c.getContext('2d').drawImage(im,0,0,c.width,c.height);res(c.toDataURL('image/jpeg',.72))};im.onerror=function(){res(null)};im.src=fr.result};fr.onerror=function(){res(null)};fr.readAsDataURL(file)})}
 
+  function stores(){var s=[];items.forEach(function(x){var k=pl(x);if(k&&s.indexOf(k)<0)s.push(k)});$f('shStores').innerHTML=s.map(function(k){return '<option value="'+q(k)+'">'}).join('')}
   function render(){
+    stores();
     if(!items.length){$f('shList').innerHTML='<p class="bk-empty">還沒有項目，按「＋ 新增」開始記 🛍️</p>';return}
     var g={},ord=[];
     items.forEach(function(x){var k=pl(x)||'未填購買地點';if(!g[k]){g[k]=[];ord.push(k)}g[k].push(x)});
@@ -2416,9 +2419,9 @@ function renderCharts(){
       var t=k==='未填購買地點'?q(k):'<a href="'+mp(k)+'" target="_blank" rel="noopener">📍 '+q(k)+'</a>';
       return '<div class="sg"><h3>'+t+'<small>'+L.length+'</small></h3>'+L.map(function(x){
         return '<div class="sr'+(x.done?' dn':'')+'"><label class="shbk"><input type="checkbox" class="shck" data-id="'+q(x.id)+'"'+(x.done?' checked':'')+'>已買</label>'+
-          '<div class="tx"><b>'+q(x.name)+'</b>'+(x.note?'<small>'+q(x.note)+'</small>':'')+'</div>'+
           (x.imgs||[]).map(function(id){return imgs[id]?'<img class="sh-th" data-id="'+q(id)+'" src="'+imgs[id]+'" alt="照片">':''}).join('')+
-          '<button type="button" class="x" data-del="'+q(x.id)+'" aria-label="刪除 '+q(x.name)+'">❌</button></div>'}).join('')+'</div>'}).join('');
+          '<div class="tx"><b>'+q(x.name||x.note||'（未命名）')+'</b>'+(x.name&&x.note?'<small>'+q(x.note)+'</small>':'')+'</div>'+
+          '<button type="button" class="x" data-del="'+q(x.id)+'" aria-label="刪除">❌</button></div>'}).join('')+'</div>'}).join('');
   }
   function formThumbs(){$f('shImgs').innerHTML=draft.map(function(d,i){return '<span class="shth"><img src="'+d.url+'" alt="照片"><button type="button" data-rm="'+i+'" aria-label="移除">✕</button></span>'}).join('')}
   function closeForm(){draft=[];$f('shForm').reset();formThumbs();$f('shForm').hidden=true;$f('shNew').hidden=false}
@@ -2431,13 +2434,14 @@ function renderCharts(){
   });
   $f('shImgs').addEventListener('click',function(e){var b=e.target.closest('[data-rm]');if(!b)return;draft.splice(+b.dataset.rm,1);formThumbs()});
   $f('shForm').addEventListener('submit',function(e){
-    e.preventDefault();var name=$f('shName').value.trim();if(!name)return;
+    e.preventDefault();var name=$f('shName').value.trim();
     var it={id:newId(),done:false,name:name,store:$f('shStore').value.trim(),note:$f('shNote').value.trim(),imgs:draft.map(function(d){return d.id})};
+    if(!it.name&&!it.store&&!it.note&&!it.imgs.length)return;
     draft.forEach(function(d){imgs[d.id]=d.url;dbPut(d.id,d.url)});
     items.push(it);save();closeForm();render();
   });
-  var lb=document.createElement('div');lb.className='shlb';lb.hidden=true;lb.innerHTML='<img alt="照片">';document.body.appendChild(lb);
-  lb.addEventListener('click',function(){lb.hidden=true});
+  var lb=document.createElement('div');lb.className='shlb';lb.hidden=true;lb.innerHTML='<img alt="照片"><button type="button" class="shlb-x" aria-label="關閉">✕ 關閉</button>';document.body.appendChild(lb);
+  lb.addEventListener('click',function(){lb.hidden=true});lb.firstChild.addEventListener('click',function(e){e.stopPropagation()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.hidden=true});
   $f('shList').addEventListener('change',function(e){
     var c=e.target.closest('.shck');if(!c)return;
