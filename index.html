@@ -406,6 +406,32 @@ svg *{transform-box:fill-box}
 .pk-add .fb-ok{flex:none}
 .pk-empty{padding:2px 14px 12px;font-size:13px;color:var(--soft)}
 .acts button[hidden]{display:none}
+/* ---- 喝酒 ---- */
+.dk-sbox{position:sticky;top:calc(var(--nav) + 6px);z-index:5;background:var(--paper);padding:4px 0 8px}
+.dk-in{display:flex;align-items:center;gap:6px;background:var(--white);border:var(--bw) solid var(--ink);border-radius:999px;padding:2px 6px 2px 14px}
+.dk-in input{flex:1;min-width:0;font:inherit;font-size:16px;color:var(--ink);background:none;border:0;height:40px;outline:none}
+.dk-in button{flex:none;width:32px;height:32px;border-radius:50%;border:2px solid var(--ink);background:var(--t-pink);font-size:15px;line-height:1}
+.dk-in button[hidden]{display:none}
+.dk-in input::-webkit-search-cancel-button{-webkit-appearance:none;display:none}
+.dk-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.dk-chips button{font-size:13px;border:2px solid var(--ink);border-radius:999px;padding:1px 10px;background:var(--t-yellow)}
+.dk-chips button:nth-child(3n+2){background:var(--t-blue)} .dk-chips button:nth-child(3n){background:var(--t-green)}
+.dk-cnt{font-size:13px;color:var(--soft);margin:6px 2px 0}
+.dk-h{display:inline-block;font-size:16px;border:var(--bw) solid var(--ink);border-radius:999px;padding:0 12px;margin:18px 0 10px;background:var(--t-lav)}
+.dk-h.h1{background:var(--t-coral)} .dk-h.h2{background:var(--t-green)} .dk-h.h3{background:var(--t-yellow)} .dk-h.h4{background:var(--t-blue)}
+.dk-c{background:var(--white);border:var(--bw) solid var(--ink);border-radius:18px;padding:10px 13px 11px;margin-bottom:10px;font-size:14.5px;line-height:1.55}
+.dk-c b{font-weight:700}
+.dk-n{font-size:16.5px;font-weight:700;line-height:1.3}
+.dk-n small{font-weight:400;font-size:14px;color:var(--soft);margin-left:4px}
+.dk-tg{display:flex;flex-wrap:wrap;gap:5px;margin:5px 0 6px}
+.dk-tg span{font-size:12px;border:2px solid var(--ink);border-radius:999px;padding:0 8px;background:var(--t-white)}
+.dk-tg .es{background:var(--t-coral)} .dk-tg .pt{background:var(--t-green)}
+.dk-r{display:grid;grid-template-columns:auto 1fr;gap:2px 8px}
+.dk-r dt{font-size:12.5px;border:2px solid var(--ink);border-radius:8px;padding:0 6px;height:fit-content;margin-top:2px;background:var(--t-yellow);white-space:nowrap}
+.dk-r dt.f2{background:var(--t-blue)} .dk-r dt.f3{background:var(--t-pink)}
+.dk-r dd{margin:0;overflow-wrap:anywhere}
+.dk-c mark{background:var(--yellow);border-radius:4px;padding:0 1px;color:inherit}
+.dk-none{background:var(--white);border:var(--bw) dashed var(--ink);border-radius:18px;padding:14px;font-size:14px;text-align:center;color:var(--soft)}
 /* ---- 列印／PDF ---- */
 #printArea{display:none}
 .pdfrow{text-align:center}
@@ -576,7 +602,7 @@ details.bk-more>.bk-in{margin-top:10px}
 @media (max-width:340px){.nav a[data-s]{font-size:11px;white-space:nowrap;padding:8px 0}.nav .brand small{display:none}.nav nav{gap:3px;padding:0 6px}}
 .nav a:nth-child(7){--c:var(--t-coral)} .nav a:nth-child(8){--c:var(--t-yellow)} .nav a:nth-child(9){--c:var(--t-green)}
 .nav a[data-s]{font-size:12.5px;border-width:2px}
-.nav a[data-s=flights]{--c:var(--t-blue)}.nav a[data-s=stay]{--c:var(--t-pink)}.nav a[data-s=days]{--c:var(--t-green)}.nav a[data-s=cost]{--c:var(--t-lav)}.nav a[data-s=pack]{--c:var(--t-coral)}.nav a[data-s=book]{--c:var(--t-green)}.nav a[data-s=resv]{--c:var(--t-yellow)}
+.nav a[data-s=flights]{--c:var(--t-blue)}.nav a[data-s=stay]{--c:var(--t-pink)}.nav a[data-s=days]{--c:var(--t-green)}.nav a[data-s=cost]{--c:var(--t-lav)}.nav a[data-s=pack]{--c:var(--t-coral)}.nav a[data-s=book]{--c:var(--t-green)}.nav a[data-s=resv]{--c:var(--t-yellow)}.nav a[data-s=drink]{--c:var(--t-lav)}
 .nav nav{gap:3px}
 @media (max-width:359px){.nav .brand span{display:none}}
 .rv-sum{background:var(--t-white);border:var(--bw) solid var(--ink);border-radius:var(--r);padding:10px 14px;margin-bottom:12px;font-size:14.5px;line-height:1.7}
@@ -649,6 +675,7 @@ li.tl.flash .card{animation:rvflash 1.6s ease}
     <a href="#days" data-s="days">行程</a>
     <a href="#pack" data-s="pack">行李</a>
     <a href="#resv" data-s="resv">預訂</a>
+    <a href="#drink" data-s="drink">喝酒</a>
   </nav>
 </header>
 
@@ -811,6 +838,19 @@ li.tl.flash .card{animation:rvflash 1.6s ease}
   </div>
 </section>
 
+<!-- ================= 喝酒 ================= -->
+<section id="drink">
+  <div class="wrap">
+    <h2 class="title c1" style="background:var(--t-lav)">🍷 喝酒</h2>
+    <p class="note-s">搜尋酒名（例：clara、port）或菜名（例：海鮮燉飯、蛋塔），直接看這是什麼酒、該配什麼。</p>
+    <div class="dk-sbox">
+      <div class="dk-in"><span aria-hidden="true">🔎</span><input type="search" id="dkQ" placeholder="打酒名或菜名" autocomplete="off" enterkeyhint="search" aria-label="搜尋酒名或菜名"><button type="button" id="dkX" aria-label="清除" hidden>✕</button></div>
+      <p class="dk-cnt" id="dkCnt" aria-live="polite"></p>
+    </div>
+    <div class="dk-chips" id="dkChips"></div>
+    <div id="dkList"></div>
+  </div>
+</section>
 
 <footer>
   <svg viewBox="0 0 120 60" aria-hidden="true">
@@ -1853,6 +1893,126 @@ bkRender();
     window.scrollTo({top:li.getBoundingClientRect().top+window.scrollY-navH-bar-18,behavior:'auto'});
     li.classList.add('flash');setTimeout(function(){li.classList.remove('flash')},1700);
   });
+})();
+
+/* ============================================================
+   喝酒：各城市必喝／依菜點酒／西葡常見酒／調酒，可搜尋
+   ============================================================ */
+(function(){
+  var CITY=[
+    {c:'里斯本',k:'Lisboa Lisbon',m:'Ginjinha（櫻桃酒）、Vinho Verde（綠酒）、生啤 imperial',n:'Ginjinha 在老城區小店立飲；配烤沙丁魚喝綠酒'},
+    {c:'波多',k:'Porto Oporto',m:'Port（波特酒）、Douro（斗羅河）紅酒、White Port & Tonic（白波特通寧）',n:'對岸 Vila Nova de Gaia（加亞新城）是波特酒窖集中地，可參觀試飲'},
+    {c:'馬德里',k:'Madrid',m:'Vermut（苦艾酒）、caña（小杯生啤）、Ribera del Duero（斗羅河岸）',n:'tapas 酒吧一家換一家；配烤乳豬、燉肉點紅酒'},
+    {c:'巴塞隆納',k:'Barcelona',m:'Cava（卡瓦氣泡酒）、Vermut（苦艾酒）、Priorat（普里奧拉）',n:'加泰羅尼亞是 Cava 的主產區；週末中午去喝 vermut 最有當地氣氛'}
+  ];
+  var PAIR=[
+    {d:'伊比利火腿',o:'Jamón ibérico',r:'西',a:'Fino（菲諾）／Manzanilla（曼薩尼亞）雪莉酒',b:'Cava（卡瓦氣泡酒）、Rioja（利奧哈）Crianza',k:'火腿 jamon 生火腿'},
+    {d:'海鮮飯',o:'Paella',r:'西',a:'Albariño（阿爾巴利諾）、Verdejo（維岱荷）',b:'Cava、Rosado（粉紅酒）',k:'海鮮燉飯 西班牙燉飯 燉飯 西班牙海鮮飯 paella'},
+    {d:'墨魚汁飯',o:'Arroz negro',r:'西',a:'Albariño（阿爾巴利諾）',b:'Cava（卡瓦氣泡酒）',k:'墨魚飯 墨魚燉飯 黑飯 燉飯'},
+    {d:'加利西亞章魚',o:'Pulpo a la gallega',r:'西',a:'Albariño（阿爾巴利諾）',b:'Mencía（門西亞，輕盈紅酒）',k:'章魚 pulpo'},
+    {d:'蒜味蝦',o:'Gambas al ajillo',r:'西',a:'Verdejo（維岱荷）',b:'Fino（菲諾）雪莉酒',k:'蝦 大蒜蝦 橄欖油蒜蝦'},
+    {d:'烤乳豬',o:'Cochinillo',r:'西',a:'Ribera del Duero（斗羅河岸）',b:'Rioja（利奧哈）Reserva',k:'乳豬 烤豬 塞哥維亞'},
+    {d:'牛排、烤羊',o:'Chuletón／Cordero',r:'西葡',a:'Ribera del Duero（斗羅河岸）、Douro（斗羅河）紅酒',b:'Priorat（普里奧拉）、Alentejo（阿連特茹）紅酒',k:'牛排 牛肉 羊排 羊肉 烤肉 紅肉 steak'},
+    {d:'馬德里燉肉',o:'Cocido madrileño',r:'西',a:'Rioja（利奧哈）Crianza',b:'Garnacha（格納希）',k:'燉肉 燉菜 cocido'},
+    {d:'烤沙丁魚',o:'Sardinhas assadas',r:'葡',a:'Vinho Verde（綠酒）',b:'生啤',k:'沙丁魚 sardinha sardine 烤魚'},
+    {d:'鱈魚',o:'Bacalhau',r:'葡',a:'Dão（杜奧）紅酒或白酒',b:'Alvarinho（阿爾瓦利尼奧）',k:'鹽漬鱈魚 鱈魚 bacalao'},
+    {d:'葡式海鮮飯',o:'Arroz de marisco',r:'葡',a:'Alvarinho（阿爾瓦利尼奧）、Vinho Verde（綠酒）',b:'Bairrada（拜拉達）氣泡酒',k:'海鮮燉飯 海鮮粥 燉飯 海鮮飯'},
+    {d:'烤乳豬（葡式）',o:'Leitão',r:'葡',a:'Bairrada（拜拉達）氣泡酒',b:'Bairrada（拜拉達）紅酒',k:'乳豬 烤豬 leitao'},
+    {d:'小女兒三明治',o:'Francesinha',r:'葡',a:'生啤',b:'Douro（斗羅河）紅酒',k:'波多三明治 三明治'},
+    {d:'葡式蛋塔',o:'Pastel de nata',r:'葡',a:'Tawny Port（茶色波特酒）',b:'Madeira（馬德拉酒，甜）',k:'蛋塔 蛋撻 nata 甜點'},
+    {d:'巧克力、藍紋起司',o:'Chocolate／Queso azul',r:'西葡',a:'Ruby Port（寶石紅波特酒）',b:'PX（佩德羅希梅內斯）雪莉酒',k:'巧克力 起司 乳酪 甜點 cheese'},
+    {d:'吉拉媽對、烤布蕾',o:'Churros／Crema catalana',r:'西',a:'PX（佩德羅希梅內斯）雪莉酒',b:'Licor 43（四十三號利口酒）',k:'吉拿棒 西班牙油條 布丁 布蕾 甜點'}
+  ];
+  var WINE=[
+    {n:'Rioja',z:'利奧哈',r:'西',t:'紅酒',f:'最有名的產區，Tempranillo（田帕尼優）為主，橡木桶香草、紅果味，口感均衡',p:'烤羊、伊比利火腿、燉肉、西班牙臘腸'},
+    {n:'Ribera del Duero',z:'斗羅河岸',r:'西',t:'紅酒',f:'同樣是 Tempranillo，比 Rioja 更濃郁強勁',p:'牛排、烤乳豬、烤羊腿'},
+    {n:'Priorat',z:'普里奧拉',r:'西',t:'紅酒',f:'加泰羅尼亞高價產區，Garnacha、Cariñena（卡里涅納），濃郁帶礦物感',p:'紅肉、野味、硬質起司'},
+    {n:'Garnacha',z:'格納希',r:'西',t:'紅酒',f:'各產區都有，果味豐富、好入口，性價比高',p:'烤肉串、tapas、義大利麵類'},
+    {n:'Albariño／Rías Baixas',z:'阿爾巴利諾／下海灣',r:'西',t:'白酒',f:'西北沿海，清爽酸度高、桃子與海鹽味',p:'生蠔、蝦、加利西亞章魚、海鮮飯'},
+    {n:'Verdejo／Rueda',z:'維岱荷／盧埃達',r:'西',t:'白酒',f:'清新、青草與柑橘味，便宜好喝',p:'沙拉、炸物、白肉魚、蒜味蝦'},
+    {n:'Cava',z:'卡瓦氣泡酒',r:'西',t:'氣泡酒',f:'加泰羅尼亞的傳統法氣泡酒，類似香檳但便宜很多',p:'開胃、炸物、海鮮、火腿'},
+    {n:'Sherry Fino／Manzanilla',z:'雪莉酒 菲諾／曼薩尼亞',r:'西',t:'加烈酒（乾）',f:'安達魯西亞產，極乾、帶堅果與鹽味，冰鎮喝',p:'伊比利火腿、橄欖、杏仁、炸小魚'},
+    {n:'Sherry Pedro Ximénez（PX）',z:'雪莉酒 佩德羅希梅內斯',r:'西',t:'加烈酒（甜）',f:'極甜、葡萄乾與焦糖味',p:'甜點、藍紋起司、淋在香草冰淇淋上'},
+    {n:'Vinho Verde',z:'綠酒',r:'葡',t:'白酒（微氣泡）',f:'北部產，酒精低、清爽帶微微氣泡，冰鎮非常解膩',p:'烤沙丁魚、蛤蜊、蝦、海鮮飯'},
+    {n:'Alvarinho',z:'阿爾瓦利尼奧',r:'葡',t:'白酒',f:'就是西班牙的 Albariño，比一般綠酒更飽滿',p:'生蠔、烤魚、海鮮、鱈魚'},
+    {n:'Douro 紅酒',z:'斗羅河',r:'葡',t:'紅酒',f:'波多上游谷地，用 Touriga Nacional（國產杜麗佳）等本地品種，濃郁有結構',p:'牛排、燉牛肉、Francesinha（小女兒三明治）'},
+    {n:'Alentejo 紅酒',z:'阿連特茹',r:'葡',t:'紅酒',f:'南部產，天氣熱，果味滿、柔順好入口',p:'烤豬肉、黑豬、燉肉'},
+    {n:'Dão',z:'杜奧',r:'葡',t:'紅酒／白酒',f:'中部山區，紅酒優雅、酸度較高，沒那麼厚重',p:'烤雞、鱈魚（bacalhau）、小菜'},
+    {n:'Bairrada Espumante',z:'拜拉達氣泡酒',r:'葡',t:'氣泡酒',f:'中部產，傳統搭配烤乳豬',p:'烤乳豬（leitão）、炸物'},
+    {n:'Port',z:'波特酒',r:'葡',t:'加烈酒（甜）',f:'波多代表酒。Ruby（寶石紅）果香重、Tawny（茶色）堅果焦糖味、White Port（白波特）常加通寧水當開胃酒',p:'Ruby 配巧克力、藍紋起司；Tawny 配葡式蛋塔、堅果甜點'},
+    {n:'Madeira',z:'馬德拉酒',r:'葡',t:'加烈酒',f:'馬德拉島產，乾到甜都有，帶焦糖與堅果味',p:'乾的配湯／開胃，甜的配甜點、蛋塔'},
+    {n:'Ginjinha',z:'里斯本櫻桃酒',r:'葡',t:'櫻桃利口酒',f:'里斯本特產，小杯立飲，可選帶不帶櫻桃（com / sem elas）',p:'飯後、街頭小酒吧'}
+  ];
+  var MIX=[
+    {n:'Caña',z:'小杯生啤',r:'西',t:'啤酒',f:'小杯、冰涼，配什麼都行；馬德里常見 Mahou（馬歐），巴塞隆納常見 Estrella Damm（達姆之星）',p:'tapas、任何時間、炸物、Francesinha'},
+    {n:'Imperial／Fino',z:'小杯生啤（葡萄牙）',r:'葡',t:'啤酒',f:'里斯本叫 imperial、波多叫 fino，常見 Super Bock（超級博克）、Sagres（薩格雷斯）',p:'烤沙丁魚、小吃、Francesinha（小女兒三明治）'},
+    {n:'Vermut',z:'苦艾酒',r:'西',t:'開胃酒',f:'加冰塊、橄欖、柳橙片喝，微甜微苦，巴塞隆納氣氛最濃',p:'週末午餐前「la hora del vermut」（苦艾酒時間）、橄欖、洋芋片、罐頭海鮮'},
+    {n:'Tinto de verano',z:'夏日紅酒',r:'西',t:'調酒',f:'紅酒加檸檬氣泡水，比 Sangria 簡單清爽',p:'午餐、簡單 tapas'},
+    {n:'Sangria',z:'桑格利亞水果酒',r:'西',t:'調酒',f:'紅酒加水果與烈酒，甜、好入口，常整壺點',p:'海鮮飯、多人分享'},
+    {n:'Clara',z:'檸檬啤酒',r:'西',t:'啤酒調酒',f:'啤酒加檸檬汽水，酒精低',p:'中午、不太想喝酒時、tapas、炸物'},
+    {n:'Licor 43',z:'四十三號利口酒',r:'西',t:'利口酒',f:'香草柑橘利口酒，常加咖啡做成 Carajillo（咖啡調酒）',p:'飯後、甜點'},
+    {n:'Orujo／Pacharán',z:'葡萄渣白蘭地／黑刺李利口酒',r:'西',t:'餐後酒',f:'餐廳常以此當餐後酒',p:'飯後助消化'}
+  ];
+  var SYN=[['海鮮燉飯','西班牙燉飯','燉飯','海鮮飯','paella'],['蛋塔','蛋撻','nata'],['火腿','jamón','jamon','presunto'],['章魚','pulpo','polvo'],['乳豬','cochinillo','leitão','leitao'],['鱈魚','bacalhau','bacalao'],['沙丁魚','sardinha','sardine'],['啤酒','生啤','beer','cerveza','cerveja','caña','imperial'],['氣泡','香檳','cava','espumante','champagne'],['甜點','甜品','dessert','蛋塔','巧克力'],['牛排','牛肉','steak','紅肉'],['羊','羊排','羊肉','烤羊'],['蝦','gambas','camarão'],['海鮮','marisco','mariscos','seafood'],['紅酒','tinto','red wine'],['白酒','blanco','branco','white wine'],['雪莉','sherry','jerez','fino','manzanilla'],['波特','port','porto'],['苦艾','vermut','vermouth']];
+  function nz(x){return String(x).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim()}
+  function esc(x){return String(x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function terms(q){
+    var t=[q];
+    if(q.length>=2) SYN.forEach(function(g){
+      var hit=g.some(function(w){w=nz(w);return w.length>=2&&(q.indexOf(w)>=0||w.indexOf(q)>=0)});
+      if(hit) g.forEach(function(w){w=nz(w);if(w.length>=2&&t.indexOf(w)<0)t.push(w)});
+    });
+    return t;
+  }
+  function hl(x,ts){
+    var s=esc(x); if(!ts) return s;
+    var raw=String(x), low=nz(raw), marks=[];
+    /* 只在未變形的字串上標示（避免重音字位移） */
+    if(low.length!==raw.length) return s;
+    ts.forEach(function(t){var i=0;while(t&&(i=low.indexOf(t,i))>=0){marks.push([i,i+t.length]);i+=t.length}});
+    if(!marks.length) return s;
+    marks.sort(function(a,b){return a[0]-b[0]});
+    var out='',pos=0;
+    marks.forEach(function(m){if(m[0]<pos)return;out+=esc(raw.slice(pos,m[0]))+'<mark>'+esc(raw.slice(m[0],m[1]))+'</mark>';pos=m[1]});
+    return out+esc(raw.slice(pos));
+  }
+  function rg(r){return r==='西'?'<span class="es">西班牙</span>':r==='葡'?'<span class="pt">葡萄牙</span>':'<span class="es">西班牙</span><span class="pt">葡萄牙</span>'}
+  function cCity(x,ts){return '<div class="dk-c"><div class="dk-n">'+hl(x.c,ts)+'</div><dl class="dk-r" style="margin-top:6px"><dt>必喝</dt><dd>'+hl(x.m,ts)+'</dd><dt class="f2">備註</dt><dd>'+hl(x.n,ts)+'</dd></dl></div>'}
+  function cPair(x,ts){return '<div class="dk-c"><div class="dk-n">'+hl(x.d,ts)+'<small>'+hl(x.o,ts)+'</small></div><div class="dk-tg">'+rg(x.r)+'</div><dl class="dk-r"><dt>首選</dt><dd>'+hl(x.a,ts)+'</dd><dt class="f2">備選</dt><dd>'+hl(x.b,ts)+'</dd></dl></div>'}
+  function cDrink(x,ts){return '<div class="dk-c"><div class="dk-n">'+hl(x.n,ts)+'<small>'+hl(x.z,ts)+'</small></div><div class="dk-tg">'+rg(x.r)+'<span>'+esc(x.t)+'</span></div><dl class="dk-r"><dt class="f3">特色</dt><dd>'+hl(x.f,ts)+'</dd><dt>配</dt><dd>'+hl(x.p,ts)+'</dd></dl></div>'}
+  var GROUPS=[
+    {h:'🏙️ 各城市必喝',cl:'h1',a:CITY,f:cCity,txt:function(x){return [x.c,x.k,x.m,x.n]}},
+    {h:'🍽️ 依菜點酒',cl:'h2',a:PAIR,f:cPair,txt:function(x){return [x.d,x.o,x.a,x.b,x.k]}},
+    {h:'🇪🇸 西班牙常見酒',cl:'h3',a:WINE.filter(function(x){return x.r==='西'}),f:cDrink,txt:function(x){return [x.n,x.z,x.t,x.f,x.p]}},
+    {h:'🇵🇹 葡萄牙常見酒',cl:'h4',a:WINE.filter(function(x){return x.r==='葡'}),f:cDrink,txt:function(x){return [x.n,x.z,x.t,x.f,x.p]}},
+    {h:'🍺 啤酒與調酒',cl:'',a:MIX,f:cDrink,txt:function(x){return [x.n,x.z,x.t,x.f,x.p]}}
+  ];
+  var qEl=document.getElementById('dkQ'), xEl=document.getElementById('dkX'), list=document.getElementById('dkList'), cnt=document.getElementById('dkCnt');
+  var CH=['海鮮燉飯','火腿','蛋塔','牛排','clara','Port','Cava','綠酒'];
+  document.getElementById('dkChips').innerHTML=CH.map(function(c){return '<button type="button">'+esc(c)+'</button>'}).join('');
+  document.getElementById('dkChips').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;qEl.value=b.textContent;render()});
+  function render(){
+    var q=nz(qEl.value), ts=q?terms(q):null, html='', n=0;
+    xEl.hidden=!q;
+    GROUPS.forEach(function(g){
+      var items=g.a.filter(function(x){
+        if(!ts) return true;
+        var t=nz(g.txt(x).join(' '));
+        return ts.some(function(w){return t.indexOf(w)>=0});
+      });
+      /* 搜尋時，名稱直接命中的排前面 */
+      if(ts) items.sort(function(a,b){var na=nz(g.txt(a).slice(0,2).join(' ')),nb=nz(g.txt(b).slice(0,2).join(' '));return (ts.some(function(w){return nb.indexOf(w)>=0})?1:0)-(ts.some(function(w){return na.indexOf(w)>=0})?1:0)});
+      if(!items.length) return;
+      n+=items.length;
+      html+='<h3 class="dk-h '+g.cl+'">'+g.h+(ts?'（'+items.length+'）':'')+'</h3>'+items.map(function(x){return g.f(x,ts)}).join('');
+    });
+    list.innerHTML=html||'<div class="dk-none">找不到「'+esc(qEl.value)+'」。可以試試換個寫法，例如英文酒名、中文菜名或「紅酒」「白酒」「甜點」。</div>';
+    cnt.textContent=ts?('找到 '+n+' 筆'):'';
+  }
+  qEl.addEventListener('input',render);
+  qEl.addEventListener('keydown',function(e){if(e.key==='Enter'){qEl.blur()}});
+  xEl.addEventListener('click',function(){qEl.value='';render();qEl.focus()});
+  render();
 })();
 </script>
 </body>
